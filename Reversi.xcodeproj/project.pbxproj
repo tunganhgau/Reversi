@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD922B8516E5B3AE00261599 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8416E5B3AE00261599 /* UIKit.framework */; };
+		BD922B8716E5B3AE00261599 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8616E5B3AE00261599 /* Foundation.framework */; };
+		BD922B8916E5B3AE00261599 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8816E5B3AE00261599 /* CoreGraphics.framework */; };
+		BD922B8F16E5B3AE00261599 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD922B8D16E5B3AE00261599 /* InfoPlist.strings */; };
+		BD922B9116E5B3AE00261599 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922B9016E5B3AE00261599 /* main.m */; };
+		BD922B9516E5B3AE00261599 /* ANHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */; };
+		BD922B9716E5B3AE00261599 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922B9616E5B3AE00261599 /* Default.png */; };
+		BD922B9916E5B3AE00261599 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922B9816E5B3AE00261599 /* Default@2x.png */; };
+		BD922B9B16E5B3AE00261599 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922B9A16E5B3AE00261599 /* Default-568h@2x.png */; };
+		BD922B9E16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD922B9C16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard */; };
+		BD922BA116E5B3AE00261599 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD922B9F16E5B3AE00261599 /* MainStoryboard_iPad.storyboard */; };
+		BD922BA416E5B3AE00261599 /* ANHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BA316E5B3AE00261599 /* ANHViewController.m */; };
+		BD922BAC16E5B3AE00261599 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922BAB16E5B3AE00261599 /* SenTestingKit.framework */; };
+		BD922BAD16E5B3AE00261599 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8416E5B3AE00261599 /* UIKit.framework */; };
+		BD922BAE16E5B3AE00261599 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8616E5B3AE00261599 /* Foundation.framework */; };
+		BD922BB616E5B3AE00261599 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD922BB416E5B3AE00261599 /* InfoPlist.strings */; };
+		BD922BB916E5B3AE00261599 /* ReversiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BB816E5B3AE00261599 /* ReversiTests.m */; };
+		BD922BC316E5B41000261599 /* reversi.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC216E5B41000261599 /* reversi.png */; };
+		BD922BC516E5B57E00261599 /* gameBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC416E5B57E00261599 /* gameBoard.png */; };
+		BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC816E5BB1000261599 /* blackPiece.png */; };
+		BD922BCB16E5BB1000261599 /* whitePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC916E5BB1000261599 /* whitePiece.png */; };
+		BD922BCD16E5BD2E00261599 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BCC16E5BD2E00261599 /* grass.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD922BAF16E5B3AE00261599 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD922B7916E5B3AD00261599 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD922B8016E5B3AE00261599;
+			remoteInfo = Reversi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BD922B8116E5B3AE00261599 /* Reversi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reversi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD922B8416E5B3AE00261599 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BD922B8616E5B3AE00261599 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BD922B8816E5B3AE00261599 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BD922B8C16E5B3AE00261599 /* Reversi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Reversi-Info.plist"; sourceTree = "<group>"; };
+		BD922B8E16E5B3AE00261599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD922B9016E5B3AE00261599 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BD922B9216E5B3AE00261599 /* Reversi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Reversi-Prefix.pch"; sourceTree = "<group>"; };
+		BD922B9316E5B3AE00261599 /* ANHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHAppDelegate.h; sourceTree = "<group>"; };
+		BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHAppDelegate.m; sourceTree = "<group>"; };
+		BD922B9616E5B3AE00261599 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BD922B9816E5B3AE00261599 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BD922B9A16E5B3AE00261599 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BD922B9D16E5B3AE00261599 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		BD922BA016E5B3AE00261599 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		BD922BA216E5B3AE00261599 /* ANHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHViewController.h; sourceTree = "<group>"; };
+		BD922BA316E5B3AE00261599 /* ANHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHViewController.m; sourceTree = "<group>"; };
+		BD922BAA16E5B3AE00261599 /* ReversiTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReversiTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD922BAB16E5B3AE00261599 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		BD922BB316E5B3AE00261599 /* ReversiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReversiTests-Info.plist"; sourceTree = "<group>"; };
+		BD922BB516E5B3AE00261599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD922BB716E5B3AE00261599 /* ReversiTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReversiTests.h; sourceTree = "<group>"; };
+		BD922BB816E5B3AE00261599 /* ReversiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReversiTests.m; sourceTree = "<group>"; };
+		BD922BC216E5B41000261599 /* reversi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reversi.png; sourceTree = "<group>"; };
+		BD922BC416E5B57E00261599 /* gameBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBoard.png; sourceTree = "<group>"; };
+		BD922BC816E5BB1000261599 /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackPiece.png; sourceTree = "<group>"; };
+		BD922BC916E5BB1000261599 /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitePiece.png; sourceTree = "<group>"; };
+		BD922BCC16E5BD2E00261599 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD922B7E16E5B3AE00261599 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD922B8516E5B3AE00261599 /* UIKit.framework in Frameworks */,
+				BD922B8716E5B3AE00261599 /* Foundation.framework in Frameworks */,
+				BD922B8916E5B3AE00261599 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD922BA616E5B3AE00261599 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD922BAC16E5B3AE00261599 /* SenTestingKit.framework in Frameworks */,
+				BD922BAD16E5B3AE00261599 /* UIKit.framework in Frameworks */,
+				BD922BAE16E5B3AE00261599 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD922B7816E5B3AD00261599 = {
+			isa = PBXGroup;
+			children = (
+				BD922B8A16E5B3AE00261599 /* Reversi */,
+				BD922BB116E5B3AE00261599 /* ReversiTests */,
+				BD922B8316E5B3AE00261599 /* Frameworks */,
+				BD922B8216E5B3AE00261599 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD922B8216E5B3AE00261599 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD922B8116E5B3AE00261599 /* Reversi.app */,
+				BD922BAA16E5B3AE00261599 /* ReversiTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD922B8316E5B3AE00261599 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD922B8416E5B3AE00261599 /* UIKit.framework */,
+				BD922B8616E5B3AE00261599 /* Foundation.framework */,
+				BD922B8816E5B3AE00261599 /* CoreGraphics.framework */,
+				BD922BAB16E5B3AE00261599 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD922B8A16E5B3AE00261599 /* Reversi */ = {
+			isa = PBXGroup;
+			children = (
+				BD922B9316E5B3AE00261599 /* ANHAppDelegate.h */,
+				BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */,
+				BD922B9C16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard */,
+				BD922B9F16E5B3AE00261599 /* MainStoryboard_iPad.storyboard */,
+				BD922BA216E5B3AE00261599 /* ANHViewController.h */,
+				BD922BA316E5B3AE00261599 /* ANHViewController.m */,
+				BD922B8B16E5B3AE00261599 /* Supporting Files */,
+			);
+			path = Reversi;
+			sourceTree = "<group>";
+		};
+		BD922B8B16E5B3AE00261599 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD922BCC16E5BD2E00261599 /* grass.png */,
+				BD922BC816E5BB1000261599 /* blackPiece.png */,
+				BD922BC916E5BB1000261599 /* whitePiece.png */,
+				BD922BC416E5B57E00261599 /* gameBoard.png */,
+				BD922BC216E5B41000261599 /* reversi.png */,
+				BD922B8C16E5B3AE00261599 /* Reversi-Info.plist */,
+				BD922B8D16E5B3AE00261599 /* InfoPlist.strings */,
+				BD922B9016E5B3AE00261599 /* main.m */,
+				BD922B9216E5B3AE00261599 /* Reversi-Prefix.pch */,
+				BD922B9616E5B3AE00261599 /* Default.png */,
+				BD922B9816E5B3AE00261599 /* Default@2x.png */,
+				BD922B9A16E5B3AE00261599 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD922BB116E5B3AE00261599 /* ReversiTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD922BB716E5B3AE00261599 /* ReversiTests.h */,
+				BD922BB816E5B3AE00261599 /* ReversiTests.m */,
+				BD922BB216E5B3AE00261599 /* Supporting Files */,
+			);
+			path = ReversiTests;
+			sourceTree = "<group>";
+		};
+		BD922BB216E5B3AE00261599 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD922BB316E5B3AE00261599 /* ReversiTests-Info.plist */,
+				BD922BB416E5B3AE00261599 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD922B8016E5B3AE00261599 /* Reversi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD922BBC16E5B3AE00261599 /* Build configuration list for PBXNativeTarget "Reversi" */;
+			buildPhases = (
+				BD922B7D16E5B3AE00261599 /* Sources */,
+				BD922B7E16E5B3AE00261599 /* Frameworks */,
+				BD922B7F16E5B3AE00261599 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Reversi;
+			productName = Reversi;
+			productReference = BD922B8116E5B3AE00261599 /* Reversi.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BD922BA916E5B3AE00261599 /* ReversiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD922BBF16E5B3AE00261599 /* Build configuration list for PBXNativeTarget "ReversiTests" */;
+			buildPhases = (
+				BD922BA516E5B3AE00261599 /* Sources */,
+				BD922BA616E5B3AE00261599 /* Frameworks */,
+				BD922BA716E5B3AE00261599 /* Resources */,
+				BD922BA816E5B3AE00261599 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD922BB016E5B3AE00261599 /* PBXTargetDependency */,
+			);
+			name = ReversiTests;
+			productName = ReversiTests;
+			productReference = BD922BAA16E5B3AE00261599 /* ReversiTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD922B7916E5B3AD00261599 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ANH;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Anh Nguyen";
+			};
+			buildConfigurationList = BD922B7C16E5B3AD00261599 /* Build configuration list for PBXProject "Reversi" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BD922B7816E5B3AD00261599;
+			productRefGroup = BD922B8216E5B3AE00261599 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD922B8016E5B3AE00261599 /* Reversi */,
+				BD922BA916E5B3AE00261599 /* ReversiTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD922B7F16E5B3AE00261599 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD922B8F16E5B3AE00261599 /* InfoPlist.strings in Resources */,
+				BD922B9716E5B3AE00261599 /* Default.png in Resources */,
+				BD922B9916E5B3AE00261599 /* Default@2x.png in Resources */,
+				BD922B9B16E5B3AE00261599 /* Default-568h@2x.png in Resources */,
+				BD922B9E16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard in Resources */,
+				BD922BA116E5B3AE00261599 /* MainStoryboard_iPad.storyboard in Resources */,
+				BD922BC316E5B41000261599 /* reversi.png in Resources */,
+				BD922BC516E5B57E00261599 /* gameBoard.png in Resources */,
+				BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */,
+				BD922BCB16E5BB1000261599 /* whitePiece.png in Resources */,
+				BD922BCD16E5BD2E00261599 /* grass.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD922BA716E5B3AE00261599 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD922BB616E5B3AE00261599 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BD922BA816E5B3AE00261599 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD922B7D16E5B3AE00261599 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD922B9116E5B3AE00261599 /* main.m in Sources */,
+				BD922B9516E5B3AE00261599 /* ANHAppDelegate.m in Sources */,
+				BD922BA416E5B3AE00261599 /* ANHViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD922BA516E5B3AE00261599 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD922BB916E5B3AE00261599 /* ReversiTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BD922BB016E5B3AE00261599 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD922B8016E5B3AE00261599 /* Reversi */;
+			targetProxy = BD922BAF16E5B3AE00261599 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BD922B8D16E5B3AE00261599 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD922B8E16E5B3AE00261599 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BD922B9C16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD922B9D16E5B3AE00261599 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		BD922B9F16E5B3AE00261599 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD922BA016E5B3AE00261599 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		BD922BB416E5B3AE00261599 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD922BB516E5B3AE00261599 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BD922BBA16E5B3AE00261599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BD922BBB16E5B3AE00261599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BD922BBD16E5B3AE00261599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Reversi/Reversi-Prefix.pch";
+				INFOPLIST_FILE = "Reversi/Reversi-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BD922BBE16E5B3AE00261599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Reversi/Reversi-Prefix.pch";
+				INFOPLIST_FILE = "Reversi/Reversi-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BD922BC016E5B3AE00261599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Reversi.app/Reversi";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Reversi/Reversi-Prefix.pch";
+				INFOPLIST_FILE = "ReversiTests/ReversiTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		BD922BC116E5B3AE00261599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Reversi.app/Reversi";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Reversi/Reversi-Prefix.pch";
+				INFOPLIST_FILE = "ReversiTests/ReversiTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD922B7C16E5B3AD00261599 /* Build configuration list for PBXProject "Reversi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD922BBA16E5B3AE00261599 /* Debug */,
+				BD922BBB16E5B3AE00261599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD922BBC16E5B3AE00261599 /* Build configuration list for PBXNativeTarget "Reversi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD922BBD16E5B3AE00261599 /* Debug */,
+				BD922BBE16E5B3AE00261599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BD922BBF16E5B3AE00261599 /* Build configuration list for PBXNativeTarget "ReversiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD922BC016E5B3AE00261599 /* Debug */,
+				BD922BC116E5B3AE00261599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD922B7916E5B3AD00261599 /* Project object */;
+}
