@@ -29,6 +29,8 @@
 		BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC816E5BB1000261599 /* blackPiece.png */; };
 		BD922BCB16E5BB1000261599 /* whitePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC916E5BB1000261599 /* whitePiece.png */; };
 		BD922BCD16E5BD2E00261599 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BCC16E5BD2E00261599 /* grass.png */; };
+		BD922BD016E7006B00261599 /* ANHGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BCF16E7006B00261599 /* ANHGameBoardView.m */; };
+		BD922BD516E700DB00261599 /* ANHGameCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BD416E700DB00261599 /* ANHGameCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,10 @@
 		BD922BC816E5BB1000261599 /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackPiece.png; sourceTree = "<group>"; };
 		BD922BC916E5BB1000261599 /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitePiece.png; sourceTree = "<group>"; };
 		BD922BCC16E5BD2E00261599 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		BD922BCE16E7006B00261599 /* ANHGameBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANHGameBoardView.h; path = Reversi/ANHGameBoardView.h; sourceTree = "<group>"; };
+		BD922BCF16E7006B00261599 /* ANHGameBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANHGameBoardView.m; path = Reversi/ANHGameBoardView.m; sourceTree = "<group>"; };
+		BD922BD316E700DB00261599 /* ANHGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameCellView.h; sourceTree = "<group>"; };
+		BD922BD416E700DB00261599 /* ANHGameCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,8 @@
 		BD922B7816E5B3AD00261599 = {
 			isa = PBXGroup;
 			children = (
+				BD922BD216E700AF00261599 /* Views */,
+				BD922BD116E7009300261599 /* Models */,
 				BD922B8A16E5B3AE00261599 /* Reversi */,
 				BD922BB116E5B3AE00261599 /* ReversiTests */,
 				BD922B8316E5B3AE00261599 /* Frameworks */,
@@ -129,8 +137,6 @@
 		BD922B8A16E5B3AE00261599 /* Reversi */ = {
 			isa = PBXGroup;
 			children = (
-				BD922B9316E5B3AE00261599 /* ANHAppDelegate.h */,
-				BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */,
 				BD922B9C16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard */,
 				BD922B9F16E5B3AE00261599 /* MainStoryboard_iPad.storyboard */,
 				BD922BA216E5B3AE00261599 /* ANHViewController.h */,
@@ -143,6 +149,8 @@
 		BD922B8B16E5B3AE00261599 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BD922B9316E5B3AE00261599 /* ANHAppDelegate.h */,
+				BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */,
 				BD922BCC16E5BD2E00261599 /* grass.png */,
 				BD922BC816E5BB1000261599 /* blackPiece.png */,
 				BD922BC916E5BB1000261599 /* whitePiece.png */,
@@ -176,6 +184,24 @@
 				BD922BB416E5B3AE00261599 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD922BD116E7009300261599 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		BD922BD216E700AF00261599 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD922BCE16E7006B00261599 /* ANHGameBoardView.h */,
+				BD922BCF16E7006B00261599 /* ANHGameBoardView.m */,
+				BD922BD316E700DB00261599 /* ANHGameCellView.h */,
+				BD922BD416E700DB00261599 /* ANHGameCellView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +324,8 @@
 				BD922B9116E5B3AE00261599 /* main.m in Sources */,
 				BD922B9516E5B3AE00261599 /* ANHAppDelegate.m in Sources */,
 				BD922BA416E5B3AE00261599 /* ANHViewController.m in Sources */,
+				BD922BD016E7006B00261599 /* ANHGameBoardView.m in Sources */,
+				BD922BD516E700DB00261599 /* ANHGameCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +516,7 @@
 				BD922BBE16E5B3AE00261599 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BD922BBF16E5B3AE00261599 /* Build configuration list for PBXNativeTarget "ReversiTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +525,7 @@
 				BD922BC116E5B3AE00261599 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,7 +7,7 @@
 //
 
 #import "ANHViewController.h"
-
+#import "ANHGameBoardView.h"
 @interface ANHViewController ()
 
 @end
@@ -18,6 +18,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.gameBoardView = [[ANHGameBoardView alloc] initWithFrame:CGRectMake(24, 131, 720, 720)];
+    [self.view addSubview:self.gameBoardView];
+    [self.view sendSubviewToBack:self.gameBoardView];
 }
 
 - (void)didReceiveMemoryWarning
