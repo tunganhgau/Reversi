@@ -15,17 +15,20 @@
 - (id) init{
     self = [super init];
     if (self) {
+        cells = [[NSMutableArray alloc] init];
         for (int i = 0; i<8; i++) {
             [cells addObject:[[NSMutableArray alloc]init]];
         }
         for (int r = 0; r<8; r++) {
             for (int c = 0; c<8; c++) {
+                //NSMutableArray *column = [[NSMutableArray alloc]init];
                 ANHCell *cell = [[ANHCell alloc]initWithRow:r andColumn:c];
                 [[cells objectAtIndex:r] addObject:cell];
             }
         }
         [self initBoardState];
         _blackTurn = YES;
+        _temp = [[cells objectAtIndex:3]objectAtIndex:3];
     }
     
     return self;
@@ -60,7 +63,7 @@
 }
 
 - (void) initCellState:(CellState)state AtRow:(int)row andColumn:(int)column{
-    ANHCell *cell = [[cells objectAtIndex:3] objectAtIndex:3];
+    ANHCell *cell = [[cells objectAtIndex:row] objectAtIndex:column];
     cell.state = state;
 }
 

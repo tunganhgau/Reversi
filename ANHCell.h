@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(int, CellState){
-    EmptyCell = 0,
-    BlackCell = 1,
-    WhiteCell = 2
-};
+typedef enum{
+    EmptyCell,
+    BlackCell,
+    WhiteCell
+}CellState;
 
 @interface ANHCell : NSObject
 

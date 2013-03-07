@@ -13,6 +13,8 @@
 
 @property (copy,nonatomic) NSMutableArray *cells;
 
+@property (nonatomic) ANHCell *temp;
+
 @property (nonatomic) int column;
 @property (nonatomic) int row;
 @property (nonatomic) BOOL blackTurn;

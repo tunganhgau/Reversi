@@ -42,13 +42,14 @@
         [self addSubview:bgView];
         [self sendSubviewToBack:bgView];
         
-        
+        [self updateBoard];
         
     }
     return self;
 }
 
-
+- (void) updateBoard{
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

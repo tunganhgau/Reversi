@@ -20,7 +20,6 @@
 @property (nonatomic) float height;
 @property (nonatomic) float width;
 
-@property (nonatomic) BOOL isEmpty;
 @property (nonatomic, strong) UIImageView *whiteView;
 @property (nonatomic, strong) UIImageView *blackView;
 

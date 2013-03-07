@@ -9,6 +9,7 @@
 #import "ANHViewController.h"
 #import "ANHGameBoardView.h"
 #import "ANHBoard.h"
+#import "ANHCell.h"
 @interface ANHViewController ()
 
 @end
@@ -25,13 +26,21 @@
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
-    //[self.view sendSubviewToBack:self.gameBoardView];
+    //[self alertTest];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) alertTest{
+    //ANHCell * temp = [[self.gameBoard.cells objectAtIndex:3]objectAtIndex:3];
+    
+    NSString *message = [NSString stringWithFormat:@"%d",self.gameBoard.temp.row ];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Test" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 @end
