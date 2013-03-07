@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ANHGameBoardView.h"
+
 @interface ANHViewController : UIViewController
-@property (strong, nonatomic) IBOutlet ANHGameBoardView *gameBoardView;
+
+@property (strong, nonatomic) ANHGameBoardView *gameBoardView;
 
 @end

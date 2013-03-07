@@ -8,6 +8,7 @@
 
 #import "ANHViewController.h"
 #import "ANHGameBoardView.h"
+#import "ANHBoard.h"
 @interface ANHViewController ()
 
 @end
@@ -18,9 +19,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.gameBoardView = [[ANHGameBoardView alloc] initWithFrame:CGRectMake(24, 131, 720, 720)];
+    float screenWidth = self.view.bounds.size.width;
+    CGRect boardRect = CGRectMake(0.05*screenWidth, 0.15*screenWidth, 0.9*screenWidth, 0.9*screenWidth);
+    ANHBoard *gameBoard = [[ANHBoard alloc]init];
+    gameBoard.blackTurn = YES;
+    self.gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:gameBoard];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:self.gameBoardView];
-    [self.view sendSubviewToBack:self.gameBoardView];
+    //[self.view sendSubviewToBack:self.gameBoardView];
 }
 
 - (void)didReceiveMemoryWarning

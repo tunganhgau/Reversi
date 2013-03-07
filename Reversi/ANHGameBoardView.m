@@ -12,34 +12,41 @@
 
 @implementation ANHGameBoardView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame andBoard:(ANHBoard *)board
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        _board = board;
         _height = frame.size.height;
         _width = frame.size.width;
+        // length of each cell is 1/8 of the board length
         float cellHeight = self.height/8;
         float cellWidth = self.width/8;
+        //initialze the CellView
         for (int row = 0 ; row < 8; row++) {
             for (int column = 0; column < 8; column++) {
+                ANHCell *cell = [[ANHCell alloc]init];
                 CGRect cellFrame = CGRectMake(row*cellHeight, column*cellHeight, cellWidth, cellHeight);
-                ANHGameCellView *cell = [[ANHGameCellView alloc]initWithFrame:cellFrame];
-                //cell.image = [UIImage imageNamed:@"blackPiece"];
-                [self addSubview:cell];
-                
+                ANHGameCellView *cellView = [[ANHGameCellView alloc]initWithFrame:cellFrame andCell:cell row:row column:column board:board];
+                [self addSubview:cellView];
             }
         }
-        //UIImage *background = [UIImage imageNamed:@"gameBoard"];
-        //UIImageView *bgView = [[UIImageView alloc]initWithImage:background];
-        UILabel *hello = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-        hello.text = @"hello";
-        [self addSubview:hello];
-        //[self sendSubviewToBack:bgView];
+        // Added a background and a gameboard image
+        UIImage *background = [UIImage imageNamed:@"gameBoard.png"];
+        UIImageView *bgView = [[UIImageView alloc]initWithImage:background];
+        bgView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        bgView.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:bgView];
+        [self sendSubviewToBack:bgView];
+        
+        
         
     }
     return self;
 }
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
