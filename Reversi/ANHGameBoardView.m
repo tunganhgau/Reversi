@@ -11,13 +11,15 @@
 
 
 @implementation ANHGameBoardView
+@synthesize cells;
+@synthesize gameBoard;
 
 - (id)initWithFrame:(CGRect)frame andBoard:(ANHBoard *)board
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _board = board;
+        gameBoard = board;
         _height = frame.size.height;
         _width = frame.size.width;
         // length of each cell is 1/8 of the board length
@@ -26,9 +28,9 @@
         //initialze the CellView
         for (int row = 0 ; row < 8; row++) {
             for (int column = 0; column < 8; column++) {
-                ANHCell *cell = [[ANHCell alloc]init];
                 CGRect cellFrame = CGRectMake(row*cellHeight, column*cellHeight, cellWidth, cellHeight);
-                ANHGameCellView *cellView = [[ANHGameCellView alloc]initWithFrame:cellFrame andCell:cell row:row column:column board:board];
+                ANHCell *cell = [[gameBoard.cells objectAtIndex:row]objectAtIndex:column];
+                ANHGameCellView *cellView = [[ANHGameCellView alloc]initWithFrame:cellFrame cell:cell board:board];
                 [self addSubview:cellView];
             }
         }

@@ -87,7 +87,6 @@
 		BD922BD316E700DB00261599 /* ANHGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameCellView.h; sourceTree = "<group>"; };
 		BD922BD416E700DB00261599 /* ANHGameCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameCellView.m; sourceTree = "<group>"; };
 		BD922BD916E851A800261599 /* grass_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_pattern.png; sourceTree = "<group>"; };
-		BD922BDF16E8540200261599 /* ANHCellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCellState.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,7 +207,6 @@
 				BD5D540C16E79200004FC868 /* ANHCell.m */,
 				BD5D540E16E7CE54004FC868 /* ANHBoard.h */,
 				BD5D540F16E7CE55004FC868 /* ANHBoard.m */,
-				BD922BDF16E8540200261599 /* ANHCellState.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";

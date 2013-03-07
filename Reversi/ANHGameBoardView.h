@@ -16,7 +16,7 @@
 @property (nonatomic) float height;
 @property (nonatomic) float width;
 
-@property (weak, nonatomic) ANHBoard *board;
+@property (weak, nonatomic) ANHBoard *gameBoard;
 @property (copy, nonatomic) NSArray *cells;
 
 

@@ -7,16 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ANHCell.h"
 
 @interface ANHBoard : NSObject
 
-@property (copy,nonatomic) NSArray *cell;
+@property (copy,nonatomic) NSMutableArray *cells;
 
 @property (nonatomic) int column;
 @property (nonatomic) int row;
 @property (nonatomic) BOOL blackTurn;
 
-- (void) switchTurn;
+- (void) nextTurn;
 - (BOOL) isBlackTurn;
-
+- (void) initBoardState;
+- (void) initCellState:(CellState)state AtRow:(int)row andColumn:(int)column;
 @end

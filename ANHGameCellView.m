@@ -13,7 +13,7 @@
 
 @implementation ANHGameCellView
 
-- (id)initWithFrame:(CGRect)frame andCell:(ANHCell *) cell row:(int)r column:(int)c board:(ANHBoard *)board
+- (id)initWithFrame:(CGRect)frame cell:(ANHCell *) cell board:(ANHBoard *)board
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -45,9 +45,6 @@
         _cell = cell;
         _board = board;
         
-        _row = r;
-        _column = c;
-        
     }
     return self;
 }
@@ -56,12 +53,12 @@
     if ([self.board isBlackTurn]) {
         self.blackView.hidden = NO;
         self.whiteView.hidden = YES;
-        [self.board switchTurn];
+        [self.board nextTurn];
     }
     else{
         self.blackView.hidden = YES;
         self.whiteView.hidden = NO;
-        [self.board switchTurn];
+        [self.board nextTurn];
     }
     
     

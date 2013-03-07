@@ -20,9 +20,6 @@
 @property (nonatomic) float height;
 @property (nonatomic) float width;
 
-@property (nonatomic) int row;
-@property (nonatomic) int column;
-
 @property (nonatomic) BOOL isEmpty;
 @property (nonatomic, strong) UIImageView *whiteView;
 @property (nonatomic, strong) UIImageView *blackView;
@@ -30,7 +27,7 @@
 
 // set the image for the cell (white or black piece), given the 
 //- (void) setImage
-- (id)initWithFrame:(CGRect)frame andCell:(ANHCell *) cell row:(int)r column:(int)c board:(ANHBoard *)board;
+- (id)initWithFrame:(CGRect)frame cell:(ANHCell *) cell board:(ANHBoard *)board;
 
 - (void) setStartState;
 
