@@ -23,6 +23,6 @@ typedef NS_ENUM(NSUInteger, CellState){
 
 - (id) initWithRow:(int)r andColumn:(int)c;
 
-- (void) setState:(CellState *)state;
+- (void) setState:(CellState*)state;
 
 @end

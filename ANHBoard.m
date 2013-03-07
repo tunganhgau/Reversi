@@ -50,16 +50,15 @@
 }
 
 - (void) initBoardState{
-    for (int r=3; r<5; r++) {
-        for (int c = 3; c<5; c++) {
-            //[self initCellState a];
-        }
-    }
+    [self initCellState:WhiteCell AtRow:(NSUInteger )3 andColumn:(NSUInteger )3];
+    [self initCellState:BlackCell AtRow:3 andColumn:4];
+    [self initCellState:BlackCell AtRow:4 andColumn:3];
+    [self initCellState:WhiteCell AtRow:4 andColumn:4];
 }
 
-- (void) initCellState:(CellState)state AtRow:(int)row andColumn:(int)column{
+- (void) initCellState:(CellState*)state AtRow:(int)row andColumn:(int)column{
     ANHCell *cell = [[cells objectAtIndex:3] objectAtIndex:3];
-    cell.state = &(state);
+    cell.state = state;
 }
 
 

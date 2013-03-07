@@ -20,5 +20,5 @@
 - (void) nextTurn;
 - (BOOL) isBlackTurn;
 - (void) initBoardState;
-- (void) initCellState:(CellState)state AtRow:(int)row andColumn:(int)column;
+- (void) initCellState:(CellState*)state AtRow:(int)row andColumn:(int)column;
 @end

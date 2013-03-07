@@ -23,7 +23,7 @@
     return self;
 }
 
-- (void) setState:(CellState *)state{
+- (void) setState:(CellState*)state{
     _state = state;
 }
 
