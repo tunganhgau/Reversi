@@ -32,4 +32,6 @@
 //- (void) setImage
 - (id)initWithFrame:(CGRect)frame andCell:(ANHCell *) cell row:(int)r column:(int)c board:(ANHBoard *)board;
 
+- (void) setStartState;
+
 @end

@@ -34,6 +34,7 @@
 		BD922BCD16E5BD2E00261599 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BCC16E5BD2E00261599 /* grass.png */; };
 		BD922BD016E7006B00261599 /* ANHGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BCF16E7006B00261599 /* ANHGameBoardView.m */; };
 		BD922BD516E700DB00261599 /* ANHGameCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BD416E700DB00261599 /* ANHGameCellView.m */; };
+		BD922BDA16E851A800261599 /* grass_pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BD916E851A800261599 /* grass_pattern.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		BD922BCF16E7006B00261599 /* ANHGameBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANHGameBoardView.m; path = Reversi/ANHGameBoardView.m; sourceTree = "<group>"; };
 		BD922BD316E700DB00261599 /* ANHGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameCellView.h; sourceTree = "<group>"; };
 		BD922BD416E700DB00261599 /* ANHGameCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameCellView.m; sourceTree = "<group>"; };
+		BD922BD916E851A800261599 /* grass_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_pattern.png; sourceTree = "<group>"; };
+		BD922BDF16E8540200261599 /* ANHCellState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCellState.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,7 @@
 		BD922B8B16E5B3AE00261599 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BD922BD916E851A800261599 /* grass_pattern.png */,
 				BD922B9316E5B3AE00261599 /* ANHAppDelegate.h */,
 				BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */,
 				BD922BCC16E5BD2E00261599 /* grass.png */,
@@ -204,6 +208,7 @@
 				BD5D540C16E79200004FC868 /* ANHCell.m */,
 				BD5D540E16E7CE54004FC868 /* ANHBoard.h */,
 				BD5D540F16E7CE55004FC868 /* ANHBoard.m */,
+				BD922BDF16E8540200261599 /* ANHCellState.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */,
 				BD922BCB16E5BB1000261599 /* whitePiece.png in Resources */,
 				BD922BCD16E5BD2E00261599 /* grass.png in Resources */,
+				BD922BDA16E851A800261599 /* grass_pattern.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

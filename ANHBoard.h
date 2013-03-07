@@ -10,7 +10,10 @@
 
 @interface ANHBoard : NSObject
 
+@property (copy,nonatomic) NSArray *cell;
 
+@property (nonatomic) int column;
+@property (nonatomic) int row;
 @property (nonatomic) BOOL blackTurn;
 
 - (void) switchTurn;

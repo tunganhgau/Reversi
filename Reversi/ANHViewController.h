@@ -12,5 +12,6 @@
 @interface ANHViewController : UIViewController
 
 @property (strong, nonatomic) ANHGameBoardView *gameBoardView;
+@property (strong, nonatomic) ANHBoard *gameBoard;
 
 @end

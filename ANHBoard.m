@@ -7,6 +7,7 @@
 //
 
 #import "ANHBoard.h"
+#import "ANHCell.h"
 
 @implementation ANHBoard
 

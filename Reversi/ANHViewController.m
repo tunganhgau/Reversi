@@ -21,10 +21,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     float screenWidth = self.view.bounds.size.width;
     CGRect boardRect = CGRectMake(0.05*screenWidth, 0.15*screenWidth, 0.9*screenWidth, 0.9*screenWidth);
-    ANHBoard *gameBoard = [[ANHBoard alloc]init];
-    gameBoard.blackTurn = YES;
-    self.gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:gameBoard];
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    _gameBoard = [[ANHBoard alloc]init];
+    _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     //[self.view sendSubviewToBack:self.gameBoardView];
 }
