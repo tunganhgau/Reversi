@@ -24,6 +24,7 @@
                 [[cells objectAtIndex:r] addObject:cell];
             }
         }
+        [self initBoardState];
         _blackTurn = YES;
     }
     
@@ -49,14 +50,16 @@
     }
 }
 
+
 - (void) initBoardState{
-    [self initCellState:WhiteCell AtRow:(NSUInteger )3 andColumn:(NSUInteger )3];
-    [self initCellState:BlackCell AtRow:3 andColumn:4];
-    [self initCellState:BlackCell AtRow:4 andColumn:3];
-    [self initCellState:WhiteCell AtRow:4 andColumn:4];
+    //CellState bCell = 1;
+    [self initCellState:BlackCell AtRow:3 andColumn:3];
+    [self initCellState:WhiteCell AtRow:3 andColumn:4];
+    [self initCellState:WhiteCell AtRow:4 andColumn:3];
+    [self initCellState:BlackCell AtRow:4 andColumn:4];
 }
 
-- (void) initCellState:(CellState*)state AtRow:(int)row andColumn:(int)column{
+- (void) initCellState:(CellState)state AtRow:(int)row andColumn:(int)column{
     ANHCell *cell = [[cells objectAtIndex:3] objectAtIndex:3];
     cell.state = state;
 }

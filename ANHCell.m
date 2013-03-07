@@ -23,8 +23,4 @@
     return self;
 }
 
-- (void) setState:(CellState*)state{
-    _state = state;
-}
-
 @end

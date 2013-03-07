@@ -51,20 +51,25 @@
 
 - (void) cellTapped:(UITapGestureRecognizer *) recognizer{
     if ([self.board isBlackTurn]) {
+        self.cell.state = BlackCell;
+    }
+    else{
+        self.cell.state = WhiteCell;
+    }
+    [self updateCell];
+    [self.board nextTurn];
+    
+}
+
+- (void) updateCell{
+    if (self.cell.state == BlackCell) {
         self.blackView.hidden = NO;
         self.whiteView.hidden = YES;
-        [self.board nextTurn];
     }
     else{
         self.blackView.hidden = YES;
         self.whiteView.hidden = NO;
-        [self.board nextTurn];
     }
-    
-    
-}
-
-- (void) setStartState{
     
 }
 

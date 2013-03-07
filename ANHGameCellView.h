@@ -29,6 +29,6 @@
 //- (void) setImage
 - (id)initWithFrame:(CGRect)frame cell:(ANHCell *) cell board:(ANHBoard *)board;
 
-- (void) setStartState;
+- (void) updateCell;
 
 @end
