@@ -29,11 +29,16 @@
         for (int row = 0 ; row < 8; row++) {
             for (int column = 0; column < 8; column++) {
                 CGRect cellFrame = CGRectMake(row*cellHeight, column*cellHeight, cellWidth, cellHeight);
+                // each GameCellView object will contain a reference to a Cell Object
                 ANHCell *cell = [[gameBoard.cells objectAtIndex:row]objectAtIndex:column];
                 ANHGameCellView *cellView = [[ANHGameCellView alloc]initWithFrame:cellFrame cell:cell board:board];
+                // set the delegate of Cell object to be its CellView
+                cell.delegate = cellView;
                 [self addSubview:cellView];
             }
         }
+        // set the gameBoard to its initial state
+        [gameBoard initBoardState];
         // Added a background and a gameboard image
         UIImage *background = [UIImage imageNamed:@"gameBoard.png"];
         UIImageView *bgView = [[UIImageView alloc]initWithImage:background];
@@ -49,6 +54,7 @@
 }
 
 - (void) updateBoard{
+    
 }
 
 /*

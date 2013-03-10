@@ -42,6 +42,7 @@
         _whiteView.hidden = YES;
         _blackView.hidden = YES;
         
+        // reference to a Cell and the Board
         _cell = cell;
         _board = board;
         
@@ -49,20 +50,28 @@
     return self;
 }
 
+
+// Response to a Tap Gesture
 - (void) cellTapped:(UITapGestureRecognizer *) recognizer{
-    if ([self.board isBlackTurn]) {
-        self.cell.state = BlackCell;
+    if (self.cell.state == EmptyCell) {
+        if ([self.board isBlackTurn]) {
+            self.cell.state = BlackCell;
+        }
+        else{
+            self.cell.state = WhiteCell;
+        }
+        [self updateCell];
+        [self.board nextTurn];
     }
-    else{
-        self.cell.state = WhiteCell;
-    }
-    [self updateCell];
-    [self.board nextTurn];
-    
 }
 
+// Update the View of the cell
 - (void) updateCell{
-    if (self.cell.state == BlackCell) {
+    if (!self.cell.state) {
+        self.blackView.hidden = NO;
+        self.whiteView.hidden = NO;
+    }
+    else if (self.cell.state == BlackCell) {
         self.blackView.hidden = NO;
         self.whiteView.hidden = YES;
     }
@@ -70,7 +79,10 @@
         self.blackView.hidden = YES;
         self.whiteView.hidden = NO;
     }
-    
+}
+
+- (void) cellStateChanged{
+    [self updateCell];
 }
 
 /*

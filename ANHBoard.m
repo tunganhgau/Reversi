@@ -26,7 +26,7 @@
                 [[cells objectAtIndex:r] addObject:cell];
             }
         }
-        [self initBoardState];
+        //[self initBoardState];
         _blackTurn = YES;
         _temp = [[cells objectAtIndex:3]objectAtIndex:3];
     }

@@ -22,6 +22,4 @@
 
 - (id)initWithFrame:(CGRect)frame andBoard:(ANHBoard *)board;
 
-
-
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ANHCellStateDelegate.h"
 
 typedef enum{
     EmptyCell,
@@ -17,11 +18,11 @@ typedef enum{
 @interface ANHCell : NSObject
 
 @property (nonatomic) CellState state;
-//@property (nonatomic) int state;
+@property (nonatomic, weak) id <CellStateDelegate> delegate;
 @property (nonatomic) int column;
 @property (nonatomic) int row;
 
 - (id) initWithRow:(int)r andColumn:(int)c;
-
+- (void) informCellView;
 
 @end

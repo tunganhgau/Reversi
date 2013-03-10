@@ -12,8 +12,9 @@
 #import <UIKit/UIKit.h>
 #import "ANHCell.h"
 #import "ANHBoard.h"
+#import "ANHCellStateDelegate.h"
 
-@interface ANHGameCellView : UIView
+@interface ANHGameCellView : UIView<CellStateDelegate>
 
 @property (weak, nonatomic) ANHCell *cell;
 @property (weak, nonatomic) ANHBoard *board;
@@ -29,5 +30,6 @@
 - (id)initWithFrame:(CGRect)frame cell:(ANHCell *) cell board:(ANHBoard *)board;
 
 - (void) updateCell;
+- (void) cellStateChanged;
 
 @end

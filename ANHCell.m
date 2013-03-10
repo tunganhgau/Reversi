@@ -11,16 +11,29 @@
 @implementation ANHCell
 @synthesize row;
 @synthesize column;
-
+@synthesize delegate;
+@synthesize state;
 
 - (id) initWithRow:(int)r andColumn:(int)c{
     self = [super init];
     if (self) {
         row = r;
         column = c;
-        _state = EmptyCell;
+        state = EmptyCell;
     }
     return self;
+}
+
+// Let the CellView know that its state has changed
+- (void) informCellView{
+    if ([delegate respondsToSelector:@selector(cellStateChanged)]) {
+        [delegate cellStateChanged];
+    }
+}
+
+- (void) setState:(CellState) s{
+    state = s;
+    [self informCellView];
 }
 
 @end
