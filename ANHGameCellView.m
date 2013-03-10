@@ -54,7 +54,7 @@
 // Response to a Tap Gesture
 - (void) cellTapped:(UITapGestureRecognizer *) recognizer{
     if (self.cell.state == EmptyCell) {
-        if ([self.board moveIsValidAtRow:self.cell.row andColumn:self.cell.column]) {
+        if ([self.board moveIsValidAtCell:self.cell]) {
             if ([self.board isBlackTurn]) {
                 self.cell.state = BlackCell;
             }

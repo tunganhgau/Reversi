@@ -54,7 +54,6 @@
 
 
 - (void) initBoardState{
-    //CellState bCell = 1;
     [self initCellState:BlackCell atRow:3 andColumn:3];
     [self initCellState:WhiteCell atRow:3 andColumn:4];
     [self initCellState:WhiteCell atRow:4 andColumn:3];
@@ -66,22 +65,124 @@
     cell.state = state;
 }
 
-- (BOOL) moveIsValidAtRow:(int)row andColumn:(int)column{
-    BOOL isValid = YES;
-    ANHCell *thisCell = [[cells objectAtIndex:0] objectAtIndex:column];
+- (BOOL) moveIsValidAtCell:(ANHCell *)cell{
+    
+    ANHCell *thisCell = cell;
     ANHCell *topCell = [self topCellOf:thisCell];
     ANHCell *topLeftCell = [self topLeftCellOf:thisCell];
     ANHCell *topRightCell = [self topRightCellOf:thisCell];
     ANHCell *leftCell = [self leftCellOf:thisCell];
     ANHCell *rightCell = [self rightCellOf:thisCell];
-    ANHCell *leftBottomCell = [self leftBottomCellOf:thisCell];
-    ANHCell *rightBottomCell = [self rightBottomCellOf:thisCell];
+    ANHCell *bottomLeftCell = [self bottomLeftCellOf:thisCell];
+    ANHCell *bottomRightCell = [self bottomRightCellOf:thisCell];
     ANHCell *bottomCell = [self bottomCellOf:thisCell];
+    
+    ANHCell *tempCell;
+    CellState PlayerCell;
+    CellState OponentCell;
+    
     if ([self isBlackTurn]) {
-        
+        PlayerCell = BlackCell;
+        OponentCell = WhiteCell;
     }
-    return isValid;
+    else{
+        PlayerCell = WhiteCell;
+        OponentCell = BlackCell;
+    }
+    
+    if (topCell) {
+        if (topCell.state == OponentCell) {
+            tempCell = [self topCellOf:topCell];
+            while (tempCell) {
+                if (tempCell.state== PlayerCell)
+                    return YES;
+                else
+                    tempCell = [self topCellOf:tempCell];
+            }
+        }
+    }
+    if (topLeftCell) {
+        if (topLeftCell.state == OponentCell) {
+            tempCell = [self topLeftCellOf:topLeftCell];
+            while (tempCell) {
+                if (tempCell.state== PlayerCell)
+                    return YES;
+                else
+                    tempCell = [self topLeftCellOf:tempCell];
+            }
+        }
+    }
+    if (topRightCell) {
+        if (topRightCell.state == OponentCell) {
+            tempCell = [self topRightCellOf:topRightCell];
+            while (tempCell) {
+                if (tempCell.state== PlayerCell)
+                    return YES;
+                else
+                    tempCell = [self topRightCellOf:tempCell];
+            }
+        }
+    }
+    if (leftCell) {
+        if (leftCell.state == OponentCell) {
+            tempCell = [self topLeftCellOf:leftCell];
+            while (tempCell) {
+                if (tempCell.state== PlayerCell)
+                    return YES;
+                else
+                    tempCell = [self leftCellOf:tempCell];
+            }
+        }
+    }
+    if (rightCell) {
+        if (rightCell.state == OponentCell) {
+            tempCell = [self rightCellOf:rightCell];
+            while (tempCell) {
+                if (tempCell.state== PlayerCell)
+                    return YES;
+                else
+                    tempCell = [self rightCellOf:tempCell];
+            }
+        }
+    }
+    
+    if (bottomLeftCell) {
+        if (bottomLeftCell.state == OponentCell) {
+            tempCell = [self bottomLeftCellOf:bottomLeftCell];
+            while (tempCell) {
+                if (tempCell.state== PlayerCell)
+                    return YES;
+                else
+                    tempCell = [self bottomLeftCellOf:tempCell];
+            }
+        }
+    }
+    if (bottomRightCell) {
+        if (bottomRightCell.state == OponentCell) {
+            tempCell = [self bottomLeftCellOf:bottomRightCell];
+            while (tempCell) {
+                if (tempCell.state== PlayerCell)
+                    return YES;
+                else
+                    tempCell = [self bottomRightCellOf:tempCell];
+            }
+        }
+    }
+    if (bottomCell) {
+        if (bottomRightCell.state == OponentCell) {
+            tempCell = [self bottomCellOf:bottomRightCell];
+            while (tempCell) {
+                if (tempCell.state== PlayerCell)
+                    return YES;
+                else
+                    tempCell = [self bottomCellOf:tempCell];
+            }
+        }
+    }
+    return NO;
 }
+
+
 
 - (ANHCell *) topCellOf:(ANHCell *)cell{
     if (cell.row==0) {
@@ -126,15 +227,15 @@
     else
         return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column];
 }
-- (ANHCell *) leftBottomCellOf:(ANHCell *)cell{
+- (ANHCell *) bottomLeftCellOf:(ANHCell *)cell{
     if (cell.row==7 || cell.column == 0) {
         return nil;
     }
     else
         return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column-1];
 }
-- (ANHCell *) rightBottomCellOf:(ANHCell *)cell{
-    if (cell.row==7 || cell.column == 0) {
+- (ANHCell *) bottomRightCellOf:(ANHCell *)cell{
+    if (cell.row==7 || cell.column == 7) {
         return nil;
     }
     else

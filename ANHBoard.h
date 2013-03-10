@@ -22,6 +22,6 @@
 - (BOOL) isBlackTurn;
 - (void) initBoardState;
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column;
-- (BOOL) moveIsValidAtRow:(int) row andColumn:(int)column;
+- (BOOL) moveIsValidAtCell:(ANHCell *)cell;
 
 @end
