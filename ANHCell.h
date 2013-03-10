@@ -22,7 +22,8 @@ typedef enum{
 @property (nonatomic) int column;
 @property (nonatomic) int row;
 
-- (id) initWithRow:(int)r andColumn:(int)c;
+- (id) initAtRow:(int)r andColumn:(int)c;
 - (void) informCellView;
+
 
 @end

@@ -21,7 +21,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     float screenWidth = self.view.bounds.size.width;
-    CGRect boardRect = CGRectMake(0.05*screenWidth, 0.15*screenWidth, 0.9*screenWidth, 0.9*screenWidth);
+    CGRect boardRect = CGRectMake(0.05*screenWidth, 120, 0.9*screenWidth, 0.9*screenWidth);
     _gameBoard = [[ANHBoard alloc]init];
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
@@ -35,12 +35,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) alertTest{
-    //ANHCell * temp = [[self.gameBoard.cells objectAtIndex:3]objectAtIndex:3];
-    
-    NSString *message = [NSString stringWithFormat:@"%d",self.gameBoard.temp.row ];
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Test" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-}
 
 @end

@@ -14,13 +14,14 @@
 @property (copy,nonatomic) NSMutableArray *cells;
 
 @property (nonatomic) ANHCell *temp;
-
-@property (nonatomic) int column;
-@property (nonatomic) int row;
+@property (nonatomic) int columns;
+@property (nonatomic) int rows;
 @property (nonatomic) BOOL blackTurn;
 
 - (void) nextTurn;
 - (BOOL) isBlackTurn;
 - (void) initBoardState;
-- (void) initCellState:(CellState)state AtRow:(int)row andColumn:(int)column;
+- (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column;
+- (BOOL) moveIsValidAtRow:(int) row andColumn:(int)column;
+
 @end

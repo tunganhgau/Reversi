@@ -50,11 +50,11 @@
 /* Begin PBXFileReference section */
 		BD5D540B16E79200004FC868 /* ANHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCell.h; sourceTree = "<group>"; };
 		BD5D540C16E79200004FC868 /* ANHCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHCell.m; sourceTree = "<group>"; };
-		BD5D540E16E7CE54004FC868 /* ANHBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoard.h; sourceTree = "<group>"; };
 		BD5D540F16E7CE55004FC868 /* ANHBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHBoard.m; sourceTree = "<group>"; };
 		BD5D541116E80AFE004FC868 /* ANHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHMenuViewController.h; sourceTree = "<group>"; };
 		BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHMenuViewController.m; sourceTree = "<group>"; };
 		BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCellStateDelegate.h; sourceTree = "<group>"; };
+		BD5D541716EC3494004FC868 /* ANHBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoard.h; sourceTree = "<group>"; };
 		BD922B8116E5B3AE00261599 /* Reversi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reversi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD922B8416E5B3AE00261599 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BD922B8616E5B3AE00261599 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -206,7 +206,7 @@
 			children = (
 				BD5D540B16E79200004FC868 /* ANHCell.h */,
 				BD5D540C16E79200004FC868 /* ANHCell.m */,
-				BD5D540E16E7CE54004FC868 /* ANHBoard.h */,
+				BD5D541716EC3494004FC868 /* ANHBoard.h */,
 				BD5D540F16E7CE55004FC868 /* ANHBoard.m */,
 				BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */,
 			);

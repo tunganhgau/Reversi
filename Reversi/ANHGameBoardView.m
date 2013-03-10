@@ -42,7 +42,7 @@
         // Added a background and a gameboard image
         UIImage *background = [UIImage imageNamed:@"gameBoard.png"];
         UIImageView *bgView = [[UIImageView alloc]initWithImage:background];
-        bgView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        bgView.frame = CGRectMake(0, 0, _width, _height);
         bgView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:bgView];
         [self sendSubviewToBack:bgView];

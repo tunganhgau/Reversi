@@ -14,7 +14,8 @@
 @synthesize delegate;
 @synthesize state;
 
-- (id) initWithRow:(int)r andColumn:(int)c{
+
+- (id) initAtRow:(int)r andColumn:(int)c{
     self = [super init];
     if (self) {
         row = r;
