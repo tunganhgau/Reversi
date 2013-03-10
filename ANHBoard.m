@@ -68,6 +68,18 @@
 
 - (BOOL) moveIsValidAtRow:(int)row andColumn:(int)column{
     BOOL isValid = YES;
+    ANHCell *thisCell = [[cells objectAtIndex:0] objectAtIndex:column];
+    ANHCell *topCell = [self topCellOf:thisCell];
+    ANHCell *topLeftCell = [self topLeftCellOf:thisCell];
+    ANHCell *topRightCell = [self topRightCellOf:thisCell];
+    ANHCell *leftCell = [self leftCellOf:thisCell];
+    ANHCell *rightCell = [self rightCellOf:thisCell];
+    ANHCell *leftBottomCell = [self leftBottomCellOf:thisCell];
+    ANHCell *rightBottomCell = [self rightBottomCellOf:thisCell];
+    ANHCell *bottomCell = [self bottomCellOf:thisCell];
+    if ([self isBlackTurn]) {
+        
+    }
     return isValid;
 }
 
@@ -78,7 +90,7 @@
     else
         return [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column];
 }
-- (ANHCell *) topLeftCell:(ANHCell *)cell{
+- (ANHCell *) topLeftCellOf:(ANHCell *)cell{
     if (cell.row==0 || cell.column==0) {
         return nil;
     }
@@ -86,42 +98,42 @@
         return [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column-1];
     
 }
-- (ANHCell *) topRightCell:(ANHCell *)cell{
+- (ANHCell *) topRightCellOf:(ANHCell *)cell{
     if (cell.row==0 || cell.column==7) {
         return nil;
     }
     else
         return [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column+1];
 }
-- (ANHCell *) leftCell:(ANHCell *)cell{
+- (ANHCell *) leftCellOf:(ANHCell *)cell{
     if (cell.column==0) {
         return nil;
     }
     else
         return [[cells objectAtIndex:cell.row]objectAtIndex:cell.column-1];
 }
-- (ANHCell *) rightCell:(ANHCell *)cell{
+- (ANHCell *) rightCellOf:(ANHCell *)cell{
     if (cell.column==7) {
         return nil;
     }
     else
         return [[cells objectAtIndex:cell.row]objectAtIndex:cell.column+1];
 }
-- (ANHCell *) bottomCell:(ANHCell *)cell{
+- (ANHCell *) bottomCellOf:(ANHCell *)cell{
     if (cell.row==7) {
         return nil;
     }
     else
         return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column];
 }
-- (ANHCell *) leftBottomCell:(ANHCell *)cell{
+- (ANHCell *) leftBottomCellOf:(ANHCell *)cell{
     if (cell.row==7 || cell.column == 0) {
         return nil;
     }
     else
         return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column-1];
 }
-- (ANHCell *) rightBottomCell:(ANHCell *)cell{
+- (ANHCell *) rightBottomCellOf:(ANHCell *)cell{
     if (cell.row==7 || cell.column == 0) {
         return nil;
     }
