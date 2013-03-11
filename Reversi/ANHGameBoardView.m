@@ -28,7 +28,7 @@
         //initialze the CellView
         for (int row = 0 ; row < 8; row++) {
             for (int column = 0; column < 8; column++) {
-                CGRect cellFrame = CGRectMake(row*cellHeight, column*cellHeight, cellWidth, cellHeight);
+                CGRect cellFrame = CGRectMake(column*cellWidth, row*cellHeight, cellWidth, cellHeight);
                 // each GameCellView object will contain a reference to a Cell Object
                 ANHCell *cell = [[gameBoard.cells objectAtIndex:row]objectAtIndex:column];
                 ANHGameCellView *cellView = [[ANHGameCellView alloc]initWithFrame:cellFrame cell:cell board:board];

@@ -66,6 +66,12 @@
         }
         
     }
+     /*
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+NSString * m = [NSString stringWithFormat:@"%d,%d",self.cell.row, self.cell.column];
+label.text = m;
+[self addSubview:label];
+      */
 }
 
 // Update the View of the cell

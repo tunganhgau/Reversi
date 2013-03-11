@@ -125,7 +125,7 @@
     }
     if (leftCell) {
         if (leftCell.state == OponentCell) {
-            tempCell = [self topLeftCellOf:leftCell];
+            tempCell = [self leftCellOf:leftCell];
             while (tempCell) {
                 if (tempCell.state== PlayerCell)
                     return YES;
@@ -169,8 +169,8 @@
         }
     }
     if (bottomCell) {
-        if (bottomRightCell.state == OponentCell) {
-            tempCell = [self bottomCellOf:bottomRightCell];
+        if (bottomCell.state == OponentCell) {
+            tempCell = [self bottomCellOf:bottomCell];
             while (tempCell) {
                 if (tempCell.state== PlayerCell)
                     return YES;

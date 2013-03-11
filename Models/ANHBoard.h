@@ -14,8 +14,6 @@
 @property (copy,nonatomic) NSMutableArray *cells;
 
 @property (nonatomic) ANHCell *temp;
-@property (nonatomic) int columns;
-@property (nonatomic) int rows;
 @property (nonatomic) BOOL blackTurn;
 
 - (void) nextTurn;

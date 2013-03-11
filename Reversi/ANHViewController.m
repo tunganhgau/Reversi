@@ -34,6 +34,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void) alertTest{
+    ANHCell * temp = [[self.gameBoard.cells objectAtIndex:3]objectAtIndex:2];
+    NSString *m = [NSString stringWithFormat:@"%d,%d", temp.row, temp.column];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"TEST" message:m delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
 
 
 @end
