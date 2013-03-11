@@ -47,13 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BD5D540B16E79200004FC868 /* ANHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANHCell.h; path = Models/ANHCell.h; sourceTree = "<group>"; };
-		BD5D540C16E79200004FC868 /* ANHCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANHCell.m; path = Models/ANHCell.m; sourceTree = "<group>"; };
-		BD5D540F16E7CE55004FC868 /* ANHBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANHBoard.m; path = Models/ANHBoard.m; sourceTree = "<group>"; };
+		BD5D540B16E79200004FC868 /* ANHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCell.h; sourceTree = "<group>"; };
+		BD5D540C16E79200004FC868 /* ANHCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHCell.m; sourceTree = "<group>"; };
+		BD5D540F16E7CE55004FC868 /* ANHBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHBoard.m; sourceTree = "<group>"; };
 		BD5D541116E80AFE004FC868 /* ANHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHMenuViewController.h; sourceTree = "<group>"; };
 		BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHMenuViewController.m; sourceTree = "<group>"; };
-		BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANHCellStateDelegate.h; path = Models/ANHCellStateDelegate.h; sourceTree = "<group>"; };
-		BD5D541716EC3494004FC868 /* ANHBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANHBoard.h; path = Models/ANHBoard.h; sourceTree = "<group>"; };
+		BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCellStateDelegate.h; sourceTree = "<group>"; };
+		BD5D541716EC3494004FC868 /* ANHBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoard.h; sourceTree = "<group>"; };
 		BD922B8116E5B3AE00261599 /* Reversi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reversi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD922B8416E5B3AE00261599 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BD922B8616E5B3AE00261599 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -77,15 +77,15 @@
 		BD922BB516E5B3AE00261599 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BD922BB716E5B3AE00261599 /* ReversiTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReversiTests.h; sourceTree = "<group>"; };
 		BD922BB816E5B3AE00261599 /* ReversiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReversiTests.m; sourceTree = "<group>"; };
-		BD922BC216E5B41000261599 /* reversi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reversi.png; path = ../SupportingFiles/reversi.png; sourceTree = "<group>"; };
-		BD922BC416E5B57E00261599 /* gameBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameBoard.png; path = ../SupportingFiles/gameBoard.png; sourceTree = "<group>"; };
-		BD922BC816E5BB1000261599 /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackPiece.png; path = ../SupportingFiles/blackPiece.png; sourceTree = "<group>"; };
-		BD922BC916E5BB1000261599 /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whitePiece.png; path = ../SupportingFiles/whitePiece.png; sourceTree = "<group>"; };
-		BD922BCE16E7006B00261599 /* ANHGameBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANHGameBoardView.h; path = Views/ANHGameBoardView.h; sourceTree = "<group>"; };
-		BD922BCF16E7006B00261599 /* ANHGameBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANHGameBoardView.m; path = Views/ANHGameBoardView.m; sourceTree = "<group>"; };
-		BD922BD316E700DB00261599 /* ANHGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANHGameCellView.h; path = Views/ANHGameCellView.h; sourceTree = "<group>"; };
-		BD922BD416E700DB00261599 /* ANHGameCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANHGameCellView.m; path = Views/ANHGameCellView.m; sourceTree = "<group>"; };
-		BD922BD916E851A800261599 /* grass_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_pattern.png; path = ../SupportingFiles/grass_pattern.png; sourceTree = "<group>"; };
+		BD922BC216E5B41000261599 /* reversi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reversi.png; path = SupportingFiles/reversi.png; sourceTree = "<group>"; };
+		BD922BC416E5B57E00261599 /* gameBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameBoard.png; path = SupportingFiles/gameBoard.png; sourceTree = "<group>"; };
+		BD922BC816E5BB1000261599 /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackPiece.png; path = SupportingFiles/blackPiece.png; sourceTree = "<group>"; };
+		BD922BC916E5BB1000261599 /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whitePiece.png; path = SupportingFiles/whitePiece.png; sourceTree = "<group>"; };
+		BD922BCE16E7006B00261599 /* ANHGameBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameBoardView.h; sourceTree = "<group>"; };
+		BD922BCF16E7006B00261599 /* ANHGameBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameBoardView.m; sourceTree = "<group>"; };
+		BD922BD316E700DB00261599 /* ANHGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameCellView.h; sourceTree = "<group>"; };
+		BD922BD416E700DB00261599 /* ANHGameCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameCellView.m; sourceTree = "<group>"; };
+		BD922BD916E851A800261599 /* grass_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_pattern.png; path = SupportingFiles/grass_pattern.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +208,7 @@
 				BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */,
 			);
 			name = Models;
+			path = Reversi/Models;
 			sourceTree = "<group>";
 		};
 		BD922BD216E700AF00261599 /* Views */ = {
@@ -219,6 +220,7 @@
 				BD922BD416E700DB00261599 /* ANHGameCellView.m */,
 			);
 			name = Views;
+			path = Reversi/Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
