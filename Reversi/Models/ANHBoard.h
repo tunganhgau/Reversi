@@ -9,6 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "ANHCell.h"
 
+typedef NS_ENUM(int, Direction){
+    Top,
+    TopRight,
+    Right,
+    BottomRight,
+    Bottom,
+    BottomLeft,
+    Left,
+    TopLeft
+};
+
 @interface ANHBoard : NSObject
 
 @property (copy,nonatomic) NSMutableArray *cells;
@@ -20,6 +31,6 @@
 - (BOOL) isBlackTurn;
 - (void) initBoardState;
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column;
-- (BOOL) moveIsValidAtCell:(ANHCell *)cell;
-
+- (NSMutableArray *) directionsValidToMoveFromCell:(ANHCell *)cell;
+- (void) makeMoveAtCell:(ANHCell *)cell towardDirections:(NSArray *) directions;
 @end

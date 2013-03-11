@@ -54,14 +54,9 @@
 // Response to a Tap Gesture
 - (void) cellTapped:(UITapGestureRecognizer *) recognizer{
     if (self.cell.state == EmptyCell) {
-        if ([self.board moveIsValidAtCell:self.cell]) {
-            if ([self.board isBlackTurn]) {
-                self.cell.state = BlackCell;
-            }
-            else{
-                self.cell.state = WhiteCell;
-            }
-            [self updateCell];
+        NSMutableArray * availableDirections = [self.board directionsValidToMoveFromCell:self.cell];
+        if ([availableDirections count] != 0) {
+            [self.board makeMoveAtCell:self.cell towardDirections:availableDirections];
             [self.board nextTurn];
         }
         

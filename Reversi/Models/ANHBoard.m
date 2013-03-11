@@ -54,10 +54,10 @@
 
 
 - (void) initBoardState{
-    [self initCellState:BlackCell atRow:3 andColumn:3];
-    [self initCellState:WhiteCell atRow:3 andColumn:4];
-    [self initCellState:WhiteCell atRow:4 andColumn:3];
-    [self initCellState:BlackCell atRow:4 andColumn:4];
+    [self initCellState:WhiteCell atRow:3 andColumn:3];
+    [self initCellState:BlackCell atRow:3 andColumn:4];
+    [self initCellState:BlackCell atRow:4 andColumn:3];
+    [self initCellState:WhiteCell atRow:4 andColumn:4];
 }
 
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column{
@@ -65,8 +65,8 @@
     cell.state = state;
 }
 
-- (BOOL) moveIsValidAtCell:(ANHCell *)cell{
-    
+- (NSMutableArray *) directionsValidToMoveFromCell:(ANHCell *)cell{
+    NSMutableArray * directions = [[NSMutableArray alloc] init];
     ANHCell *thisCell = cell;
     ANHCell *topCell = [self topCellOf:thisCell];
     ANHCell *topLeftCell = [self topLeftCellOf:thisCell];
@@ -94,8 +94,11 @@
         if (topCell.state == OponentCell) {
             tempCell = [self topCellOf:topCell];
             while (tempCell) {
-                if (tempCell.state== PlayerCell)
-                    return YES;
+                if (tempCell.state== PlayerCell){
+                    [directions addObject:[NSNumber numberWithInt:Top]];
+                    break;
+                }
+                else if (tempCell.state == EmptyCell) break;
                 else
                     tempCell = [self topCellOf:tempCell];
             }
@@ -105,8 +108,11 @@
         if (topLeftCell.state == OponentCell) {
             tempCell = [self topLeftCellOf:topLeftCell];
             while (tempCell) {
-                if (tempCell.state== PlayerCell)
-                    return YES;
+                if (tempCell.state== PlayerCell){
+                    [directions addObject:[NSNumber numberWithInt:TopLeft]];
+                    break;
+                }
+                else if (tempCell.state == EmptyCell) break;
                 else
                     tempCell = [self topLeftCellOf:tempCell];
             }
@@ -116,8 +122,11 @@
         if (topRightCell.state == OponentCell) {
             tempCell = [self topRightCellOf:topRightCell];
             while (tempCell) {
-                if (tempCell.state== PlayerCell)
-                    return YES;
+                if (tempCell.state== PlayerCell){
+                    [directions addObject:[NSNumber numberWithInt:TopRight]];
+                    break;
+                }
+                else if (tempCell.state == EmptyCell) break;
                 else
                     tempCell = [self topRightCellOf:tempCell];
             }
@@ -127,8 +136,11 @@
         if (leftCell.state == OponentCell) {
             tempCell = [self leftCellOf:leftCell];
             while (tempCell) {
-                if (tempCell.state== PlayerCell)
-                    return YES;
+                if (tempCell.state== PlayerCell){
+                    [directions addObject:[NSNumber numberWithInt:Left]];
+                    break;
+                }
+                else if (tempCell.state == EmptyCell) break;
                 else
                     tempCell = [self leftCellOf:tempCell];
             }
@@ -138,8 +150,11 @@
         if (rightCell.state == OponentCell) {
             tempCell = [self rightCellOf:rightCell];
             while (tempCell) {
-                if (tempCell.state== PlayerCell)
-                    return YES;
+                if (tempCell.state== PlayerCell){
+                    [directions addObject:[NSNumber numberWithInt:Right]];
+                    break;
+                }
+                else if (tempCell.state == EmptyCell) break;
                 else
                     tempCell = [self rightCellOf:tempCell];
             }
@@ -150,8 +165,11 @@
         if (bottomLeftCell.state == OponentCell) {
             tempCell = [self bottomLeftCellOf:bottomLeftCell];
             while (tempCell) {
-                if (tempCell.state== PlayerCell)
-                    return YES;
+                if (tempCell.state== PlayerCell){
+                    [directions addObject:[NSNumber numberWithInt:BottomLeft]];
+                    break;
+                }
+                else if (tempCell.state == EmptyCell) break;
                 else
                     tempCell = [self bottomLeftCellOf:tempCell];
             }
@@ -159,10 +177,13 @@
     }
     if (bottomRightCell) {
         if (bottomRightCell.state == OponentCell) {
-            tempCell = [self bottomLeftCellOf:bottomRightCell];
+            tempCell = [self bottomRightCellOf:bottomRightCell];
             while (tempCell) {
-                if (tempCell.state== PlayerCell)
-                    return YES;
+                if (tempCell.state== PlayerCell){
+                    [directions addObject:[NSNumber numberWithInt:BottomRight]];
+                    break;
+                }
+                else if (tempCell.state == EmptyCell) break;
                 else
                     tempCell = [self bottomRightCellOf:tempCell];
             }
@@ -172,17 +193,93 @@
         if (bottomCell.state == OponentCell) {
             tempCell = [self bottomCellOf:bottomCell];
             while (tempCell) {
-                if (tempCell.state== PlayerCell)
-                    return YES;
+                if (tempCell.state== PlayerCell){
+                    [directions addObject:[NSNumber numberWithInt:Bottom]];
+                    break;
+                }
+                else if (tempCell.state == EmptyCell) break;
                 else
                     tempCell = [self bottomCellOf:tempCell];
             }
         }
     }
-    return NO;
+    return directions;
 }
 
-
+- (void)makeMoveAtCell:(ANHCell *)cell towardDirections:(NSMutableArray *) directions{
+    ANHCell *tempCell;
+    CellState PlayerCell;
+    CellState OponentCell;
+    
+    if ([self isBlackTurn]) {
+        PlayerCell = BlackCell;
+        OponentCell = WhiteCell;
+    }
+    else{
+        PlayerCell = WhiteCell;
+        OponentCell = BlackCell;
+    }
+    cell.state = PlayerCell;
+    for (NSNumber *num in directions) {
+        Direction dir = [num intValue];
+        if (dir == Top) {
+            tempCell = [self topCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                tempCell.state = PlayerCell;
+                tempCell = [self topCellOf:tempCell];
+            }
+        }
+        if (dir == TopRight) {
+            tempCell = [self topRightCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                tempCell.state = PlayerCell;
+                tempCell = [self topRightCellOf:tempCell];
+            }
+        }
+        if (dir == TopLeft) {
+            tempCell = [self topLeftCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                tempCell.state = PlayerCell;
+                tempCell = [self topLeftCellOf:tempCell];
+            }
+        }
+        if (dir == Left) {
+            tempCell = [self leftCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                tempCell.state = PlayerCell;
+                tempCell = [self leftCellOf:tempCell];
+            }
+        }
+        if (dir == Right) {
+            tempCell = [self rightCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                tempCell.state = PlayerCell;
+                tempCell = [self rightCellOf:tempCell];
+            }
+        }
+        if (dir == Bottom) {
+            tempCell = [self bottomCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                tempCell.state = PlayerCell;
+                tempCell = [self bottomCellOf:tempCell];
+            }
+        }
+        if (dir == BottomLeft) {
+            tempCell = [self bottomLeftCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                tempCell.state = PlayerCell;
+                tempCell = [self bottomLeftCellOf:tempCell];
+            }
+        }
+        if (dir == BottomRight) {
+            tempCell = [self bottomRightCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                tempCell.state = PlayerCell;
+                tempCell = [self bottomRightCellOf:tempCell];
+            }
+        }
+    }
+}
 
 - (ANHCell *) topCellOf:(ANHCell *)cell{
     if (cell.row==0) {
