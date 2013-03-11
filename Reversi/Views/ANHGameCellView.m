@@ -71,20 +71,21 @@ label.text = m;
 
 // Update the View of the cell
 - (void) updateCell{
-    if (!self.cell.state) {
-        self.blackView.hidden = NO;
-        self.whiteView.hidden = NO;
-    }
-    else if (self.cell.state == BlackCell) {
+    if (self.cell.state == BlackCell) {
         self.blackView.hidden = NO;
         self.whiteView.hidden = YES;
     }
-    else{
+    else if (self.cell.state == WhiteCell){
         self.blackView.hidden = YES;
         self.whiteView.hidden = NO;
     }
+    else{
+        self.blackView.hidden = YES;
+        self.whiteView.hidden = YES;
+    }
 }
 
+// this method will be called when the cell object's state is changed
 - (void) cellStateChanged{
     [self updateCell];
 }

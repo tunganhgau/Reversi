@@ -32,6 +32,7 @@
     }
 }
 
+// setter for state, whenever the state changed, inform its View
 - (void) setState:(CellState) s{
     state = s;
     [self informCellView];

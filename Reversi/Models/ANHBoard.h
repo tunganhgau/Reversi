@@ -24,7 +24,6 @@ typedef NS_ENUM(int, Direction){
 
 @property (copy,nonatomic) NSMutableArray *cells;
 
-@property (nonatomic) ANHCell *temp;
 @property (nonatomic) BOOL blackTurn;
 
 - (void) nextTurn;
@@ -33,4 +32,5 @@ typedef NS_ENUM(int, Direction){
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column;
 - (NSMutableArray *) directionsValidToMoveFromCell:(ANHCell *)cell;
 - (void) makeMoveAtCell:(ANHCell *)cell towardDirections:(NSArray *) directions;
+- (void) resetBoard;
 @end

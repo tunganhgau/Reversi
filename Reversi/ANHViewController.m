@@ -24,6 +24,8 @@
     CGRect boardRect = CGRectMake(0.05*screenWidth, 120, 0.9*screenWidth, 0.9*screenWidth);
     _gameBoard = [[ANHBoard alloc]init];
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
+    // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
+    [_gameBoard initBoardState];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     //[self alertTest];
@@ -42,4 +44,7 @@
 }
 
 
+- (IBAction)resetGame:(UIButton *)sender {
+    [self.gameBoard resetBoard];
+}
 @end

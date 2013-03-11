@@ -37,12 +37,11 @@
                 [self addSubview:cellView];
             }
         }
-        // set the gameBoard to its initial state
-        [gameBoard initBoardState];
-        // Added a background and a gameboard image
+        // Added a background and a game board image
         UIImage *background = [UIImage imageNamed:@"gameBoard.png"];
         UIImageView *bgView = [[UIImageView alloc]initWithImage:background];
         bgView.frame = CGRectMake(0, 0, _width, _height);
+        // make sure the background fits into the board frame
         bgView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:bgView];
         [self sendSubviewToBack:bgView];

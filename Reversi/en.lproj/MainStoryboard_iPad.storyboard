@@ -96,6 +96,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetGame:" destination="U7B-UX-WAQ" eventType="touchUpInside" id="BIt-WP-fnm"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="reversi.png" translatesAutoresizingMaskIntoConstraints="NO" id="DYz-gi-6Ak">
                                 <constraints>
@@ -183,7 +186,6 @@
                             <constraint firstItem="q1O-0O-lCd" firstAttribute="bottom" secondItem="tG0-nW-T3u" secondAttribute="bottom" type="default" id="MiJ-WW-JFo"/>
                             <constraint firstItem="DYz-gi-6Ak" firstAttribute="top" secondItem="564-SA-iNl" secondAttribute="top" type="default" id="UmJ-NQ-wum"/>
                             <constraint firstItem="tG0-nW-T3u" firstAttribute="top" secondItem="nfL-cY-C8f" secondAttribute="top" type="default" id="WRM-6F-xBS"/>
-                            <constraint firstItem="HQb-FT-EQe" firstAttribute="baseline" secondItem="FjZ-3Z-vom" secondAttribute="baseline" type="default" id="XXj-Hn-jl9"/>
                             <constraint firstItem="nfL-cY-C8f" firstAttribute="leading" secondItem="564-SA-iNl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="aMy-ag-Bp5"/>
                             <constraint firstAttribute="trailing" secondItem="jlf-DY-chr" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="cp7-zs-YeV"/>
                             <constraint firstAttribute="trailing" secondItem="HQb-FT-EQe" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fvW-U3-yOZ"/>
@@ -196,6 +198,12 @@
                             <constraint firstItem="FjZ-3Z-vom" firstAttribute="leading" secondItem="564-SA-iNl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rHu-6i-Son"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="blackScoreLabel" destination="tG0-nW-T3u" id="CcG-eB-xgB"/>
+                        <outlet property="resetButton" destination="HQb-FT-EQe" id="523-Yb-gua"/>
+                        <outlet property="whiteScoreLabel" destination="kKU-Hs-CH2" id="zws-bh-R9q"/>
+                        <outlet property="whoseTurnImage" destination="q1O-0O-lCd" id="HV5-qq-vsE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iui-Gl-eaw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,17 +215,6 @@
         <image name="reversi.png" width="867" height="247"/>
         <image name="whitePiece.png" width="800" height="800"/>
     </resources>
-    <classes>
-        <class className="ANHMenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHMenuViewController.h"/>
-        </class>
-        <class className="ANHViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
