@@ -23,8 +23,9 @@ typedef NS_ENUM(int, Direction){
 @interface ANHBoard : NSObject
 
 @property (copy,nonatomic) NSMutableArray *cells;
-
 @property (nonatomic) BOOL blackTurn;
+@property (nonatomic) int blackScore;
+@property (nonatomic) int whiteScore;
 
 - (void) nextTurn;
 - (BOOL) isBlackTurn;
@@ -33,4 +34,5 @@ typedef NS_ENUM(int, Direction){
 - (NSMutableArray *) directionsValidToMoveFromCell:(ANHCell *)cell;
 - (void) makeMoveAtCell:(ANHCell *)cell towardDirections:(NSArray *) directions;
 - (void) resetBoard;
+- (void) updateBoard;
 @end

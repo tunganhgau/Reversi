@@ -66,6 +66,10 @@
     cell.state = state;
 }
 
+- (void) updateBoard {
+    
+}
+
 // take a cell and return an array of available directions that will make the cell is a valid move
 - (NSMutableArray *) directionsValidToMoveFromCell:(ANHCell *)cell{
     NSMutableArray * directions = [[NSMutableArray alloc] init];
