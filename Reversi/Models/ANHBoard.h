@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ANHCell.h"
+#import "ANHBoardDelegate.h"
 
 typedef NS_ENUM(int, Direction){
     Top,
@@ -26,6 +27,7 @@ typedef NS_ENUM(int, Direction){
 @property (nonatomic) BOOL blackTurn;
 @property (nonatomic) int blackScore;
 @property (nonatomic) int whiteScore;
+@property (nonatomic, weak) id<BoardDelegate> delegate;
 
 - (void) nextTurn;
 - (BOOL) isBlackTurn;

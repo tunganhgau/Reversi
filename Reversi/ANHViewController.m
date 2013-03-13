@@ -10,9 +10,6 @@
 #import "ANHGameBoardView.h"
 #import "ANHBoard.h"
 #import "ANHCell.h"
-@interface ANHViewController ()
-
-@end
 
 @implementation ANHViewController
 
@@ -23,12 +20,15 @@
     float screenWidth = self.view.bounds.size.width;
     CGRect boardRect = CGRectMake(0.05*screenWidth, 120, 0.9*screenWidth, 0.9*screenWidth);
     _gameBoard = [[ANHBoard alloc]init];
+    _gameBoard.delegate = self;
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
     [_gameBoard initBoardState];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     //[self alertTest];
+    [self.view addSubview:self.blackScoreLabel];
+    //_whoseTurnImage
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,5 +46,20 @@
 
 - (IBAction)resetGame:(UIButton *)sender {
     [self.gameBoard resetBoard];
+}
+
+- (void) boardChanged{
+    [self updateGame];
+}
+
+- (void) updateGame{
+    //self.blackScoreLabel.attributedText = [NSString stringWithFormat:@"%d",self.gameBoard.blackScore];
+    //self.whiteScoreLabel.attributedText = [NSString stringWithFormat:@"%d",self.gameBoard.whiteScore];
+    if ([self.gameBoard isBlackTurn]){
+        self.whoseTurnImage.image = [[UIImage alloc]initWithCIImage:[UIImage imageNamed:@"blackPiece.png"].CIImage];
+    }
+    else {
+        self.whoseTurnImage.image = [[UIImage alloc]initWithCIImage:[UIImage imageNamed:@"whitePiece.png"].CIImage];
+    }
 }
 @end

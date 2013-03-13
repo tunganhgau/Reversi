@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ANHGameBoardView.h"
+#import "ANHBoardDelegate.h"
 
-@interface ANHViewController : UIViewController
+@interface ANHViewController : UIViewController<BoardDelegate>
 
 @property (strong, nonatomic) ANHGameBoardView *gameBoardView;
 @property (strong, nonatomic) ANHBoard *gameBoard;
@@ -18,5 +19,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *whiteScoreLabel;
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
 - (IBAction)resetGame:(UIButton *)sender;
-
+- (void) boardChanged;
 @end

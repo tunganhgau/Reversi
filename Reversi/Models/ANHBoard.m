@@ -28,6 +28,8 @@
             }
         }
         _blackTurn = YES;
+        _blackScore = 0;
+        _whiteScore = 0;
     }
     
     return self;
@@ -59,6 +61,7 @@
     [self initCellState:BlackCell atRow:3 andColumn:4];
     [self initCellState:BlackCell atRow:4 andColumn:3];
     [self initCellState:WhiteCell atRow:4 andColumn:4];
+    [self updateBoard];
 }
 
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column{
@@ -67,7 +70,28 @@
 }
 
 - (void) updateBoard {
-    
+    [self updateScores];
+    [self informGameView];
+}
+
+- (void) updateScores{
+    for (int r = 0; r<8; r++) {
+        for (int c = 0; c<8; c++) {
+            ANHCell *cell = [[cells objectAtIndex:r] objectAtIndex:c];
+            if (cell.state == BlackCell) {
+                self.blackScore++;
+            }
+            if (cell.state == WhiteCell) {
+                self.whiteScore++;
+            }
+        }
+    }
+}
+
+- (void) informGameView{
+    if ([self.delegate respondsToSelector:@selector(boardChanged)]) {
+        [self.delegate boardChanged];
+    }
 }
 
 // take a cell and return an array of available directions that will make the cell is a valid move
@@ -288,6 +312,7 @@
             }
         }
     }
+    [self updateBoard];
 }
 
 // return the top cell of the given cell

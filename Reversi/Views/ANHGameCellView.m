@@ -9,7 +9,6 @@
 #import "ANHGameCellView.h"
 #import "ANHCell.h"
 
-//#typedef blackPiece = "
 
 @implementation ANHGameCellView
 
