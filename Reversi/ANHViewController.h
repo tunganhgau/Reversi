@@ -22,5 +22,6 @@
 - (IBAction)resetGame:(UIButton *)sender;
 - (void) boardChanged;
 - (void) gameEndedWithWinner:(Player)winner;
+- (void) playerIsNotAbleToMakeMove:(Player)player;
 
 @end

@@ -108,25 +108,32 @@
     }
 }
 
-- (NSArray *) possibleCellsToMakeMove{
-    NSMutableArray *possibleCells = [[NSMutableArray alloc]init];
-    if ([self isBlackTurn]) {
-        for (int r = 0; r<8; r++) {
-            for (int c = 0; c<8; c++) {
-                ANHCell *cell = [[self.cells objectAtIndex:r]objectAtIndex:c];
-                if (cell.state == EmptyCell) {
-                    if ([self directionsValidToMoveFromCell:cell]) {
-                        [possibleCells addObject:cell];
-                    }
-                }
-            }
-        }
-    }
-    return possibleCells;
-}
 - (BOOL) gameEnd{
     if (self.blackScore+self.whiteScore == 64) {
         return YES;
+    }
+    return NO;
+}
+
+- (BOOL)cellIsMoveable:(ANHCell *)cell{
+    if ([self directionsValidToMoveFromCell:cell].count == 0) {
+        return NO;
+    }
+    else
+        return YES;
+}
+
+// check if a player can make a move
+- (BOOL)nextPlayerCanMakeMove{
+    for (int r = 0; r<8; r++) {
+        for (int c = 0; c<8; c++) {
+            ANHCell *cell = [[self.cells objectAtIndex:r]objectAtIndex:c];
+            if (cell.state == EmptyCell) {
+                if ([self cellIsMoveable:cell]) {
+                    return YES;
+                }
+            }
+        }
     }
     return NO;
 }
@@ -274,6 +281,7 @@
     return directions;
 }
 
+
 // for each available direction, turn all the oponent's cells into player cell
 - (void)makeMoveAtCell:(ANHCell *)cell towardDirections:(NSMutableArray *) directions{
     ANHCell *tempCell;
@@ -348,6 +356,16 @@
                 tempCell = [self bottomRightCellOf:tempCell];
             }
         }
+    }
+    [self switchTurn];
+    // check if the next player is able to make a move, if not, tell the view controller and switch the turn back 
+    if (![self nextPlayerCanMakeMove]) {
+        // only do this when the game is not in its ended state
+        if (![self gameEnd]) {
+            [self.delegate playerIsNotAbleToMakeMove:self.whoseTurn];
+            [self switchTurn];
+        }
+        
     }
     [self updateBoard];
 }

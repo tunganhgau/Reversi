@@ -36,9 +36,10 @@ typedef NS_ENUM(int, Direction){
 - (void) initBoardState;
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column;
 - (NSMutableArray *) directionsValidToMoveFromCell:(ANHCell *)cell;
+- (BOOL) cellIsMoveable:(ANHCell *)cell;
 - (void) makeMoveAtCell:(ANHCell *)cell towardDirections:(NSArray *) directions;
+- (BOOL) nextPlayerCanMakeMove;
 - (void) resetBoard;
 - (void) updateBoard;
-- (NSArray *) possibleCellsToMakeMove;
 - (BOOL) gameEnd;
 @end

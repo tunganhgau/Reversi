@@ -56,7 +56,10 @@
         NSMutableArray * availableDirections = [self.board directionsValidToMoveFromCell:self.cell];
         if ([availableDirections count] != 0) {
             [self.board makeMoveAtCell:self.cell towardDirections:availableDirections];
-            [self.board switchTurn];
+            // check if the other player can make move
+            //if ([self.board playerCanMakeMove] == NO) {
+              //  [self.board switchTurn];
+            //};
         }
         
     }

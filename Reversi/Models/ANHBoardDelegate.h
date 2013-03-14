@@ -15,4 +15,5 @@ typedef NS_ENUM(int, Player){
 @protocol BoardDelegate <NSObject>
 - (void) boardChanged;
 - (void) gameEndedWithWinner:(Player) winner;
+- (void) playerIsNotAbleToMakeMove:(Player) player;
 @end

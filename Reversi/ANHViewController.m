@@ -48,12 +48,12 @@
     self.blackScoreTextView.text = [NSString stringWithFormat:@"%d",self.gameBoard.blackScore];
     self.whiteScoreTextView.text = [NSString stringWithFormat:@"%d",self.gameBoard.whiteScore];
     if ([self.gameBoard isBlackTurn]){
-        self.whoseTurnImage.image = [UIImage imageNamed:@"whitePiece.png"];
-        self.whoseTurnLabel.textColor = [UIColor whiteColor];
-    }
-    else {
         self.whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
         self.whoseTurnLabel.textColor = [UIColor blackColor];
+    }
+    else {
+        self.whoseTurnImage.image = [UIImage imageNamed:@"whitePiece.png"];
+        self.whoseTurnLabel.textColor = [UIColor whiteColor];
     }
 }
 
@@ -69,6 +69,18 @@
         message = [NSString stringWithFormat:@"Draw. That was a nice game"];
     }
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Congratulation" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+- (void) playerIsNotAbleToMakeMove:(Player)player{
+    NSString *message;
+    if (player == BlackPlayer) {
+        message = [NSString stringWithFormat:@"It is White player's turn now"];
+    }
+    else if (player == WhitePlayer){
+        message = [NSString stringWithFormat:@"It is Black player's turn now"];
+    }
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"You have no way to move" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
 }
 @end
