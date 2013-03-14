@@ -70,6 +70,7 @@
     cell.state = state;
 }
 
+// update the scores and inform the View Controller
 - (void) updateBoard {
     [self updateScores];
     [self informGameView];
@@ -93,6 +94,7 @@
     self.whiteScore = wScore;
 }
 
+// let the View Controller know that the game state has changed
 - (void) informGameView{
     if ([self.delegate respondsToSelector:@selector(boardChanged)]) {
         [self.delegate boardChanged];
@@ -108,13 +110,18 @@
     }
 }
 
+// detect when the game is finished
 - (BOOL) gameEnd{
     if (self.blackScore+self.whiteScore == 64) {
+        return YES;
+    }
+    if (self.blackScore == 0 || self.whiteScore == 0){
         return YES;
     }
     return NO;
 }
 
+// check if the given cell is moveable for the current player
 - (BOOL)cellIsMoveable:(ANHCell *)cell{
     if ([self directionsValidToMoveFromCell:cell].count == 0) {
         return NO;
@@ -123,7 +130,7 @@
         return YES;
 }
 
-// check if a player can make a move
+// check if a player can make a move by going through all the empty cell
 - (BOOL)nextPlayerCanMakeMove{
     for (int r = 0; r<8; r++) {
         for (int c = 0; c<8; c++) {
@@ -358,16 +365,16 @@
         }
     }
     [self switchTurn];
-    // check if the next player is able to make a move, if not, tell the view controller and switch the turn back 
+    [self updateBoard];
+    // check if the next player is able to make a move, if not, tell the view controller and switch the turn back
     if (![self nextPlayerCanMakeMove]) {
-        // only do this when the game is not in its ended state
         if (![self gameEnd]) {
             [self.delegate playerIsNotAbleToMakeMove:self.whoseTurn];
             [self switchTurn];
+            [self updateBoard];
         }
-        
     }
-    [self updateBoard];
+    
 }
 
 // return the top cell of the given cell
