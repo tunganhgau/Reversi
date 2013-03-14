@@ -27,7 +27,7 @@
                 [[cells objectAtIndex:r] addObject:cell];
             }
         }
-        _blackTurn = YES;
+        _whoseTurn = BlackPlayer;
         _blackScore = 0;
         _whiteScore = 0;
     }
@@ -35,18 +35,18 @@
     return self;
 }
 
-- (void)nextTurn{
-    if (self.blackTurn) {
-        self.blackTurn = NO;
+- (void)switchTurn{
+    if ([self isBlackTurn]) {
+        self.whoseTurn = WhitePlayer;
     }
     else{
-        self.blackTurn = YES;
+        self.whoseTurn = BlackPlayer;
     }
         
 }
 
 - (BOOL) isBlackTurn{
-    if (self.blackTurn == YES) {
+    if (self.whoseTurn == BlackPlayer) {
         return YES;
     }
     else{
@@ -56,12 +56,13 @@
 
 // initialize the game board with 2 white pieces and 2 black pieces crossed in the middle of the board
 - (void) initBoardState{
-    self.blackTurn = YES;
     [self initCellState:WhiteCell atRow:3 andColumn:3];
     [self initCellState:BlackCell atRow:3 andColumn:4];
     [self initCellState:BlackCell atRow:4 andColumn:3];
     [self initCellState:WhiteCell atRow:4 andColumn:4];
+    self.whoseTurn = BlackPlayer;
     [self updateBoard];
+    
 }
 
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column{
@@ -75,23 +76,59 @@
 }
 
 - (void) updateScores{
+    int bScore = 0;
+    int wScore = 0;
     for (int r = 0; r<8; r++) {
         for (int c = 0; c<8; c++) {
             ANHCell *cell = [[cells objectAtIndex:r] objectAtIndex:c];
             if (cell.state == BlackCell) {
-                self.blackScore++;
+                bScore++;
             }
             if (cell.state == WhiteCell) {
-                self.whiteScore++;
+                wScore++;
             }
         }
     }
+    self.blackScore = bScore;
+    self.whiteScore = wScore;
 }
 
 - (void) informGameView{
     if ([self.delegate respondsToSelector:@selector(boardChanged)]) {
         [self.delegate boardChanged];
+        if ([self gameEnd]) {
+            if (self.blackScore > self.whiteScore) {
+                self.winner = BlackPlayer;
+            }
+            else if (self.blackScore < self.whiteScore){
+                self.winner = WhitePlayer;
+            }
+            [self.delegate gameEndedWithWinner:(Player) self.winner];
+        }
     }
+}
+
+- (NSArray *) possibleCellsToMakeMove{
+    NSMutableArray *possibleCells = [[NSMutableArray alloc]init];
+    if ([self isBlackTurn]) {
+        for (int r = 0; r<8; r++) {
+            for (int c = 0; c<8; c++) {
+                ANHCell *cell = [[self.cells objectAtIndex:r]objectAtIndex:c];
+                if (cell.state == EmptyCell) {
+                    if ([self directionsValidToMoveFromCell:cell]) {
+                        [possibleCells addObject:cell];
+                    }
+                }
+            }
+        }
+    }
+    return possibleCells;
+}
+- (BOOL) gameEnd{
+    if (self.blackScore+self.whiteScore == 64) {
+        return YES;
+    }
+    return NO;
 }
 
 // take a cell and return an array of available directions that will make the cell is a valid move

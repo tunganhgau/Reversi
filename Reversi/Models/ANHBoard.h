@@ -21,15 +21,17 @@ typedef NS_ENUM(int, Direction){
     TopLeft
 };
 
+
 @interface ANHBoard : NSObject
 
 @property (copy,nonatomic) NSMutableArray *cells;
-@property (nonatomic) BOOL blackTurn;
+@property (nonatomic) Player whoseTurn;
+@property (nonatomic) Player winner;
 @property (nonatomic) int blackScore;
 @property (nonatomic) int whiteScore;
 @property (nonatomic, weak) id<BoardDelegate> delegate;
 
-- (void) nextTurn;
+- (void) switchTurn;
 - (BOOL) isBlackTurn;
 - (void) initBoardState;
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column;
@@ -37,4 +39,6 @@ typedef NS_ENUM(int, Direction){
 - (void) makeMoveAtCell:(ANHCell *)cell towardDirections:(NSArray *) directions;
 - (void) resetBoard;
 - (void) updateBoard;
+- (NSArray *) possibleCellsToMakeMove;
+- (BOOL) gameEnd;
 @end

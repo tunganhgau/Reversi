@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef NS_ENUM(int, Player){
+    BlackPlayer,
+    WhitePlayer
+};
 
 @protocol BoardDelegate <NSObject>
-
 - (void) boardChanged;
-
+- (void) gameEndedWithWinner:(Player) winner;
 @end
