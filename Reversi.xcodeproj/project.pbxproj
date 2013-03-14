@@ -34,6 +34,10 @@
 		BD922BD016E7006B00261599 /* ANHGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BCF16E7006B00261599 /* ANHGameBoardView.m */; };
 		BD922BD516E700DB00261599 /* ANHGameCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BD416E700DB00261599 /* ANHGameCellView.m */; };
 		BD922BDA16E851A800261599 /* grass_pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BD916E851A800261599 /* grass_pattern.png */; };
+		BD9385D616F19E35002CD99A /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385D516F19E35002CD99A /* 57.png */; };
+		BD9385D816F19E38002CD99A /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385D716F19E38002CD99A /* 114.png */; };
+		BD9385DA16F19E50002CD99A /* 144.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385D916F19E50002CD99A /* 144.png */; };
+		BD9385DC16F19E53002CD99A /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385DB16F19E53002CD99A /* 72.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,10 @@
 		BD922BD316E700DB00261599 /* ANHGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameCellView.h; sourceTree = "<group>"; };
 		BD922BD416E700DB00261599 /* ANHGameCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameCellView.m; sourceTree = "<group>"; };
 		BD922BD916E851A800261599 /* grass_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_pattern.png; path = SupportingFiles/grass_pattern.png; sourceTree = "<group>"; };
+		BD9385D516F19E35002CD99A /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57.png; sourceTree = "<group>"; };
+		BD9385D716F19E38002CD99A /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
+		BD9385D916F19E50002CD99A /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
+		BD9385DB16F19E53002CD99A /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 72.png; sourceTree = "<group>"; };
 		BDF1F99316F056EB00AB14EE /* ANHBoardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoardDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +124,10 @@
 		BD922B7816E5B3AD00261599 = {
 			isa = PBXGroup;
 			children = (
+				BD9385DB16F19E53002CD99A /* 72.png */,
+				BD9385D916F19E50002CD99A /* 144.png */,
+				BD9385D716F19E38002CD99A /* 114.png */,
+				BD9385D516F19E35002CD99A /* 57.png */,
 				BD922BD216E700AF00261599 /* Views */,
 				BD922BD116E7009300261599 /* Models */,
 				BD922B8A16E5B3AE00261599 /* Reversi */,
@@ -308,6 +320,10 @@
 				BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */,
 				BD922BCB16E5BB1000261599 /* whitePiece.png in Resources */,
 				BD922BDA16E851A800261599 /* grass_pattern.png in Resources */,
+				BD9385D616F19E35002CD99A /* 57.png in Resources */,
+				BD9385D816F19E38002CD99A /* 114.png in Resources */,
+				BD9385DA16F19E50002CD99A /* 144.png in Resources */,
+				BD9385DC16F19E53002CD99A /* 72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
