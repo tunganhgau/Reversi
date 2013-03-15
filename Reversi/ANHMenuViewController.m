@@ -7,7 +7,7 @@
 //
 
 #import "ANHMenuViewController.h"
-
+#import "ANHViewController.h"
 @interface ANHMenuViewController ()
 
 @end
@@ -27,6 +27,17 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    ANHViewController *gameViewController = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"playerMode"]) {
+        gameViewController.gameBoard.playMode = PlayerMode;
+    }
+    else {
+        gameViewController.gameBoard.playMode = ComputerMode;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +46,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)playWithPlayerButtonPressed:(UIButton *)sender {
+   // [ANHBoard setPlayMode:PlayerMode];
+}
+
+- (IBAction)playWithComputerButtonPressed:(UIButton *)sender {
+   // [ANHBoard setPlayMode:ComputerMode];
+}
 @end

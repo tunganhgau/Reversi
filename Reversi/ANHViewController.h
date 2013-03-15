@@ -23,5 +23,4 @@
 - (void) boardChanged;
 - (void) gameEndedWithWinner:(Player)winner;
 - (void) playerIsNotAbleToMakeMove:(Player)player;
-
 @end

@@ -20,7 +20,6 @@
 		BD922B9916E5B3AE00261599 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922B9816E5B3AE00261599 /* Default@2x.png */; };
 		BD922B9B16E5B3AE00261599 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922B9A16E5B3AE00261599 /* Default-568h@2x.png */; };
 		BD922B9E16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD922B9C16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard */; };
-		BD922BA116E5B3AE00261599 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD922B9F16E5B3AE00261599 /* MainStoryboard_iPad.storyboard */; };
 		BD922BA416E5B3AE00261599 /* ANHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BA316E5B3AE00261599 /* ANHViewController.m */; };
 		BD922BAC16E5B3AE00261599 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922BAB16E5B3AE00261599 /* SenTestingKit.framework */; };
 		BD922BAD16E5B3AE00261599 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8416E5B3AE00261599 /* UIKit.framework */; };
@@ -38,6 +37,8 @@
 		BD9385D816F19E38002CD99A /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385D716F19E38002CD99A /* 114.png */; };
 		BD9385DA16F19E50002CD99A /* 144.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385D916F19E50002CD99A /* 144.png */; };
 		BD9385DC16F19E53002CD99A /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385DB16F19E53002CD99A /* 72.png */; };
+		BDA41C9D16F3C44200AAAF06 /* ANHComputerPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA41C9C16F3C44200AAAF06 /* ANHComputerPlayer.m */; };
+		BDA41CA116F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA41C9F16F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +73,6 @@
 		BD922B9816E5B3AE00261599 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BD922B9A16E5B3AE00261599 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BD922B9D16E5B3AE00261599 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		BD922BA016E5B3AE00261599 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		BD922BA216E5B3AE00261599 /* ANHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ANHViewController.h; sourceTree = "<group>"; };
 		BD922BA316E5B3AE00261599 /* ANHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ANHViewController.m; sourceTree = "<group>"; };
 		BD922BAA16E5B3AE00261599 /* ReversiTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReversiTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,10 +90,14 @@
 		BD922BD316E700DB00261599 /* ANHGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameCellView.h; sourceTree = "<group>"; };
 		BD922BD416E700DB00261599 /* ANHGameCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameCellView.m; sourceTree = "<group>"; };
 		BD922BD916E851A800261599 /* grass_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_pattern.png; path = SupportingFiles/grass_pattern.png; sourceTree = "<group>"; };
-		BD9385D516F19E35002CD99A /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57.png; sourceTree = "<group>"; };
-		BD9385D716F19E38002CD99A /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114.png; sourceTree = "<group>"; };
-		BD9385D916F19E50002CD99A /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 144.png; sourceTree = "<group>"; };
-		BD9385DB16F19E53002CD99A /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 72.png; sourceTree = "<group>"; };
+		BD9385D516F19E35002CD99A /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../57.png; sourceTree = "<group>"; };
+		BD9385D716F19E38002CD99A /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../114.png; sourceTree = "<group>"; };
+		BD9385D916F19E50002CD99A /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 144.png; path = ../144.png; sourceTree = "<group>"; };
+		BD9385DB16F19E53002CD99A /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 72.png; path = ../72.png; sourceTree = "<group>"; };
+		BDA41C9B16F3C44200AAAF06 /* ANHComputerPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHComputerPlayer.h; sourceTree = "<group>"; };
+		BDA41C9C16F3C44200AAAF06 /* ANHComputerPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHComputerPlayer.m; sourceTree = "<group>"; };
+		BDA41C9E16F3D66E00AAAF06 /* ANHViewDeletegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHViewDeletegate.h; sourceTree = "<group>"; };
+		BDA41CA016F3E31D00AAAF06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		BDF1F99316F056EB00AB14EE /* ANHBoardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoardDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,10 +128,6 @@
 		BD922B7816E5B3AD00261599 = {
 			isa = PBXGroup;
 			children = (
-				BD9385DB16F19E53002CD99A /* 72.png */,
-				BD9385D916F19E50002CD99A /* 144.png */,
-				BD9385D716F19E38002CD99A /* 114.png */,
-				BD9385D516F19E35002CD99A /* 57.png */,
 				BD922BD216E700AF00261599 /* Views */,
 				BD922BD116E7009300261599 /* Models */,
 				BD922B8A16E5B3AE00261599 /* Reversi */,
@@ -163,7 +163,7 @@
 				BD5D541116E80AFE004FC868 /* ANHMenuViewController.h */,
 				BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */,
 				BD922B9C16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard */,
-				BD922B9F16E5B3AE00261599 /* MainStoryboard_iPad.storyboard */,
+				BDA41C9F16F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard */,
 				BD922BA216E5B3AE00261599 /* ANHViewController.h */,
 				BD922BA316E5B3AE00261599 /* ANHViewController.m */,
 				BD922B8B16E5B3AE00261599 /* Supporting Files */,
@@ -174,6 +174,10 @@
 		BD922B8B16E5B3AE00261599 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BD9385DB16F19E53002CD99A /* 72.png */,
+				BD9385D916F19E50002CD99A /* 144.png */,
+				BD9385D716F19E38002CD99A /* 114.png */,
+				BD9385D516F19E35002CD99A /* 57.png */,
 				BD922BD916E851A800261599 /* grass_pattern.png */,
 				BD922B9316E5B3AE00261599 /* ANHAppDelegate.h */,
 				BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */,
@@ -218,8 +222,11 @@
 				BD5D540C16E79200004FC868 /* ANHCell.m */,
 				BD5D541716EC3494004FC868 /* ANHBoard.h */,
 				BD5D540F16E7CE55004FC868 /* ANHBoard.m */,
-				BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */,
+				BDA41C9B16F3C44200AAAF06 /* ANHComputerPlayer.h */,
+				BDA41C9C16F3C44200AAAF06 /* ANHComputerPlayer.m */,
 				BDF1F99316F056EB00AB14EE /* ANHBoardDelegate.h */,
+				BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */,
+				BDA41C9E16F3D66E00AAAF06 /* ANHViewDeletegate.h */,
 			);
 			name = Models;
 			path = Reversi/Models;
@@ -315,7 +322,6 @@
 				BD922B9916E5B3AE00261599 /* Default@2x.png in Resources */,
 				BD922B9B16E5B3AE00261599 /* Default-568h@2x.png in Resources */,
 				BD922B9E16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard in Resources */,
-				BD922BA116E5B3AE00261599 /* MainStoryboard_iPad.storyboard in Resources */,
 				BD922BC316E5B41000261599 /* reversi.png in Resources */,
 				BD922BC516E5B57E00261599 /* gameBoard.png in Resources */,
 				BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */,
@@ -325,6 +331,7 @@
 				BD9385D816F19E38002CD99A /* 114.png in Resources */,
 				BD9385DA16F19E50002CD99A /* 144.png in Resources */,
 				BD9385DC16F19E53002CD99A /* 72.png in Resources */,
+				BDA41CA116F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,10 +359,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export CODESIGN_ALLOCATE=/Library/JailCoder/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ]; then\n/Library/JailCoder/Entitlements/Entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
 		};
-/* End PBXShellScriptBuildPhase section */
-
-
-/* Begin PBXShellScriptBuildPhase section */
 		BD922BA816E5B3AE00261599 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,6 +387,7 @@
 				BD5D540D16E79200004FC868 /* ANHCell.m in Sources */,
 				BD5D541016E7CE55004FC868 /* ANHBoard.m in Sources */,
 				BD5D541316E80AFE004FC868 /* ANHMenuViewController.m in Sources */,
+				BDA41C9D16F3C44200AAAF06 /* ANHComputerPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,20 +426,20 @@
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		BD922B9F16E5B3AE00261599 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BD922BA016E5B3AE00261599 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		BD922BB416E5B3AE00261599 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BD922BB516E5B3AE00261599 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BDA41C9F16F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDA41CA016F3E31D00AAAF06 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

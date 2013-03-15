@@ -10,6 +10,7 @@
 #import "ANHCell.h"
 
 @implementation ANHBoard
+
 @synthesize cells;
 - (id) init{
     self = [super init];
@@ -128,6 +129,21 @@
     }
     else
         return YES;
+}
+
+- (NSArray *)playableCells{
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int r = 0; r<8; r++) {
+        for (int c = 0; c<8; c++) {
+            ANHCell *cell = [[self.cells objectAtIndex:r]objectAtIndex:c];
+            if (cell.state == EmptyCell) {
+                if ([self cellIsMoveable:cell]) {
+                    [array addObject:cell];
+                }
+            }
+        }
+    }
+    return array;
 }
 
 // check if a player can make a move by going through all the empty cell
@@ -455,5 +471,7 @@
     
     [self initBoardState];
 }
-
++ (void) setPlayMode:(PlayMode) mode{
+    self.playMode = mode;
+}
 @end
