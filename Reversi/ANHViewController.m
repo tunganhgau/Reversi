@@ -13,14 +13,23 @@
 
 @implementation ANHViewController
 
+- (id) init{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     float screenWidth = self.view.bounds.size.width;
-    CGRect boardRect = CGRectMake(0.05*screenWidth, 120, 0.9*screenWidth, 0.9*screenWidth);
+    float screenHeight = self.view.bounds.size.height;
+    CGRect boardRect = CGRectMake(0.05*screenWidth, 0.12*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
     _gameBoard = [[ANHBoard alloc]init];
-    //_gameBoard.delegate = self;
+    _gameBoard.delegate = self;
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
     [_gameBoard initBoardState];
@@ -29,8 +38,6 @@
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
     _whoseTurnLabel.textColor = [UIColor blackColor];
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -51,11 +58,11 @@
     self.whiteScoreTextView.text = [NSString stringWithFormat:@"%d",self.gameBoard.whiteScore];
     if ([self.gameBoard isBlackTurn]){
         self.whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
-        self.whoseTurnLabel.textColor = [UIColor blackColor];
+        self.whoseTurnTextView.textColor = [UIColor blackColor];
     }
     else {
         self.whoseTurnImage.image = [UIImage imageNamed:@"whitePiece.png"];
-        self.whoseTurnLabel.textColor = [UIColor whiteColor];
+        self.whoseTurnTextView.textColor = [UIColor whiteColor];
     }
 }
 

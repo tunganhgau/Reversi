@@ -10,6 +10,9 @@
 #import "ANHCell.h"
 
 @implementation ANHBoard
+@synthesize firstPlayer;
+@synthesize secondPlayer;
+@synthesize whoseTurn;
 
 @synthesize cells;
 - (id) init{
@@ -28,7 +31,16 @@
                 [[cells objectAtIndex:r] addObject:cell];
             }
         }
-        _whoseTurn = BlackPlayer;
+        if (_playMode == PlayerMode) {
+            firstPlayer = BlackPlayer;
+            secondPlayer = WhitePlayer;
+            
+        }
+        else {
+            firstPlayer = HumanPlayer;
+            secondPlayer = ComputerPlayer;
+        }
+        self.whoseTurn = self.firstPlayer;
         _blackScore = 0;
         _whiteScore = 0;
     }
@@ -36,18 +48,25 @@
     return self;
 }
 
+// switch turn to the next user
+// if the game is in computer mode, the AI will move
 - (void)switchTurn{
-    if ([self isBlackTurn]) {
-        self.whoseTurn = WhitePlayer;
+    if (whoseTurn == secondPlayer) {
+        self.whoseTurn = self.firstPlayer;
     }
     else{
-        self.whoseTurn = BlackPlayer;
+        self.whoseTurn = self.secondPlayer;
+        if (secondPlayer == ComputerPlayer) {
+            if (![self gameEnd]) {
+                ANHCell *bestMove  = [self highestScoreCell];
+                [self makeMoveAtCell:bestMove towardDirections:[self directionsValidToMoveFromCell:bestMove]];
+            }
+        }
     }
-        
 }
 
 - (BOOL) isBlackTurn{
-    if (self.whoseTurn == BlackPlayer) {
+    if (self.whoseTurn == BlackPlayer || self.whoseTurn == HumanPlayer) {
         return YES;
     }
     else{
@@ -61,7 +80,6 @@
     [self initCellState:BlackCell atRow:3 andColumn:4];
     [self initCellState:BlackCell atRow:4 andColumn:3];
     [self initCellState:WhiteCell atRow:4 andColumn:4];
-    self.whoseTurn = BlackPlayer;
     [self updateBoard];
     
 }
@@ -471,7 +489,24 @@
     
     [self initBoardState];
 }
-+ (void) setPlayMode:(PlayMode) mode{
-    self.playMode = mode;
+
+- (ANHCell *) highestScoreCell{
+    NSArray *availableCell = [self playableCells];
+    ANHCell *bestMove;
+    if (availableCell.count > 0) {
+        bestMove = [availableCell objectAtIndex:0];
+    }
+    
+    for (ANHCell *cell in availableCell) {
+        if ([self scoreForCellEasy:cell] > [self scoreForCellEasy:bestMove]) {
+            bestMove = cell;
+        }
+    }
+    return bestMove;
 }
+
+- (int) scoreForCellEasy:(ANHCell *)cell{
+    return [self directionsValidToMoveFromCell:cell].count;
+}
+
 @end

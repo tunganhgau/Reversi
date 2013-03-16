@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 typedef NS_ENUM(int, Player){
     BlackPlayer,
-    WhitePlayer
+    WhitePlayer,
+    ComputerPlayer,
+    HumanPlayer
 };
 
 @protocol BoardDelegate <NSObject>

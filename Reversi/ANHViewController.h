@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *blackScoreTextView;
 @property (strong, nonatomic) IBOutlet UITextView *whiteScoreTextView;
 @property (strong, nonatomic) IBOutlet UILabel *whoseTurnLabel;
+@property (strong, nonatomic) IBOutlet UITextView *whoseTurnTextView;
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
 - (IBAction)resetGame:(UIButton *)sender;
 - (void) boardChanged;
