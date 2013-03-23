@@ -52,7 +52,8 @@
 }
 
 - (IBAction)resetGame:(UIButton *)sender {
-    [self.gameBoard resetBoard];
+    //[self.gameBoard resetBoard];
+    [self viewDidLoad];
 }
 
 - (void) boardChanged{

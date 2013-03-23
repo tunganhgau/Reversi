@@ -11,8 +11,9 @@
 
 @protocol CellStateDelegate <NSObject>
 
-- (void) cellStateChanged;
-
+- (void) newPiece;
+- (void) flipPiece;
+- (void) clearCell;
 @end
 
 #endif

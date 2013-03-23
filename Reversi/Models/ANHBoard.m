@@ -72,7 +72,8 @@
         if (secondPlayer == ComputerPlayer) {
             if (![self gameEnd]) {
                 ANHCell *bestMove  = [self highestScoreCell];
-                [self makeMoveAtCell:bestMove towardDirections:[self directionsValidToMoveFromCell:bestMove]];
+                [self performSelector:@selector(makeMoveAtCell:) withObject:bestMove afterDelay:1];
+                //[self makeMoveAtCell:bestMove towardDirections:[self directionsValidToMoveFromCell:bestMove]];
             }
         }
     }
@@ -337,7 +338,8 @@
 
 
 // for each available direction, turn all the oponent's cells into player cell
-- (void)makeMoveAtCell:(ANHCell *)cell towardDirections:(NSMutableArray *) directions{
+- (void)makeMoveAtCell:(ANHCell *)cell{
+    NSArray *directions = [self directionsValidToMoveFromCell:cell];
     ANHCell *tempCell;
     CellState PlayerCell;
     CellState OponentCell;
@@ -514,12 +516,94 @@
         if ([self scoreForCellEasy:cell] > [self scoreForCellEasy:bestMove]) {
             bestMove = cell;
         }
+//        if ([self scoreForCellMedium:cell] > [self scoreForCellMedium:bestMove]) {
+//            bestMove = cell;
+//        }
     }
     return bestMove;
 }
 
 - (int) scoreForCellEasy:(ANHCell *)cell{
     return [self directionsValidToMoveFromCell:cell].count;
+}
+
+- (int) scoreForCellMedium:(ANHCell *)cell{
+    int score = 0;
+    ANHCell *tempCell;
+    CellState PlayerCell;
+    CellState OponentCell;
+    if ([self isBlackTurn]) {
+        PlayerCell = BlackCell;
+        OponentCell = WhiteCell;
+    }
+    else{
+        PlayerCell = WhiteCell;
+        OponentCell = BlackCell;
+    }
+    cell.state = PlayerCell;
+    NSArray *directions = [self directionsValidToMoveFromCell:cell];
+    for (NSNumber *num in directions) {
+        Direction dir = [num intValue];
+        // for each direction, count how many flips available
+        if (dir == Top) {
+            tempCell = [self topCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self topCellOf:tempCell];
+            }
+        }
+        if (dir == TopRight) {
+            tempCell = [self topRightCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self topRightCellOf:tempCell];
+            }
+        }
+        if (dir == TopLeft) {
+            tempCell = [self topLeftCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self topLeftCellOf:tempCell];
+            }
+        }
+        if (dir == Left) {
+            tempCell = [self leftCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self leftCellOf:tempCell];
+            }
+        }
+        if (dir == Right) {
+            tempCell = [self rightCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self rightCellOf:tempCell];
+            }
+        }
+        if (dir == Bottom) {
+            tempCell = [self bottomCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self bottomCellOf:tempCell];
+            }
+        }
+        if (dir == BottomLeft) {
+            tempCell = [self bottomLeftCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self bottomLeftCellOf:tempCell];
+            }
+        }
+        if (dir == BottomRight) {
+            tempCell = [self bottomRightCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self bottomRightCellOf:tempCell];
+            }
+        }
+    }
+    
+    return score;
 }
 
 @end

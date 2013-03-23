@@ -55,43 +55,38 @@
     if (self.cell.state == EmptyCell) {
         NSMutableArray * availableDirections = [self.board directionsValidToMoveFromCell:self.cell];
         if ([availableDirections count] != 0) {
-            [self.board makeMoveAtCell:self.cell towardDirections:availableDirections];
-            // check if the other player can make move
-            //if ([self.board playerCanMakeMove] == NO) {
-              //  [self.board switchTurn];
-            //};
+            [self.board makeMoveAtCell:self.cell];
         }
-        
     }
-     /*
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
-NSString * m = [NSString stringWithFormat:@"%d,%d",self.cell.row, self.cell.column];
-label.text = m;
-[self addSubview:label];
-      */
+}
+
+- (void) flipPiece{
+    if (self.cell.state == WhiteCell) {
+        [UIView transitionFromView:self.blackView toView:self.whiteView duration:1 options:UIViewAnimationOptionTransitionFlipFromLeft completion:nil];
+    }
+    else if (self.cell.state == BlackCell){
+        [UIView transitionFromView:self.whiteView toView:self.blackView duration:1 options:UIViewAnimationOptionTransitionFlipFromLeft completion:nil];
+    }
 }
 
 // Update the View of the cell
-- (void) updateCell{
+- (void) newPiece{
     if (self.cell.state == BlackCell) {
         self.blackView.hidden = NO;
-        self.whiteView.hidden = YES;
+        self.whiteView.hidden = NO;
+        [self bringSubviewToFront:self.blackView];
     }
     else if (self.cell.state == WhiteCell){
-        self.blackView.hidden = YES;
+        self.blackView.hidden = NO;
         self.whiteView.hidden = NO;
-    }
-    else{
-        self.blackView.hidden = YES;
-        self.whiteView.hidden = YES;
+        [self bringSubviewToFront:self.whiteView];
     }
 }
 
-// this method will be called when the cell object's state is changed
-- (void) cellStateChanged{
-    [self updateCell];
+- (void) clearCell{
+    self.blackView.hidden = YES;
+    self.whiteView.hidden = YES;
 }
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

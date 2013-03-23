@@ -45,7 +45,7 @@ typedef NS_ENUM(int, PlayMode) {
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column;
 - (NSMutableArray *) directionsValidToMoveFromCell:(ANHCell *)cell;
 - (BOOL) cellIsMoveable:(ANHCell *)cell;
-- (void) makeMoveAtCell:(ANHCell *)cell towardDirections:(NSArray *) directions;
+- (void) makeMoveAtCell:(ANHCell *)cell;
 - (NSArray *)playableCells;
 - (BOOL) nextPlayerCanMakeMove;
 - (void) resetBoard;

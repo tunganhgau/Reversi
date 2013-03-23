@@ -23,7 +23,8 @@ typedef enum{
 @property (nonatomic) int row;
 
 - (id) initAtRow:(int)r andColumn:(int)c;
-- (void) informCellView;
-
+- (void) newPiecePlayed;
+- (void) pieceFlipped;
+- (void) emptyCell;
 
 @end

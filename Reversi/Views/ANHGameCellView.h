@@ -28,8 +28,8 @@
 // set the image for the cell (white or black piece), given the 
 //- (void) setImage
 - (id)initWithFrame:(CGRect)frame cell:(ANHCell *) cell board:(ANHBoard *)board;
-
-- (void) updateCell;
-- (void) cellStateChanged;
+- (void) newPiece;
+- (void) flipPiece;
+- (void) clearCell;
 
 @end

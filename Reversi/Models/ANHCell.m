@@ -25,17 +25,39 @@
     return self;
 }
 
-// Let the CellView know that its state has changed
-- (void) informCellView{
-    if ([delegate respondsToSelector:@selector(cellStateChanged)]) {
-        [delegate cellStateChanged];
+// Let the CellView know that there is a new Piece
+- (void) newPiecePlayed{
+    if ([delegate respondsToSelector:@selector(newPiece)]) {
+        [delegate newPiece];
+    }
+}
+
+// Let the CellView know it needs to flip Piece
+- (void) pieceFlipped{
+    if ([delegate respondsToSelector:@selector(flipPiece)]) {
+        [delegate flipPiece];
+    }
+}
+
+- (void) emptyCell{
+    if ([delegate respondsToSelector:@selector(clearCell)]) {
+        [delegate clearCell];
     }
 }
 
 // setter for state, whenever the state changed, inform its View
 - (void) setState:(CellState) s{
+    CellState beforeState = state;
     state = s;
-    [self informCellView];
+    if (beforeState == EmptyCell) {
+        [self newPiecePlayed];
+    }
+    else {
+        [self pieceFlipped];
+    }
+    if (state == EmptyCell) {
+        [self emptyCell];
+    }
 }
 
 @end
