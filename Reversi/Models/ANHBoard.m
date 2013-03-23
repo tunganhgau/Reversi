@@ -48,6 +48,19 @@
     return self;
 }
 
+- (void) setPlayMode:(PlayMode)playMode{
+    _playMode = playMode;
+    if (_playMode == PlayerMode) {
+        firstPlayer = BlackPlayer;
+        secondPlayer = WhitePlayer;
+        
+    }
+    else {
+        firstPlayer = HumanPlayer;
+        secondPlayer = ComputerPlayer;
+    }
+}
+
 // switch turn to the next user
 // if the game is in computer mode, the AI will move
 - (void)switchTurn{

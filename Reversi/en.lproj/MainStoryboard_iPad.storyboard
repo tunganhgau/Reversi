@@ -61,10 +61,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - GameView-->
         <scene sceneID="eir-IH-X1J">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="U7B-UX-WAQ" customClass="ANHViewController" sceneMemberID="viewController">
+                <viewController title="GameView" modalTransitionStyle="crossDissolve" id="U7B-UX-WAQ" customClass="ANHViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="564-SA-iNl">
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

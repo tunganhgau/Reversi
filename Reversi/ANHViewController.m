@@ -30,6 +30,12 @@
     CGRect boardRect = CGRectMake(0.05*screenWidth, 0.12*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
     _gameBoard = [[ANHBoard alloc]init];
     _gameBoard.delegate = self;
+    if (self.playMode == PlayerMode) {
+        _gameBoard.playMode = PlayerMode;
+    }
+    else {
+        _gameBoard.playMode = ComputerMode;
+    }
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
     [_gameBoard initBoardState];

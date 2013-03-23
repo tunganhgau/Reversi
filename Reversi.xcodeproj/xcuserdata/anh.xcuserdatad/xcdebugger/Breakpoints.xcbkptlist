@@ -16,18 +16,5 @@
          landmarkName = "@implementation ANHBoard"
          landmarkType = "3">
       </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Reversi/ANHViewController.h"
-         timestampString = "385106261.169349"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "24"
-         endingLineNumber = "24"
-         landmarkName = "-boardChanged"
-         landmarkType = "4">
-      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

@@ -31,12 +31,12 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    ANHViewController *gameViewController = segue.destinationViewController;
+    ANHViewController *gameViewController = (ANHViewController *)segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"playerMode"]) {
-        gameViewController.gameBoard.playMode = PlayerMode;
+        gameViewController.playMode = PlayerMode;
     }
     else {
-        gameViewController.gameBoard.playMode = ComputerMode;
+        gameViewController.playMode = ComputerMode;
     }
 }
 
@@ -47,10 +47,10 @@
 }
 
 - (IBAction)playWithPlayerButtonPressed:(UIButton *)sender {
-   // [ANHBoard setPlayMode:PlayerMode];
+    //self.gameView = [self.storyboard instantiateViewControllerWithIdentifier:@"GameView"];
 }
 
 - (IBAction)playWithComputerButtonPressed:(UIButton *)sender {
-   // [ANHBoard setPlayMode:ComputerMode];
+    //self.gameView = [self.storyboard instantiateViewControllerWithIdentifier:@"GameView"];
 }
 @end
