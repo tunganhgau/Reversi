@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD13E93A16FE6BB900E5A878 /* gameBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = BD13E93916FE6BB900E5A878 /* gameBoard.png */; };
-		BD13E93C16FE6C4300E5A878 /* sign1.png in Resources */ = {isa = PBXBuildFile; fileRef = BD13E93B16FE6C4300E5A878 /* sign1.png */; };
+		BD361A9316FEA99000B88F41 /* gameBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = BD361A8E16FEA99000B88F41 /* gameBoard.png */; };
+		BD361A9416FEA99000B88F41 /* menuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BD361A8F16FEA99000B88F41 /* menuButton.png */; };
+		BD361A9516FEA99000B88F41 /* restartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BD361A9016FEA99000B88F41 /* restartButton.png */; };
+		BD361A9616FEA99000B88F41 /* settingButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BD361A9116FEA99000B88F41 /* settingButton.png */; };
+		BD361A9716FEA99000B88F41 /* undoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BD361A9216FEA99000B88F41 /* undoButton.png */; };
 		BD5D540D16E79200004FC868 /* ANHCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D540C16E79200004FC868 /* ANHCell.m */; };
 		BD5D541016E7CE55004FC868 /* ANHBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D540F16E7CE55004FC868 /* ANHBoard.m */; };
 		BD5D541316E80AFE004FC868 /* ANHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */; };
@@ -53,8 +56,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BD13E93916FE6BB900E5A878 /* gameBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBoard.png; sourceTree = "<group>"; };
-		BD13E93B16FE6C4300E5A878 /* sign1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign1.png; sourceTree = "<group>"; };
+		BD361A8E16FEA99000B88F41 /* gameBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBoard.png; sourceTree = "<group>"; };
+		BD361A8F16FEA99000B88F41 /* menuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuButton.png; sourceTree = "<group>"; };
+		BD361A9016FEA99000B88F41 /* restartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restartButton.png; sourceTree = "<group>"; };
+		BD361A9116FEA99000B88F41 /* settingButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingButton.png; sourceTree = "<group>"; };
+		BD361A9216FEA99000B88F41 /* undoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undoButton.png; sourceTree = "<group>"; };
 		BD5D540B16E79200004FC868 /* ANHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCell.h; sourceTree = "<group>"; };
 		BD5D540C16E79200004FC868 /* ANHCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHCell.m; sourceTree = "<group>"; };
 		BD5D540F16E7CE55004FC868 /* ANHBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHBoard.m; sourceTree = "<group>"; };
@@ -175,8 +181,11 @@
 		BD922B8B16E5B3AE00261599 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BD13E93B16FE6C4300E5A878 /* sign1.png */,
-				BD13E93916FE6BB900E5A878 /* gameBoard.png */,
+				BD361A8E16FEA99000B88F41 /* gameBoard.png */,
+				BD361A8F16FEA99000B88F41 /* menuButton.png */,
+				BD361A9016FEA99000B88F41 /* restartButton.png */,
+				BD361A9116FEA99000B88F41 /* settingButton.png */,
+				BD361A9216FEA99000B88F41 /* undoButton.png */,
 				BD9385DB16F19E53002CD99A /* 72.png */,
 				BD9385D916F19E50002CD99A /* 144.png */,
 				BD9385D716F19E38002CD99A /* 114.png */,
@@ -332,8 +341,11 @@
 				BD9385DA16F19E50002CD99A /* 144.png in Resources */,
 				BD9385DC16F19E53002CD99A /* 72.png in Resources */,
 				BDA41CA116F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard in Resources */,
-				BD13E93A16FE6BB900E5A878 /* gameBoard.png in Resources */,
-				BD13E93C16FE6C4300E5A878 /* sign1.png in Resources */,
+				BD361A9316FEA99000B88F41 /* gameBoard.png in Resources */,
+				BD361A9416FEA99000B88F41 /* menuButton.png in Resources */,
+				BD361A9516FEA99000B88F41 /* restartButton.png in Resources */,
+				BD361A9616FEA99000B88F41 /* settingButton.png in Resources */,
+				BD361A9716FEA99000B88F41 /* undoButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
