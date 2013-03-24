@@ -229,30 +229,6 @@
         <image name="reversi.png" width="867" height="247"/>
         <image name="whitePiece.png" width="800" height="800"/>
     </resources>
-    <classes>
-        <class className="ANHMenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHMenuViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="playWithComputerButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="playWithPlayerButtonPressed:" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ANHViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resetGame:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="blackScoreTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="resetButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="whiteScoreTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="whoseTurnImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="whoseTurnLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="whoseTurnTextView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

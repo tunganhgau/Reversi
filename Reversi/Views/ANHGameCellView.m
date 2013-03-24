@@ -60,6 +60,7 @@
     }
 }
 
+// flip a piece animation
 - (void) flipPiece{
     if (self.cell.state == WhiteCell) {
         [UIView transitionFromView:self.blackView toView:self.whiteView duration:1 options:UIViewAnimationOptionTransitionFlipFromLeft completion:nil];
@@ -69,24 +70,26 @@
     }
 }
 
-// Update the View of the cell
+// place a new piece animation
 - (void) newPiece{
     if (self.cell.state == BlackCell) {
         self.blackView.hidden = NO;
         self.whiteView.hidden = NO;
         [self bringSubviewToFront:self.blackView];
     }
-    else if (self.cell.state == WhiteCell){
+    else {
         self.blackView.hidden = NO;
         self.whiteView.hidden = NO;
         [self bringSubviewToFront:self.whiteView];
     }
 }
 
+// clear the cell when hitting the restart button
 - (void) clearCell{
-    self.blackView.hidden = YES;
-    self.whiteView.hidden = YES;
+    _blackView.hidden = YES;
+    _whiteView.hidden = YES;
 }
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

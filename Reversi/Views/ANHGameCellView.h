@@ -24,9 +24,6 @@
 @property (nonatomic, strong) UIImageView *whiteView;
 @property (nonatomic, strong) UIImageView *blackView;
 
-
-// set the image for the cell (white or black piece), given the 
-//- (void) setImage
 - (id)initWithFrame:(CGRect)frame cell:(ANHCell *) cell board:(ANHBoard *)board;
 - (void) newPiece;
 - (void) flipPiece;

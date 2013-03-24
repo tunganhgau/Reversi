@@ -39,6 +39,7 @@
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
     [_gameBoard initBoardState];
+    
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
@@ -52,8 +53,8 @@
 }
 
 - (IBAction)resetGame:(UIButton *)sender {
-    //[self.gameBoard resetBoard];
-    [self viewDidLoad];
+    [self.gameBoard resetBoard];
+    //[self viewDidLoad];
 }
 
 - (void) boardChanged{

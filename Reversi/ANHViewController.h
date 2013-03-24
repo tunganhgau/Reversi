@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) ANHGameBoardView *gameBoardView;
 @property (strong, nonatomic) ANHBoard *gameBoard;
+@property (strong, nonatomic) ANHBoard *startBoard;
+@property (strong, nonatomic) NSMutableArray *boardStack;
 @property (strong, nonatomic) IBOutlet UIImageView *whoseTurnImage;
 @property (strong, nonatomic) IBOutlet UITextView *blackScoreTextView;
 @property (strong, nonatomic) IBOutlet UITextView *whiteScoreTextView;

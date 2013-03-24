@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD13E93A16FE6BB900E5A878 /* gameBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = BD13E93916FE6BB900E5A878 /* gameBoard.png */; };
+		BD13E93C16FE6C4300E5A878 /* sign1.png in Resources */ = {isa = PBXBuildFile; fileRef = BD13E93B16FE6C4300E5A878 /* sign1.png */; };
 		BD5D540D16E79200004FC868 /* ANHCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D540C16E79200004FC868 /* ANHCell.m */; };
 		BD5D541016E7CE55004FC868 /* ANHBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D540F16E7CE55004FC868 /* ANHBoard.m */; };
 		BD5D541316E80AFE004FC868 /* ANHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */; };
@@ -27,7 +29,6 @@
 		BD922BB616E5B3AE00261599 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD922BB416E5B3AE00261599 /* InfoPlist.strings */; };
 		BD922BB916E5B3AE00261599 /* ReversiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BB816E5B3AE00261599 /* ReversiTests.m */; };
 		BD922BC316E5B41000261599 /* reversi.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC216E5B41000261599 /* reversi.png */; };
-		BD922BC516E5B57E00261599 /* gameBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC416E5B57E00261599 /* gameBoard.png */; };
 		BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC816E5BB1000261599 /* blackPiece.png */; };
 		BD922BCB16E5BB1000261599 /* whitePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC916E5BB1000261599 /* whitePiece.png */; };
 		BD922BD016E7006B00261599 /* ANHGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BCF16E7006B00261599 /* ANHGameBoardView.m */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD13E93916FE6BB900E5A878 /* gameBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBoard.png; sourceTree = "<group>"; };
+		BD13E93B16FE6C4300E5A878 /* sign1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign1.png; sourceTree = "<group>"; };
 		BD5D540B16E79200004FC868 /* ANHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCell.h; sourceTree = "<group>"; };
 		BD5D540C16E79200004FC868 /* ANHCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHCell.m; sourceTree = "<group>"; };
 		BD5D540F16E7CE55004FC868 /* ANHBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHBoard.m; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		BD922BB716E5B3AE00261599 /* ReversiTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReversiTests.h; sourceTree = "<group>"; };
 		BD922BB816E5B3AE00261599 /* ReversiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReversiTests.m; sourceTree = "<group>"; };
 		BD922BC216E5B41000261599 /* reversi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reversi.png; path = SupportingFiles/reversi.png; sourceTree = "<group>"; };
-		BD922BC416E5B57E00261599 /* gameBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gameBoard.png; path = SupportingFiles/gameBoard.png; sourceTree = "<group>"; };
 		BD922BC816E5BB1000261599 /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackPiece.png; path = SupportingFiles/blackPiece.png; sourceTree = "<group>"; };
 		BD922BC916E5BB1000261599 /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whitePiece.png; path = SupportingFiles/whitePiece.png; sourceTree = "<group>"; };
 		BD922BCE16E7006B00261599 /* ANHGameBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameBoardView.h; sourceTree = "<group>"; };
@@ -173,6 +175,8 @@
 		BD922B8B16E5B3AE00261599 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BD13E93B16FE6C4300E5A878 /* sign1.png */,
+				BD13E93916FE6BB900E5A878 /* gameBoard.png */,
 				BD9385DB16F19E53002CD99A /* 72.png */,
 				BD9385D916F19E50002CD99A /* 144.png */,
 				BD9385D716F19E38002CD99A /* 114.png */,
@@ -182,7 +186,6 @@
 				BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */,
 				BD922BC816E5BB1000261599 /* blackPiece.png */,
 				BD922BC916E5BB1000261599 /* whitePiece.png */,
-				BD922BC416E5B57E00261599 /* gameBoard.png */,
 				BD922BC216E5B41000261599 /* reversi.png */,
 				BD922B8C16E5B3AE00261599 /* Reversi-Info.plist */,
 				BD922B8D16E5B3AE00261599 /* InfoPlist.strings */,
@@ -321,7 +324,6 @@
 				BD922B9B16E5B3AE00261599 /* Default-568h@2x.png in Resources */,
 				BD922B9E16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard in Resources */,
 				BD922BC316E5B41000261599 /* reversi.png in Resources */,
-				BD922BC516E5B57E00261599 /* gameBoard.png in Resources */,
 				BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */,
 				BD922BCB16E5BB1000261599 /* whitePiece.png in Resources */,
 				BD922BDA16E851A800261599 /* grass_pattern.png in Resources */,
@@ -330,6 +332,8 @@
 				BD9385DA16F19E50002CD99A /* 144.png in Resources */,
 				BD9385DC16F19E53002CD99A /* 72.png in Resources */,
 				BDA41CA116F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard in Resources */,
+				BD13E93A16FE6BB900E5A878 /* gameBoard.png in Resources */,
+				BD13E93C16FE6C4300E5A878 /* sign1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

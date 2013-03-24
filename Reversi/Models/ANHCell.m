@@ -49,14 +49,18 @@
 - (void) setState:(CellState) s{
     CellState beforeState = state;
     state = s;
-    if (beforeState == EmptyCell) {
-        [self newPiecePlayed];
-    }
-    else {
-        [self pieceFlipped];
-    }
     if (state == EmptyCell) {
-        [self emptyCell];
+        if (beforeState != EmptyCell) {
+            [self emptyCell];
+        }
+    }
+    else{
+        if (beforeState == EmptyCell) {
+            [self newPiecePlayed];
+        }
+        else {
+            [self pieceFlipped];
+        }
     }
 }
 

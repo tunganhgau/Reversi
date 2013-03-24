@@ -31,16 +31,6 @@
                 [[cells objectAtIndex:r] addObject:cell];
             }
         }
-        if (_playMode == PlayerMode) {
-            firstPlayer = BlackPlayer;
-            secondPlayer = WhitePlayer;
-            
-        }
-        else {
-            firstPlayer = HumanPlayer;
-            secondPlayer = ComputerPlayer;
-        }
-        self.whoseTurn = self.firstPlayer;
         _blackScore = 0;
         _whiteScore = 0;
     }
@@ -94,6 +84,16 @@
     [self initCellState:BlackCell atRow:3 andColumn:4];
     [self initCellState:BlackCell atRow:4 andColumn:3];
     [self initCellState:WhiteCell atRow:4 andColumn:4];
+    if (_playMode == PlayerMode) {
+        firstPlayer = BlackPlayer;
+        secondPlayer = WhitePlayer;
+        
+    }
+    else {
+        firstPlayer = HumanPlayer;
+        secondPlayer = ComputerPlayer;
+    }
+    self.whoseTurn = self.firstPlayer;
     [self updateBoard];
     
 }
@@ -101,6 +101,18 @@
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column{
     ANHCell *cell = [[cells objectAtIndex:row] objectAtIndex:column];
     cell.state = state;
+}
+
+// reset the game board, also set its initial state
+- (void) resetBoard{
+    for (int i = 0; i<8; i++) {
+        for (int j = 0; j<8; j++) {
+            ANHCell *tempCell;
+            tempCell = [[self.cells objectAtIndex:i]objectAtIndex:j];
+            tempCell.state = EmptyCell;
+        }
+    }
+    [self initBoardState];
 }
 
 // update the scores and inform the View Controller
@@ -492,18 +504,6 @@
         return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column+1];
 }
 
-// reset the game board, also set its initial state
-- (void) resetBoard{
-    for (int i = 0; i<8; i++) {
-        for (int j = 0; j<8; j++) {
-            ANHCell *tempCell;
-            tempCell = [[self.cells objectAtIndex:i]objectAtIndex:j];
-            tempCell.state = EmptyCell;
-        }
-    }
-    
-    [self initBoardState];
-}
 
 - (ANHCell *) highestScoreCell{
     NSArray *availableCell = [self playableCells];
