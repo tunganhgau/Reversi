@@ -12,13 +12,18 @@
 
 @implementation ANHGameBoardView
 @synthesize cells;
+@synthesize cellViews;
 @synthesize gameBoard;
 
 - (id)initWithFrame:(CGRect)frame andBoard:(ANHBoard *)board
 {
     self = [super initWithFrame:frame];
     if (self) {
+        cellViews = [[NSMutableArray alloc] init];
         // Initialization code
+        for (int i = 0; i<8; i++) {
+            [cellViews addObject:[[NSMutableArray alloc] init]];
+        }
         gameBoard = board;
         _height = frame.size.height;
         _width = frame.size.width;
@@ -35,6 +40,7 @@
                 // set the delegate of Cell object to be its CellView
                 cell.delegate = cellView;
                 [self addSubview:cellView];
+                [[cellViews objectAtIndex:row] addObject:cellView];
             }
         }
         // Added a background and a game board image

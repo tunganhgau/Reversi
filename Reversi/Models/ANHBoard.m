@@ -38,6 +38,20 @@
     return self;
 }
 
+- (id) copyWithZone:(NSZone *)zone{
+    ANHBoard *another = [[ANHBoard alloc] init];
+    another.cells = [self.cells copy];
+    another.whoseTurn = self.whoseTurn;
+    another.firstPlayer = self.firstPlayer;
+    another.secondPlayer = self.secondPlayer;
+    another.winner = self.winner;
+    another.playMode = self.playMode;
+    another.blackScore = self.blackScore;
+    another.whiteScore = self.whiteScore;
+    another.delegate = self.delegate;
+    return another;
+}
+
 - (void) setPlayMode:(PlayMode)playMode{
     _playMode = playMode;
     if (_playMode == PlayerMode) {
@@ -84,15 +98,6 @@
     [self initCellState:BlackCell atRow:3 andColumn:4];
     [self initCellState:BlackCell atRow:4 andColumn:3];
     [self initCellState:WhiteCell atRow:4 andColumn:4];
-    if (_playMode == PlayerMode) {
-        firstPlayer = BlackPlayer;
-        secondPlayer = WhitePlayer;
-        
-    }
-    else {
-        firstPlayer = HumanPlayer;
-        secondPlayer = ComputerPlayer;
-    }
     self.whoseTurn = self.firstPlayer;
     [self updateBoard];
     
@@ -113,6 +118,7 @@
         }
     }
     [self initBoardState];
+    //[self updateBoard];
 }
 
 // update the scores and inform the View Controller
@@ -121,6 +127,7 @@
     [self informGameView];
 }
 
+// update the black and white score of the game by couting the number of cells for each player
 - (void) updateScores{
     int bScore = 0;
     int wScore = 0;
@@ -143,6 +150,7 @@
 - (void) informGameView{
     if ([self.delegate respondsToSelector:@selector(boardChanged)]) {
         [self.delegate boardChanged];
+        // check if the game is ended
         if ([self gameEnd]) {
             if (self.blackScore > self.whiteScore) {
                 self.winner = BlackPlayer;
@@ -175,6 +183,7 @@
         return YES;
 }
 
+// return an array of available cells to play for the current player
 - (NSArray *)playableCells{
     NSMutableArray *array = [[NSMutableArray alloc] init];
     for (int r = 0; r<8; r++) {

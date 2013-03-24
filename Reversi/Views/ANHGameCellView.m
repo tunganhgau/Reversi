@@ -60,8 +60,19 @@
     }
 }
 
+- (void) cellChanged:(BOOL)flip{
+    if (!flip){
+        [self updateCellView];
+    }
+    else {
+        [self flipPiece];
+    }
+}
+
 // flip a piece animation
 - (void) flipPiece{
+    self.blackView.hidden = NO;
+    self.whiteView.hidden = NO;
     if (self.cell.state == WhiteCell) {
         [UIView transitionFromView:self.blackView toView:self.whiteView duration:1 options:UIViewAnimationOptionTransitionFlipFromLeft completion:nil];
     }
@@ -71,23 +82,19 @@
 }
 
 // place a new piece animation
-- (void) newPiece{
+- (void) updateCellView{
     if (self.cell.state == BlackCell) {
         self.blackView.hidden = NO;
+        self.whiteView.hidden = YES;
+    }
+    else if (self.cell.state == WhiteCell){
+        self.blackView.hidden = YES;
         self.whiteView.hidden = NO;
-        [self bringSubviewToFront:self.blackView];
     }
     else {
-        self.blackView.hidden = NO;
-        self.whiteView.hidden = NO;
-        [self bringSubviewToFront:self.whiteView];
+        self.blackView.hidden = YES;
+        self.whiteView.hidden = YES;
     }
-}
-
-// clear the cell when hitting the restart button
-- (void) clearCell{
-    _blackView.hidden = YES;
-    _whiteView.hidden = YES;
 }
 
 /*

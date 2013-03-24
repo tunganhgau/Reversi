@@ -8,6 +8,7 @@
 
 #import "ANHViewController.h"
 #import "ANHGameBoardView.h"
+#import "ANHGameCellView.h"
 #import "ANHBoard.h"
 #import "ANHCell.h"
 
@@ -39,7 +40,7 @@
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
     [_gameBoard initBoardState];
-    
+    _startBoard = [_gameBoard copy];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
@@ -53,8 +54,21 @@
 }
 
 - (IBAction)resetGame:(UIButton *)sender {
+//    self.gameBoard = self.startBoard;
+//    self.gameBoardView.gameBoard = self.gameBoard;
+//    self.gameBoard.delegate = self;
+//    for (int row = 0; row < 8; row++) {
+//        for (int col = 0; col < 8; col++) {
+//            ANHGameCellView *temp =[[self.gameBoardView.cellViews objectAtIndex:row] objectAtIndex:col];
+//            temp.cell.delegate = temp;
+//            temp.cell.state = ((ANHCell*)[[self.gameBoard.cells objectAtIndex:row] objectAtIndex:col]).state;
+//        }
+//    }
+    
+                    
     [self.gameBoard resetBoard];
     //[self viewDidLoad];
+    //[self boardChanged];
 }
 
 - (void) boardChanged{

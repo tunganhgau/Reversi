@@ -9,11 +9,11 @@
 #ifndef Reversi_ANHCellStateChangedDelegate_h
 #define Reversi_ANHCellStateChangedDelegate_h
 
+
 @protocol CellStateDelegate <NSObject>
 
-- (void) newPiece;
-- (void) flipPiece;
-- (void) clearCell;
+- (void) cellChanged:(BOOL) flip;
+
 @end
 
 #endif

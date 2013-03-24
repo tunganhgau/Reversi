@@ -25,8 +25,7 @@
 @property (nonatomic, strong) UIImageView *blackView;
 
 - (id)initWithFrame:(CGRect)frame cell:(ANHCell *) cell board:(ANHBoard *)board;
-- (void) newPiece;
 - (void) flipPiece;
-- (void) clearCell;
-
+- (void) cellChanged:(BOOL)flip;
+- (void) updateCellView;
 @end

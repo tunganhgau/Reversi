@@ -23,8 +23,5 @@ typedef enum{
 @property (nonatomic) int row;
 
 - (id) initAtRow:(int)r andColumn:(int)c;
-- (void) newPiecePlayed;
-- (void) pieceFlipped;
-- (void) emptyCell;
-
+- (void) cellChangedWithCellAnimation:(BOOL) flip;
 @end
