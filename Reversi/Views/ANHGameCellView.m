@@ -92,9 +92,12 @@
         self.whiteView.hidden = NO;
     }
     else {
+        [self addSubview:self.whiteView];
+        [self addSubview:self.blackView];
         self.blackView.hidden = YES;
         self.whiteView.hidden = YES;
     }
+    
 }
 
 /*
