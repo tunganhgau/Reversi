@@ -25,6 +25,15 @@
     return self;
 }
 
+- (id) copyWithZone:(NSZone *)zone{
+    ANHCell *another = [[ANHCell alloc] init];
+    another.state = self.state;
+    another.delegate = self.delegate;
+    another.row = self.row;
+    another.column = self.column;
+    return another;
+}
+
 - (void) cellChangedWithCellAnimation:(BOOL)flip{
     if ([delegate respondsToSelector:@selector(cellChanged:)]) {
         [delegate cellChanged:flip];

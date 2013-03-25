@@ -54,21 +54,7 @@
 }
 
 - (IBAction)resetGame:(UIButton *)sender {
-//    self.gameBoard = self.startBoard;
-//    self.gameBoardView.gameBoard = self.gameBoard;
-//    self.gameBoard.delegate = self;
-//    for (int row = 0; row < 8; row++) {
-//        for (int col = 0; col < 8; col++) {
-//            ANHGameCellView *temp =[[self.gameBoardView.cellViews objectAtIndex:row] objectAtIndex:col];
-//            temp.cell.delegate = temp;
-//            temp.cell.state = ((ANHCell*)[[self.gameBoard.cells objectAtIndex:row] objectAtIndex:col]).state;
-//        }
-//    }
-    
-                    
     [self.gameBoard resetBoard];
-    //[self viewDidLoad];
-    //[self boardChanged];
 }
 
 - (void) boardChanged{
@@ -115,4 +101,24 @@
     [alert show];
 }
 
+- (IBAction)undoMove:(UIButton *)sender {
+    self.gameBoard = self.startBoard;
+    self.gameBoardView.gameBoard = self.gameBoard;
+    self.gameBoard.delegate = self;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            ANHGameCellView *temp =[[self.gameBoardView.cellViews objectAtIndex:row] objectAtIndex:col];
+            temp.cell.delegate = temp;
+            temp.cell.state = ((ANHCell*)[[self.gameBoard.cells objectAtIndex:row] objectAtIndex:col]).state;
+        }
+    }
+}
+
+
+/*
+ Things to do:
+ 2 UIAlert appear when play with AI
+ Alert when AI has no move
+ 
+ */
 @end

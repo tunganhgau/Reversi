@@ -171,6 +171,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="undoMove:" destination="U7B-UX-WAQ" eventType="touchUpInside" id="hTq-8M-yc3"/>
+                                </connections>
                             </button>
                             <textView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Go" translatesAutoresizingMaskIntoConstraints="NO" id="lmh-ED-n3g">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -326,33 +329,6 @@
         <image name="undoButton.png" width="348" height="122"/>
         <image name="whitePiece.png" width="800" height="800"/>
     </resources>
-    <classes>
-        <class className="ANHMenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHMenuViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="playWithComputerButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="playWithPlayerButtonPressed:" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ANHSettingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHSettingViewController.h"/>
-        </class>
-        <class className="ANHViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resetGame:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="blackScoreTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="resetButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="whiteScoreTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="whoseTurnImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="whoseTurnLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="whoseTurnTextView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

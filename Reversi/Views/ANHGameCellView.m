@@ -40,7 +40,6 @@
         // cell started empty
         _whiteView.hidden = YES;
         _blackView.hidden = YES;
-        
         // reference to a Cell and the Board
         _cell = cell;
         _board = board;
