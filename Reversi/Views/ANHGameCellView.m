@@ -16,6 +16,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        // set this to be the cell's delegate
+        cell.delegate = self;
         _height = frame.size.height;
         _width = frame.size.width;
         // add a tap gesture recognizer
@@ -29,7 +31,7 @@
         _whiteView = [[UIImageView alloc] initWithImage:whiteImage];
         _blackView = [[UIImageView alloc] initWithImage:blackImage];
         // reduce the back ground frame so it won't take the whole View
-        CGRect bgRect = CGRectMake(0.1*self.width, 0.1*self.height, 0.85*self.width, 0.85*self.height);
+        CGRect bgRect = CGRectMake(0.08*self.width, 0.08*self.height, 0.85*self.width, 0.85*self.height);
         _whiteView.frame = bgRect;
         _blackView.frame = bgRect;
         // fit the game piece picture into the frame

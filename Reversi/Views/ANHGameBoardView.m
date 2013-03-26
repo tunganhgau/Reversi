@@ -37,8 +37,6 @@
                 // each GameCellView object will contain a reference to a Cell Object
                 ANHCell *cell = [[gameBoard.cells objectAtIndex:row]objectAtIndex:column];
                 ANHGameCellView *cellView = [[ANHGameCellView alloc]initWithFrame:cellFrame cell:cell board:board];
-                // set the delegate of Cell object to be its CellView
-                cell.delegate = cellView;
                 [self addSubview:cellView];
                 [[cellViews objectAtIndex:row] addObject:cellView];
             }

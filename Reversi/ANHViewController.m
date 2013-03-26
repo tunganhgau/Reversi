@@ -108,10 +108,11 @@
     for (int row = 0; row < 8; row++) {
         for (int col = 0; col < 8; col++) {
             ANHGameCellView *temp =[[self.gameBoardView.cellViews objectAtIndex:row] objectAtIndex:col];
-            temp.cell.delegate = temp;
-            temp.cell.state = ((ANHCell*)[[self.gameBoard.cells objectAtIndex:row] objectAtIndex:col]).state;
+            temp.cell = [[self.gameBoard.cells objectAtIndex:row] objectAtIndex:col];
+            [temp updateCellView];
         }
     }
+    [self updateGame];
 }
 
 

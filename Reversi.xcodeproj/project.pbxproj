@@ -32,8 +32,6 @@
 		BD922BB616E5B3AE00261599 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD922BB416E5B3AE00261599 /* InfoPlist.strings */; };
 		BD922BB916E5B3AE00261599 /* ReversiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BB816E5B3AE00261599 /* ReversiTests.m */; };
 		BD922BC316E5B41000261599 /* reversi.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC216E5B41000261599 /* reversi.png */; };
-		BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC816E5BB1000261599 /* blackPiece.png */; };
-		BD922BCB16E5BB1000261599 /* whitePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC916E5BB1000261599 /* whitePiece.png */; };
 		BD922BD016E7006B00261599 /* ANHGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BCF16E7006B00261599 /* ANHGameBoardView.m */; };
 		BD922BD516E700DB00261599 /* ANHGameCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BD416E700DB00261599 /* ANHGameCellView.m */; };
 		BD922BDA16E851A800261599 /* grass_pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BD916E851A800261599 /* grass_pattern.png */; };
@@ -43,6 +41,9 @@
 		BD9385DC16F19E53002CD99A /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385DB16F19E53002CD99A /* 72.png */; };
 		BDA41CA116F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA41C9F16F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard */; };
 		BDA41CA416F3F64A00AAAF06 /* ANHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA41CA316F3F64A00AAAF06 /* ANHSettingViewController.m */; };
+		BDFD464E17014C9D00E9B0DA /* blackPiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFD464B17014C9D00E9B0DA /* blackPiece.png */; };
+		BDFD464F17014C9D00E9B0DA /* whitePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFD464C17014C9D00E9B0DA /* whitePiece.png */; };
+		BDFD465017014C9D00E9B0DA /* wood_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BDFD464D17014C9D00E9B0DA /* wood_sound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,8 +92,6 @@
 		BD922BB716E5B3AE00261599 /* ReversiTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReversiTests.h; sourceTree = "<group>"; };
 		BD922BB816E5B3AE00261599 /* ReversiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReversiTests.m; sourceTree = "<group>"; };
 		BD922BC216E5B41000261599 /* reversi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reversi.png; path = SupportingFiles/reversi.png; sourceTree = "<group>"; };
-		BD922BC816E5BB1000261599 /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blackPiece.png; path = SupportingFiles/blackPiece.png; sourceTree = "<group>"; };
-		BD922BC916E5BB1000261599 /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whitePiece.png; path = SupportingFiles/whitePiece.png; sourceTree = "<group>"; };
 		BD922BCE16E7006B00261599 /* ANHGameBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameBoardView.h; sourceTree = "<group>"; };
 		BD922BCF16E7006B00261599 /* ANHGameBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameBoardView.m; sourceTree = "<group>"; };
 		BD922BD316E700DB00261599 /* ANHGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameCellView.h; sourceTree = "<group>"; };
@@ -103,9 +102,12 @@
 		BD9385D916F19E50002CD99A /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 144.png; path = ../144.png; sourceTree = "<group>"; };
 		BD9385DB16F19E53002CD99A /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 72.png; path = ../72.png; sourceTree = "<group>"; };
 		BDA41CA016F3E31D00AAAF06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		BDA41CA216F3F64A00AAAF06 /* ANHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHSettingViewController.h; sourceTree = "<group>"; };
-		BDA41CA316F3F64A00AAAF06 /* ANHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHSettingViewController.m; sourceTree = "<group>"; };
+		BDA41CA216F3F64A00AAAF06 /* ANHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANHSettingViewController.h; path = Views/ANHSettingViewController.h; sourceTree = "<group>"; };
+		BDA41CA316F3F64A00AAAF06 /* ANHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANHSettingViewController.m; path = Views/ANHSettingViewController.m; sourceTree = "<group>"; };
 		BDF1F99316F056EB00AB14EE /* ANHBoardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoardDelegate.h; sourceTree = "<group>"; };
+		BDFD464B17014C9D00E9B0DA /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackPiece.png; sourceTree = "<group>"; };
+		BDFD464C17014C9D00E9B0DA /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitePiece.png; sourceTree = "<group>"; };
+		BDFD464D17014C9D00E9B0DA /* wood_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wood_sound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,12 +169,14 @@
 		BD922B8A16E5B3AE00261599 /* Reversi */ = {
 			isa = PBXGroup;
 			children = (
+				BD922BA216E5B3AE00261599 /* ANHViewController.h */,
+				BD922BA316E5B3AE00261599 /* ANHViewController.m */,
+				BDA41CA216F3F64A00AAAF06 /* ANHSettingViewController.h */,
+				BDA41CA316F3F64A00AAAF06 /* ANHSettingViewController.m */,
 				BD5D541116E80AFE004FC868 /* ANHMenuViewController.h */,
 				BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */,
 				BD922B9C16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard */,
 				BDA41C9F16F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard */,
-				BD922BA216E5B3AE00261599 /* ANHViewController.h */,
-				BD922BA316E5B3AE00261599 /* ANHViewController.m */,
 				BD922B8B16E5B3AE00261599 /* Supporting Files */,
 			);
 			path = Reversi;
@@ -181,6 +185,9 @@
 		BD922B8B16E5B3AE00261599 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BDFD464B17014C9D00E9B0DA /* blackPiece.png */,
+				BDFD464C17014C9D00E9B0DA /* whitePiece.png */,
+				BDFD464D17014C9D00E9B0DA /* wood_sound.wav */,
 				BD361A8E16FEA99000B88F41 /* gameBoard.png */,
 				BD361A8F16FEA99000B88F41 /* menuButton.png */,
 				BD361A9016FEA99000B88F41 /* restartButton.png */,
@@ -193,8 +200,6 @@
 				BD922BD916E851A800261599 /* grass_pattern.png */,
 				BD922B9316E5B3AE00261599 /* ANHAppDelegate.h */,
 				BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */,
-				BD922BC816E5BB1000261599 /* blackPiece.png */,
-				BD922BC916E5BB1000261599 /* whitePiece.png */,
 				BD922BC216E5B41000261599 /* reversi.png */,
 				BD922B8C16E5B3AE00261599 /* Reversi-Info.plist */,
 				BD922B8D16E5B3AE00261599 /* InfoPlist.strings */,
@@ -247,8 +252,6 @@
 				BD922BCF16E7006B00261599 /* ANHGameBoardView.m */,
 				BD922BD316E700DB00261599 /* ANHGameCellView.h */,
 				BD922BD416E700DB00261599 /* ANHGameCellView.m */,
-				BDA41CA216F3F64A00AAAF06 /* ANHSettingViewController.h */,
-				BDA41CA316F3F64A00AAAF06 /* ANHSettingViewController.m */,
 			);
 			name = Views;
 			path = Reversi/Views;
@@ -333,8 +336,6 @@
 				BD922B9B16E5B3AE00261599 /* Default-568h@2x.png in Resources */,
 				BD922B9E16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard in Resources */,
 				BD922BC316E5B41000261599 /* reversi.png in Resources */,
-				BD922BCA16E5BB1000261599 /* blackPiece.png in Resources */,
-				BD922BCB16E5BB1000261599 /* whitePiece.png in Resources */,
 				BD922BDA16E851A800261599 /* grass_pattern.png in Resources */,
 				BD9385D616F19E35002CD99A /* 57.png in Resources */,
 				BD9385D816F19E38002CD99A /* 114.png in Resources */,
@@ -346,6 +347,9 @@
 				BD361A9516FEA99000B88F41 /* restartButton.png in Resources */,
 				BD361A9616FEA99000B88F41 /* settingButton.png in Resources */,
 				BD361A9716FEA99000B88F41 /* undoButton.png in Resources */,
+				BDFD464E17014C9D00E9B0DA /* blackPiece.png in Resources */,
+				BDFD464F17014C9D00E9B0DA /* whitePiece.png in Resources */,
+				BDFD465017014C9D00E9B0DA /* wood_sound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

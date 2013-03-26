@@ -225,9 +225,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="blackPiece.png" width="800" height="800"/>
+        <image name="blackPiece.png" width="80" height="80"/>
         <image name="reversi.png" width="867" height="247"/>
-        <image name="whitePiece.png" width="800" height="800"/>
+        <image name="whitePiece.png" width="80" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

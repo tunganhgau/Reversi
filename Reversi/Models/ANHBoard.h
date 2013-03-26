@@ -35,7 +35,7 @@ typedef NS_ENUM(int, PlayMode) {
 @property (nonatomic) PlayMode playMode;
 @property (nonatomic) int blackScore;
 @property (nonatomic) int whiteScore;
-@property (nonatomic, weak) id<BoardDelegate> delegate;
+@property (nonatomic, strong) id<BoardDelegate> delegate;
 
 - (void) switchTurn;
 - (BOOL) isBlackTurn;

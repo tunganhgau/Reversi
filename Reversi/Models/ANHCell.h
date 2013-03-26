@@ -15,10 +15,10 @@ typedef enum{
     WhiteCell
 }CellState;
 
-@interface ANHCell : NSObject
+@interface ANHCell : NSObject //<NSCopying>
 
 @property (nonatomic) CellState state;
-@property (nonatomic, weak) id <CellStateDelegate> delegate;
+@property (nonatomic, strong) id <CellStateDelegate> delegate;
 @property (nonatomic) int column;
 @property (nonatomic) int row;
 

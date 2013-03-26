@@ -40,7 +40,13 @@
 
 - (id) copyWithZone:(NSZone *)zone{
     ANHBoard *another = [[ANHBoard alloc] init];
-    another.cells = [self.cells copy];
+    for (int i = 0; i<8; i++) {
+        for (int j = 0; j<8; j++) {
+            ANHCell *tempCell = [[another.cells objectAtIndex:j] objectAtIndex:j];
+            tempCell = [[[self.cells objectAtIndex:i] objectAtIndex:j] copy];
+        }
+    }
+    //another.cells = [self.cells copy];
     another.whoseTurn = self.whoseTurn;
     another.firstPlayer = self.firstPlayer;
     another.secondPlayer = self.secondPlayer;
