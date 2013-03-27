@@ -33,7 +33,7 @@
         }
         _blackScore = 0;
         _whiteScore = 0;
-        AILevel = Easy;
+        AILevel = Hard;
     }
     
     return self;
@@ -69,41 +69,37 @@
 
 // switch turn to the next user
 - (void)switchTurn{
-    // else, switch turn alternately
     if (whoseTurn == BlackPlayer) {
         self.whoseTurn = WhitePlayer;
-        computerTurn = YES;
-    }
-    else{
-        self.whoseTurn = BlackPlayer;
-    }
-    // if the game is in computer mode, the AI will make move
-    if (self.playMode == ComputerMode) {
-        if (computerTurn == YES) {
-            if ([self nextPlayerCanMakeMove]) {
-                [self AIMakeMove];
-            }
-            else {
+        // if the game is in computer mode, the AI will make move
+        if (self.playMode == ComputerMode) {
+            if (computerTurn == YES) {
+                if ([self nextPlayerCanMakeMove]) {
+                    [self AIMakeMove];
+                }
                 computerTurn = NO;
             }
         }
     }
+    else{
+        self.whoseTurn = BlackPlayer;
+    }
+
 
 }
 
 - (void) AIMakeMove{
-    ANHCell *bestMove;  
+    ANHCell *bestCell;
     if (AILevel == Easy) {
-        bestMove = [self highestScoreCell:Easy];
+        bestCell = [self highestScoreCell:Easy];
     }
     else if (AILevel == Medium){
-        bestMove = [self highestScoreCell:Medium];
+        bestCell = [self highestScoreCell:Medium];
     }
     else {
-        bestMove = [self highestScoreCell:Hard];
+        bestCell = [self highestScoreCell:Hard];
     }
-    [self performSelector:@selector(makeMoveAtCell:) withObject:bestMove afterDelay:1];
-    computerTurn = NO;
+    [self performSelector:@selector(makeMoveAtCell:) withObject:bestCell afterDelay:1];
 }
 
 // initialize the game board with 2 white pieces and 2 black pieces crossed in the middle of the board
@@ -247,7 +243,9 @@
             }
         }
         else {
-            
+            if ([self scoreForCellHard:cell] > [self scoreForCellHard:bestMove]) {
+                bestMove = cell;
+            }
         }
         
     }
@@ -271,7 +269,7 @@
         PlayerCell = WhiteCell;
         OponentCell = BlackCell;
     }
-    cell.state = PlayerCell;
+    //cell.state = PlayerCell;
     NSArray *directions = [self directionsValidToMoveFromCell:cell];
     for (NSNumber *num in directions) {
         Direction dir = [num intValue];
@@ -333,35 +331,60 @@
             }
         }
     }
-    
     return score;
 }
 
+- (int) scoreForCellHard:(ANHCell *)cell{
+    int score = [self scoreForCellMedium:cell];
+    if ([self cellIsCorner:cell]) {
+        score+=10;
+    }
+    else if ([self cellIsBorder:cell]){
+        score+=5;
+    }
+    else if ([self cellIsAtLevel1:cell]){
+        score-=2;
+    }
+    else {
+        score+=2;
+    }
+    return score;
+}
 
-- (void) setNeighborsForCell:(ANHCell *)cell{
-    if (cell.row!=0)
-        cell.topNeighbor = [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column];
-    
-    if (cell.row!=0 || cell.column!=7)
-        cell.topRightNeighbor =[[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column+1];
-    
-    if (cell.column!=7)
-        cell.rightNeighbor = [[cells objectAtIndex:cell.row]objectAtIndex:cell.column+1];
-    
-    if (cell.row!=7 || cell.column != 7)
-        cell.bottomRightNeighbor = [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column+1];
-    
-    if (cell.row==7)
-        cell.bottomNeighbor = [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column];
-    
-    if (cell.row==7 || cell.column == 0)
-        cell.bottomLeftNeighbor = [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column-1];
-    
-    if (cell.column==0)
-        cell.leftNeighbor = [[cells objectAtIndex:cell.row]objectAtIndex:cell.column-1];
-    
-    if (cell.row!=0 || cell.column!=0)
-        cell.topLeftNeighbor = [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column-1];
+- (BOOL) cellIsCorner:(ANHCell *)cell{
+    if (cell.row == 0 && cell.column == 0) {
+        return YES;
+    }
+    if (cell.row == 0 && cell.column == 7) {
+        return YES;
+    }
+    if (cell.row == 7 && cell.column == 0) {
+        return YES;
+    }
+    if (cell.row == 7 && cell.column ==7) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL) cellIsBorder:(ANHCell *)cell{
+    if (cell.row == 0 || cell.row == 7 || cell.column == 0 || cell.column==7) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL) cellIsAtLevel1:(ANHCell *)cell{
+    if (cell.row == 1 || cell.row == 6 || cell.column == 1 || cell.column==6) {
+        return YES;
+    }
+    return NO;
+}
+- (BOOL) cellIsAtLevel2:(ANHCell *) cell{
+    if (cell.row == 2 || cell.row == 5 || cell.column == 2 || cell.column==5) {
+        return YES;
+    }
+    return NO;
 }
 
 // return the top cell of the given cell

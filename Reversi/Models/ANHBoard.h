@@ -54,6 +54,5 @@ typedef NS_ENUM(int, AIDifficulty){
 - (void) resetBoard;
 - (void) updateBoard;
 - (BOOL) gameEnd;
-- (void) setNeighborsForCell:(ANHCell *)cell;
 - (void) playerCannotMove;
 @end
