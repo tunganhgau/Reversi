@@ -10,9 +10,9 @@
 #import "ANHCell.h"
 
 @implementation ANHBoard
-@synthesize firstPlayer;
-@synthesize secondPlayer;
 @synthesize whoseTurn;
+@synthesize AILevel;
+@synthesize computerTurn;
 
 @synthesize cells;
 - (id) init{
@@ -33,6 +33,7 @@
         }
         _blackScore = 0;
         _whiteScore = 0;
+        AILevel = Easy;
     }
     
     return self;
@@ -48,8 +49,6 @@
     }
     //another.cells = [self.cells copy];
     another.whoseTurn = self.whoseTurn;
-    another.firstPlayer = self.firstPlayer;
-    another.secondPlayer = self.secondPlayer;
     another.winner = self.winner;
     another.playMode = self.playMode;
     another.blackScore = self.blackScore;
@@ -61,41 +60,50 @@
 - (void) setPlayMode:(PlayMode)playMode{
     _playMode = playMode;
     if (_playMode == PlayerMode) {
-        firstPlayer = BlackPlayer;
-        secondPlayer = WhitePlayer;
         
     }
     else {
-        firstPlayer = HumanPlayer;
-        secondPlayer = ComputerPlayer;
+        computerTurn = NO;
     }
 }
 
 // switch turn to the next user
-// if the game is in computer mode, the AI will move
 - (void)switchTurn{
-    if (whoseTurn == secondPlayer) {
-        self.whoseTurn = self.firstPlayer;
+    // else, switch turn alternately
+    if (whoseTurn == BlackPlayer) {
+        self.whoseTurn = WhitePlayer;
+        computerTurn = YES;
     }
     else{
-        self.whoseTurn = self.secondPlayer;
-        if (secondPlayer == ComputerPlayer) {
-            if (![self gameEnd]) {
-                ANHCell *bestMove  = [self highestScoreCell];
-                [self performSelector:@selector(makeMoveAtCell:) withObject:bestMove afterDelay:1];
-                //[self makeMoveAtCell:bestMove towardDirections:[self directionsValidToMoveFromCell:bestMove]];
+        self.whoseTurn = BlackPlayer;
+    }
+    // if the game is in computer mode, the AI will make move
+    if (self.playMode == ComputerMode) {
+        if (computerTurn == YES) {
+            if ([self nextPlayerCanMakeMove]) {
+                [self AIMakeMove];
+            }
+            else {
+                computerTurn = NO;
             }
         }
     }
+
 }
 
-- (BOOL) isBlackTurn{
-    if (self.whoseTurn == BlackPlayer || self.whoseTurn == HumanPlayer) {
-        return YES;
+- (void) AIMakeMove{
+    ANHCell *bestMove;  
+    if (AILevel == Easy) {
+        bestMove = [self highestScoreCell:Easy];
     }
-    else{
-        return NO;
+    else if (AILevel == Medium){
+        bestMove = [self highestScoreCell:Medium];
     }
+    else {
+        bestMove = [self highestScoreCell:Hard];
+    }
+    [self performSelector:@selector(makeMoveAtCell:) withObject:bestMove afterDelay:1];
+    computerTurn = NO;
 }
 
 // initialize the game board with 2 white pieces and 2 black pieces crossed in the middle of the board
@@ -104,7 +112,7 @@
     [self initCellState:BlackCell atRow:3 andColumn:4];
     [self initCellState:BlackCell atRow:4 andColumn:3];
     [self initCellState:WhiteCell atRow:4 andColumn:4];
-    self.whoseTurn = self.firstPlayer;
+    self.whoseTurn = BlackPlayer;
     [self updateBoard];
     
 }
@@ -124,7 +132,6 @@
         }
     }
     [self initBoardState];
-    //[self updateBoard];
 }
 
 // update the scores and inform the View Controller
@@ -220,10 +227,212 @@
     return NO;
 }
 
+
+- (ANHCell *) highestScoreCell:(AIDifficulty) level{
+    NSArray *availableCell = [self playableCells];
+    ANHCell *bestMove;
+    if (availableCell.count > 0) {
+        bestMove = [availableCell objectAtIndex:0];
+    }
+    
+    for (ANHCell *cell in availableCell) {
+        if (level == Easy) {
+            if ([self scoreForCellEasy:cell] > [self scoreForCellEasy:bestMove]) {
+                bestMove = cell;
+            }
+        }
+        else if (level == Medium){
+            if ([self scoreForCellMedium:cell] > [self scoreForCellMedium:bestMove]) {
+                bestMove = cell;
+            }
+        }
+        else {
+            
+        }
+        
+    }
+    return bestMove;
+}
+
+- (int) scoreForCellEasy:(ANHCell *)cell{
+    return [self directionsValidToMoveFromCell:cell].count;
+}
+
+- (int) scoreForCellMedium:(ANHCell *)cell{
+    int score = 0;
+    ANHCell *tempCell;
+    CellState PlayerCell;
+    CellState OponentCell;
+    if (self.whoseTurn == BlackPlayer) {
+        PlayerCell = BlackCell;
+        OponentCell = WhiteCell;
+    }
+    else{
+        PlayerCell = WhiteCell;
+        OponentCell = BlackCell;
+    }
+    cell.state = PlayerCell;
+    NSArray *directions = [self directionsValidToMoveFromCell:cell];
+    for (NSNumber *num in directions) {
+        Direction dir = [num intValue];
+        // for each direction, count how many flips available
+        if (dir == Top) {
+            tempCell = [self topCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self topCellOf:tempCell];
+            }
+        }
+        if (dir == TopRight) {
+            tempCell = [self topRightCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self topRightCellOf:tempCell];
+            }
+        }
+        if (dir == TopLeft) {
+            tempCell = [self topLeftCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self topLeftCellOf:tempCell];
+            }
+        }
+        if (dir == Left) {
+            tempCell = [self leftCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self leftCellOf:tempCell];
+            }
+        }
+        if (dir == Right) {
+            tempCell = [self rightCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self rightCellOf:tempCell];
+            }
+        }
+        if (dir == Bottom) {
+            tempCell = [self bottomCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self bottomCellOf:tempCell];
+            }
+        }
+        if (dir == BottomLeft) {
+            tempCell = [self bottomLeftCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self bottomLeftCellOf:tempCell];
+            }
+        }
+        if (dir == BottomRight) {
+            tempCell = [self bottomRightCellOf:cell];
+            while (tempCell.state != PlayerCell) {
+                score++;
+                tempCell = [self bottomRightCellOf:tempCell];
+            }
+        }
+    }
+    
+    return score;
+}
+
+
+- (void) setNeighborsForCell:(ANHCell *)cell{
+    if (cell.row!=0)
+        cell.topNeighbor = [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column];
+    
+    if (cell.row!=0 || cell.column!=7)
+        cell.topRightNeighbor =[[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column+1];
+    
+    if (cell.column!=7)
+        cell.rightNeighbor = [[cells objectAtIndex:cell.row]objectAtIndex:cell.column+1];
+    
+    if (cell.row!=7 || cell.column != 7)
+        cell.bottomRightNeighbor = [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column+1];
+    
+    if (cell.row==7)
+        cell.bottomNeighbor = [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column];
+    
+    if (cell.row==7 || cell.column == 0)
+        cell.bottomLeftNeighbor = [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column-1];
+    
+    if (cell.column==0)
+        cell.leftNeighbor = [[cells objectAtIndex:cell.row]objectAtIndex:cell.column-1];
+    
+    if (cell.row!=0 || cell.column!=0)
+        cell.topLeftNeighbor = [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column-1];
+}
+
+// return the top cell of the given cell
+- (ANHCell *) topCellOf:(ANHCell *)cell{
+    if (cell.row==0) {
+        return nil;
+    }
+    else
+        return [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column];
+}
+// return the top left cell of the given cell
+- (ANHCell *) topLeftCellOf:(ANHCell *)cell{
+    if (cell.row==0 || cell.column==0) {
+        return nil;
+    }
+    else
+        return [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column-1];
+    
+}
+// return the top right cell of the given cell
+- (ANHCell *) topRightCellOf:(ANHCell *)cell{
+    if (cell.row==0 || cell.column==7) {
+        return nil;
+    }
+    else
+        return [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column+1];
+}
+//return the left cell of the given cell
+- (ANHCell *) leftCellOf:(ANHCell *)cell{
+    if (cell.column==0) {
+        return nil;
+    }
+    else
+        return [[cells objectAtIndex:cell.row]objectAtIndex:cell.column-1];
+}
+// return the right cell of the given cell
+- (ANHCell *) rightCellOf:(ANHCell *)cell{
+    if (cell.column==7) {
+        return nil;
+    }
+    else
+        return [[cells objectAtIndex:cell.row]objectAtIndex:cell.column+1];
+}
+// return the bottom cell of the given cell
+- (ANHCell *) bottomCellOf:(ANHCell *)cell{
+    if (cell.row==7) {
+        return nil;
+    }
+    else
+        return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column];
+}
+// return the bottom left cell of the given cell
+- (ANHCell *) bottomLeftCellOf:(ANHCell *)cell{
+    if (cell.row==7 || cell.column == 0) {
+        return nil;
+    }
+    else
+        return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column-1];
+}
+// return the bottom right of the given cell
+- (ANHCell *) bottomRightCellOf:(ANHCell *)cell{
+    if (cell.row==7 || cell.column == 7) {
+        return nil;
+    }
+    else
+        return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column+1];
+}
 // take a cell and return an array of available directions that will make the cell is a valid move
 - (NSMutableArray *) directionsValidToMoveFromCell:(ANHCell *)cell{
     NSMutableArray * directions = [[NSMutableArray alloc] init];
-    // take the cell and find all the cells arround it 
+    // take the cell and find all the cells arround it
     ANHCell *thisCell = cell;
     ANHCell *topCell = [self topCellOf:thisCell];
     ANHCell *topLeftCell = [self topLeftCellOf:thisCell];
@@ -238,7 +447,7 @@
     CellState PlayerCell;
     CellState OponentCell;
     
-    if ([self isBlackTurn]) {
+    if (self.whoseTurn == BlackPlayer) {
         PlayerCell = BlackCell;
         OponentCell = WhiteCell;
     }
@@ -363,7 +572,6 @@
     return directions;
 }
 
-
 // for each available direction, turn all the oponent's cells into player cell
 - (void)makeMoveAtCell:(ANHCell *)cell{
     NSArray *directions = [self directionsValidToMoveFromCell:cell];
@@ -371,7 +579,7 @@
     CellState PlayerCell;
     CellState OponentCell;
     
-    if ([self isBlackTurn]) {
+    if (self.whoseTurn == BlackPlayer) {
         PlayerCell = BlackCell;
         OponentCell = WhiteCell;
     }
@@ -445,180 +653,18 @@
     // check if the next player is able to make a move, if not, tell the view controller and switch the turn back
     if (![self nextPlayerCanMakeMove]) {
         if (![self gameEnd]) {
-            [self.delegate playerIsNotAbleToMakeMove:self.whoseTurn];
-            [self switchTurn];
-            [self updateBoard];
+            [self playerCannotMove];
         }
     }
-    
 }
 
-// return the top cell of the given cell
-- (ANHCell *) topCellOf:(ANHCell *)cell{
-    if (cell.row==0) {
-        return nil;
+- (void) playerCannotMove{
+    if (![self gameEnd]) {
+        [self.delegate playerIsNotAbleToMakeMove:self.whoseTurn];
+        [self switchTurn];
+        [self updateBoard];
     }
-    else
-        return [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column];
-}
-// return the top left cell of the given cell
-- (ANHCell *) topLeftCellOf:(ANHCell *)cell{
-    if (cell.row==0 || cell.column==0) {
-        return nil;
-    }
-    else
-        return [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column-1];
-    
-}
-// return the top right cell of the given cell
-- (ANHCell *) topRightCellOf:(ANHCell *)cell{
-    if (cell.row==0 || cell.column==7) {
-        return nil;
-    }
-    else
-        return [[cells objectAtIndex:cell.row-1]objectAtIndex:cell.column+1];
-}
-//return the left cell of the given cell
-- (ANHCell *) leftCellOf:(ANHCell *)cell{
-    if (cell.column==0) {
-        return nil;
-    }
-    else
-        return [[cells objectAtIndex:cell.row]objectAtIndex:cell.column-1];
-}
-// return the right cell of the given cell
-- (ANHCell *) rightCellOf:(ANHCell *)cell{
-    if (cell.column==7) {
-        return nil;
-    }
-    else
-        return [[cells objectAtIndex:cell.row]objectAtIndex:cell.column+1];
-}
-// return the bottom cell of the given cell
-- (ANHCell *) bottomCellOf:(ANHCell *)cell{
-    if (cell.row==7) {
-        return nil;
-    }
-    else
-        return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column];
-}
-// return the bottom left cell of the given cell
-- (ANHCell *) bottomLeftCellOf:(ANHCell *)cell{
-    if (cell.row==7 || cell.column == 0) {
-        return nil;
-    }
-    else
-        return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column-1];
-}
-// return the bottom right of the given cell
-- (ANHCell *) bottomRightCellOf:(ANHCell *)cell{
-    if (cell.row==7 || cell.column == 7) {
-        return nil;
-    }
-    else
-        return [[cells objectAtIndex:cell.row+1]objectAtIndex:cell.column+1];
 }
 
-
-- (ANHCell *) highestScoreCell{
-    NSArray *availableCell = [self playableCells];
-    ANHCell *bestMove;
-    if (availableCell.count > 0) {
-        bestMove = [availableCell objectAtIndex:0];
-    }
-    
-    for (ANHCell *cell in availableCell) {
-        if ([self scoreForCellEasy:cell] > [self scoreForCellEasy:bestMove]) {
-            bestMove = cell;
-        }
-//        if ([self scoreForCellMedium:cell] > [self scoreForCellMedium:bestMove]) {
-//            bestMove = cell;
-//        }
-    }
-    return bestMove;
-}
-
-- (int) scoreForCellEasy:(ANHCell *)cell{
-    return [self directionsValidToMoveFromCell:cell].count;
-}
-
-- (int) scoreForCellMedium:(ANHCell *)cell{
-    int score = 0;
-    ANHCell *tempCell;
-    CellState PlayerCell;
-    CellState OponentCell;
-    if ([self isBlackTurn]) {
-        PlayerCell = BlackCell;
-        OponentCell = WhiteCell;
-    }
-    else{
-        PlayerCell = WhiteCell;
-        OponentCell = BlackCell;
-    }
-    cell.state = PlayerCell;
-    NSArray *directions = [self directionsValidToMoveFromCell:cell];
-    for (NSNumber *num in directions) {
-        Direction dir = [num intValue];
-        // for each direction, count how many flips available
-        if (dir == Top) {
-            tempCell = [self topCellOf:cell];
-            while (tempCell.state != PlayerCell) {
-                score++;
-                tempCell = [self topCellOf:tempCell];
-            }
-        }
-        if (dir == TopRight) {
-            tempCell = [self topRightCellOf:cell];
-            while (tempCell.state != PlayerCell) {
-                score++;
-                tempCell = [self topRightCellOf:tempCell];
-            }
-        }
-        if (dir == TopLeft) {
-            tempCell = [self topLeftCellOf:cell];
-            while (tempCell.state != PlayerCell) {
-                score++;
-                tempCell = [self topLeftCellOf:tempCell];
-            }
-        }
-        if (dir == Left) {
-            tempCell = [self leftCellOf:cell];
-            while (tempCell.state != PlayerCell) {
-                score++;
-                tempCell = [self leftCellOf:tempCell];
-            }
-        }
-        if (dir == Right) {
-            tempCell = [self rightCellOf:cell];
-            while (tempCell.state != PlayerCell) {
-                score++;
-                tempCell = [self rightCellOf:tempCell];
-            }
-        }
-        if (dir == Bottom) {
-            tempCell = [self bottomCellOf:cell];
-            while (tempCell.state != PlayerCell) {
-                score++;
-                tempCell = [self bottomCellOf:tempCell];
-            }
-        }
-        if (dir == BottomLeft) {
-            tempCell = [self bottomLeftCellOf:cell];
-            while (tempCell.state != PlayerCell) {
-                score++;
-                tempCell = [self bottomLeftCellOf:tempCell];
-            }
-        }
-        if (dir == BottomRight) {
-            tempCell = [self bottomRightCellOf:cell];
-            while (tempCell.state != PlayerCell) {
-                score++;
-                tempCell = [self bottomRightCellOf:tempCell];
-            }
-        }
-    }
-    
-    return score;
-}
 
 @end

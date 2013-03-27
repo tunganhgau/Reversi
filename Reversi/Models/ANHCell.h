@@ -21,6 +21,14 @@ typedef enum{
 @property (nonatomic, strong) id <CellStateDelegate> delegate;
 @property (nonatomic) int column;
 @property (nonatomic) int row;
+@property (nonatomic, weak) ANHCell *topNeighbor;
+@property (nonatomic, weak) ANHCell *topRightNeighbor;
+@property (nonatomic, weak) ANHCell *RightNeighbor;
+@property (nonatomic, weak) ANHCell *bottomRightNeighbor;
+@property (nonatomic, weak) ANHCell *bottomNeighbor;
+@property (nonatomic, weak) ANHCell *bottomLeftNeighbor;
+@property (nonatomic, weak) ANHCell *leftNeighbor;
+@property (nonatomic, weak) ANHCell *topLeftNeighbor;
 
 - (id) initAtRow:(int)r andColumn:(int)c;
 - (void) cellChangedWithCellAnimation:(BOOL) flip;

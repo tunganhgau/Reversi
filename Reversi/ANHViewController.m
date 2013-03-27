@@ -64,7 +64,7 @@
 - (void) updateGame{
     self.blackScoreTextView.text = [NSString stringWithFormat:@"%d",self.gameBoard.blackScore];
     self.whiteScoreTextView.text = [NSString stringWithFormat:@"%d",self.gameBoard.whiteScore];
-    if ([self.gameBoard isBlackTurn]){
+    if (self.gameBoard.whoseTurn == BlackPlayer){
         self.whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
         self.whoseTurnTextView.textColor = [UIColor blackColor];
     }

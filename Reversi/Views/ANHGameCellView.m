@@ -54,8 +54,7 @@
 // Response to a Tap Gesture
 - (void) cellTapped:(UITapGestureRecognizer *) recognizer{
     if (self.cell.state == EmptyCell) {
-        NSMutableArray * availableDirections = [self.board directionsValidToMoveFromCell:self.cell];
-        if ([availableDirections count] != 0) {
+        if ([self.board cellIsMoveable:self.cell]) {
             [self.board makeMoveAtCell:self.cell];
         }
     }

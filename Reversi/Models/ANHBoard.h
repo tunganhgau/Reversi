@@ -25,20 +25,25 @@ typedef NS_ENUM(int, PlayMode) {
     ComputerMode
 };
 
+typedef NS_ENUM(int, AIDifficulty){
+    Easy,
+    Medium,
+    Hard
+};
+
 @interface ANHBoard : NSObject <NSCopying>
 
 @property (copy,nonatomic) NSMutableArray *cells;
 @property (nonatomic) Player whoseTurn;
-@property (nonatomic) Player firstPlayer;
-@property (nonatomic) Player secondPlayer;
 @property (nonatomic) Player winner;
 @property (nonatomic) PlayMode playMode;
+@property (nonatomic) BOOL computerTurn;
+@property (nonatomic) AIDifficulty AILevel;
 @property (nonatomic) int blackScore;
 @property (nonatomic) int whiteScore;
 @property (nonatomic, strong) id<BoardDelegate> delegate;
 
 - (void) switchTurn;
-- (BOOL) isBlackTurn;
 - (void) initBoardState;
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column;
 - (NSMutableArray *) directionsValidToMoveFromCell:(ANHCell *)cell;
@@ -49,5 +54,6 @@ typedef NS_ENUM(int, PlayMode) {
 - (void) resetBoard;
 - (void) updateBoard;
 - (BOOL) gameEnd;
-- (ANHCell *) highestScoreCell;
+- (void) setNeighborsForCell:(ANHCell *)cell;
+- (void) playerCannotMove;
 @end
