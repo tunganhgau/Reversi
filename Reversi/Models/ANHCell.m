@@ -26,7 +26,7 @@
 }
 
 - (id) copyWithZone:(NSZone *)zone{
-    ANHCell *another = [[ANHCell allocWithZone:zone] initAtRow:self.row andColumn:self.column];
+    ANHCell *another = [[ANHCell allocWithZone:zone]initAtRow:self.row andColumn:self.column];
     another.state = self.state;
     another.delegate = self.delegate;
     return another;

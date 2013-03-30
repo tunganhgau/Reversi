@@ -40,14 +40,13 @@
 }
 
 - (id) copyWithZone:(NSZone *)zone{
-    ANHBoard *another = [[ANHBoard alloc] init];
+    ANHBoard *another = [[ANHBoard allocWithZone:zone] init];
     for (int i = 0; i<8; i++) {
         for (int j = 0; j<8; j++) {
-            ANHCell *tempCell = [[another.cells objectAtIndex:j] objectAtIndex:j];
-            tempCell = [[[self.cells objectAtIndex:i] objectAtIndex:j] copy];
+            ANHCell *copyCell = [[[self.cells objectAtIndex:i] objectAtIndex:j] copyWithZone:nil];
+            [[another.cells objectAtIndex:i] replaceObjectAtIndex:j withObject:copyCell] ;
         }
     }
-    //another.cells = [self.cells copy];
     another.whoseTurn = self.whoseTurn;
     another.winner = self.winner;
     another.playMode = self.playMode;
@@ -671,6 +670,7 @@
             }
         }
     }
+    // finished making move, switch turn to the other player and update board
     [self switchTurn];
     [self updateBoard];
     // check if the next player is able to make a move, if not, tell the view controller and switch the turn back

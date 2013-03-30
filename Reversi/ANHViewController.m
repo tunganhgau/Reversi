@@ -40,7 +40,9 @@
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
     [_gameBoard initBoardState];
-    _startBoard = [_gameBoard copy];
+    _boardStack = [[NSMutableArray alloc] init];
+    _startBoard = [_gameBoard copyWithZone:nil];
+    [_boardStack addObject:_startBoard];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
@@ -102,12 +104,13 @@
 }
 
 - (IBAction)undoMove:(UIButton *)sender {
-    self.gameBoard = self.startBoard;
+    self.gameBoard = [self.startBoard copyWithZone:nil];
     self.gameBoardView.gameBoard = self.gameBoard;
-    self.gameBoard.delegate = self;
+    //self.gameBoard.delegate = self;
     for (int row = 0; row < 8; row++) {
         for (int col = 0; col < 8; col++) {
-            ANHGameCellView *temp =[[self.gameBoardView.cellViews objectAtIndex:row] objectAtIndex:col];
+            ANHGameCellView *temp = [[self.gameBoardView.cellViews objectAtIndex:row] objectAtIndex:col];
+            temp.board = self.gameBoard;
             temp.cell = [[self.gameBoard.cells objectAtIndex:row] objectAtIndex:col];
             [temp updateCellView];
         }
