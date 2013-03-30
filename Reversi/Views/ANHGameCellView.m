@@ -85,6 +85,8 @@
 
 // place a new piece animation
 - (void) updateCellView{
+    [self addSubview:self.whiteView];
+    [self addSubview:self.blackView];
     if (self.cell.state == BlackCell) {
         self.blackView.hidden = NO;
         self.whiteView.hidden = YES;
@@ -94,8 +96,6 @@
         self.whiteView.hidden = NO;
     }
     else {
-        [self addSubview:self.whiteView];
-        [self addSubview:self.blackView];
         self.blackView.hidden = YES;
         self.whiteView.hidden = YES;
     }

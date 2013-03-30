@@ -11,7 +11,6 @@
 
 
 @implementation ANHGameBoardView
-@synthesize cells;
 @synthesize cellViews;
 @synthesize gameBoard;
 

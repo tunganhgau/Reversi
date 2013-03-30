@@ -17,7 +17,6 @@
 @property (nonatomic) float width;
 
 @property (weak, nonatomic) ANHBoard *gameBoard;
-@property (copy, nonatomic) NSArray *cells;
 @property (copy, nonatomic) NSMutableArray *cellViews;
 
 - (id)initWithFrame:(CGRect)frame andBoard:(ANHBoard *)board;
