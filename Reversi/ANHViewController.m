@@ -104,7 +104,24 @@
 }
 
 - (IBAction)undoMove:(UIButton *)sender {
-    self.gameBoard = [self.startBoard copyWithZone:nil];
+    // retrieve the last board, unless the board is already at its initial state
+    if (self.boardStack.count > 1) {
+        // if the game is in player mode, undo one move
+        if (self.playMode == PlayerMode) {
+            self.gameBoard = [self.boardStack objectAtIndex:(self.boardStack.count - 1)];
+            [self.boardStack removeLastObject];
+        }
+        // if the board is in AI mode, undo two move since the very last move was computer's move and we dont want the computer to make the same move
+        else {
+            // remove the last move made by computer in AI mode
+            [self.boardStack removeLastObject];
+            self.gameBoard = [self.boardStack objectAtIndex:(self.boardStack.count - 1)];
+            [self.boardStack removeLastObject];
+        }
+    }
+    else{
+        self.gameBoard = [self.startBoard copyWithZone:nil];
+    }
     self.gameBoardView.gameBoard = self.gameBoard;
     //self.gameBoard.delegate = self;
     for (int row = 0; row < 8; row++) {
@@ -118,6 +135,10 @@
     [self updateGame];
 }
 
+// save the current board for undo feature
+- (void) addBoardToStack{
+    [self.boardStack addObject:[self.gameBoard copyWithZone:nil]];
+}
 
 /*
  Things to do:

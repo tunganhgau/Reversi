@@ -596,6 +596,10 @@
 
 // for each available direction, turn all the oponent's cells into player cell
 - (void)makeMoveAtCell:(ANHCell *)cell{
+    // before making a move, tell the Game View Controller to save the current board for undo feature
+    if ([self.delegate respondsToSelector:@selector(addBoardToStack)]) {
+        [self.delegate addBoardToStack];
+    }
     NSArray *directions = [self directionsValidToMoveFromCell:cell];
     ANHCell *tempCell;
     CellState PlayerCell;
@@ -679,7 +683,9 @@
             [self playerCannotMove];
         }
     }
+    
 }
+
 
 - (void) playerCannotMove{
     if (![self gameEnd]) {
