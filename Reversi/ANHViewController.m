@@ -91,6 +91,7 @@
     [alert show];
 }
 
+// if the player is not able to make move, show an allert to let them know
 - (void) playerIsNotAbleToMakeMove:(Player)player{
     NSString *message;
     if (player == BlackPlayer) {
