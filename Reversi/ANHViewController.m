@@ -137,8 +137,15 @@
 }
 
 // save the current board for undo feature
-- (void) addBoardToStack{
+- (void) newPiecePlayed{
     [self.boardStack addObject:[self.gameBoard copyWithZone:nil]];
+    [self playWoodSound];
+}
+
+- (void) playWoodSound{
+    NSURL *woodSound = [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"wood_sound" ofType:@"wav"]];
+    AVAudioPlayer *sound = [[AVAudioPlayer alloc]initWithContentsOfURL:woodSound error:nil];
+    [sound play];                    
 }
 
 /*

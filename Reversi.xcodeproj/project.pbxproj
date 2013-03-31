@@ -15,6 +15,8 @@
 		BD5D540D16E79200004FC868 /* ANHCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D540C16E79200004FC868 /* ANHCell.m */; };
 		BD5D541016E7CE55004FC868 /* ANHBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D540F16E7CE55004FC868 /* ANHBoard.m */; };
 		BD5D541316E80AFE004FC868 /* ANHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */; };
+		BD8D3C4C1707F2B600071045 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8D3C4B1707F2B600071045 /* AVFoundation.framework */; };
+		BD8D3C4E1707F2D200071045 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8D3C4D1707F2D200071045 /* AVFoundation.framework */; };
 		BD922B8516E5B3AE00261599 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8416E5B3AE00261599 /* UIKit.framework */; };
 		BD922B8716E5B3AE00261599 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8616E5B3AE00261599 /* Foundation.framework */; };
 		BD922B8916E5B3AE00261599 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8816E5B3AE00261599 /* CoreGraphics.framework */; };
@@ -69,6 +71,8 @@
 		BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHMenuViewController.m; sourceTree = "<group>"; };
 		BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCellStateDelegate.h; sourceTree = "<group>"; };
 		BD5D541716EC3494004FC868 /* ANHBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoard.h; sourceTree = "<group>"; };
+		BD8D3C4B1707F2B600071045 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BD8D3C4D1707F2D200071045 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVFoundation.framework; sourceTree = "<group>"; };
 		BD922B8116E5B3AE00261599 /* Reversi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reversi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD922B8416E5B3AE00261599 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BD922B8616E5B3AE00261599 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,9 +119,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8D3C4C1707F2B600071045 /* AVFoundation.framework in Frameworks */,
 				BD922B8516E5B3AE00261599 /* UIKit.framework in Frameworks */,
 				BD922B8716E5B3AE00261599 /* Foundation.framework in Frameworks */,
 				BD922B8916E5B3AE00261599 /* CoreGraphics.framework in Frameworks */,
+				BD8D3C4E1707F2D200071045 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +143,7 @@
 		BD922B7816E5B3AD00261599 = {
 			isa = PBXGroup;
 			children = (
+				BD8D3C4B1707F2B600071045 /* AVFoundation.framework */,
 				BD922BD216E700AF00261599 /* Views */,
 				BD922BD116E7009300261599 /* Models */,
 				BD922B8A16E5B3AE00261599 /* Reversi */,
@@ -158,6 +165,7 @@
 		BD922B8316E5B3AE00261599 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD8D3C4D1707F2D200071045 /* AVFoundation.framework */,
 				BD922B8416E5B3AE00261599 /* UIKit.framework */,
 				BD922B8616E5B3AE00261599 /* Foundation.framework */,
 				BD922B8816E5B3AE00261599 /* CoreGraphics.framework */,
@@ -524,6 +532,10 @@
 		BD922BBD16E5B3AE00261599 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Reversi/Reversi-Prefix.pch";
 				INFOPLIST_FILE = "Reversi/Reversi-Info.plist";
@@ -535,6 +547,10 @@
 		BD922BBE16E5B3AE00261599 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Reversi/Reversi-Prefix.pch";
 				INFOPLIST_FILE = "Reversi/Reversi-Info.plist";

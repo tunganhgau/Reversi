@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "ANHGameBoardView.h"
 #import "ANHBoardDelegate.h"
 
