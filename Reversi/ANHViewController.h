@@ -11,7 +11,7 @@
 #import "ANHGameBoardView.h"
 #import "ANHBoardDelegate.h"
 
-@interface ANHViewController : UIViewController<BoardDelegate>
+@interface ANHViewController : UIViewController<BoardDelegate,AVAudioPlayerDelegate>
 
 @property (strong, nonatomic) ANHGameBoardView *gameBoardView;
 @property (strong, nonatomic) ANHBoard *gameBoard;
@@ -23,8 +23,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *whoseTurnLabel;
 @property (strong, nonatomic) IBOutlet UITextView *whoseTurnTextView;
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
-- (IBAction)undoMove:(UIButton *)sender;
+@property (strong, nonatomic) AVAudioPlayer *woodSound;
 @property (nonatomic) PlayMode playMode;
+- (IBAction)undoMove:(UIButton *)sender;
 - (IBAction)resetGame:(UIButton *)sender;
 - (void) boardChanged;
 - (void) gameEndedWithWinner:(Player)winner;

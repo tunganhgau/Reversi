@@ -15,8 +15,6 @@
 		BD5D540D16E79200004FC868 /* ANHCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D540C16E79200004FC868 /* ANHCell.m */; };
 		BD5D541016E7CE55004FC868 /* ANHBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D540F16E7CE55004FC868 /* ANHBoard.m */; };
 		BD5D541316E80AFE004FC868 /* ANHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */; };
-		BD8D3C4C1707F2B600071045 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8D3C4B1707F2B600071045 /* AVFoundation.framework */; };
-		BD8D3C4E1707F2D200071045 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD8D3C4D1707F2D200071045 /* AVFoundation.framework */; };
 		BD922B8516E5B3AE00261599 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8416E5B3AE00261599 /* UIKit.framework */; };
 		BD922B8716E5B3AE00261599 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8616E5B3AE00261599 /* Foundation.framework */; };
 		BD922B8916E5B3AE00261599 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD922B8816E5B3AE00261599 /* CoreGraphics.framework */; };
@@ -43,9 +41,10 @@
 		BD9385DC16F19E53002CD99A /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385DB16F19E53002CD99A /* 72.png */; };
 		BDA41CA116F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA41C9F16F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard */; };
 		BDA41CA416F3F64A00AAAF06 /* ANHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA41CA316F3F64A00AAAF06 /* ANHSettingViewController.m */; };
+		BDE854721710C35100DBFC50 /* wood_sound.aac in Resources */ = {isa = PBXBuildFile; fileRef = BDE854711710C35100DBFC50 /* wood_sound.aac */; };
+		BDE8547A1710CA5100DBFC50 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE854791710CA5100DBFC50 /* AVFoundation.framework */; };
 		BDFD464E17014C9D00E9B0DA /* blackPiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFD464B17014C9D00E9B0DA /* blackPiece.png */; };
 		BDFD464F17014C9D00E9B0DA /* whitePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFD464C17014C9D00E9B0DA /* whitePiece.png */; };
-		BDFD465017014C9D00E9B0DA /* wood_sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BDFD464D17014C9D00E9B0DA /* wood_sound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +70,6 @@
 		BD5D541216E80AFE004FC868 /* ANHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHMenuViewController.m; sourceTree = "<group>"; };
 		BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHCellStateDelegate.h; sourceTree = "<group>"; };
 		BD5D541716EC3494004FC868 /* ANHBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoard.h; sourceTree = "<group>"; };
-		BD8D3C4B1707F2B600071045 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		BD8D3C4D1707F2D200071045 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVFoundation.framework; sourceTree = "<group>"; };
 		BD922B8116E5B3AE00261599 /* Reversi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reversi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD922B8416E5B3AE00261599 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BD922B8616E5B3AE00261599 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -108,10 +105,11 @@
 		BDA41CA016F3E31D00AAAF06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		BDA41CA216F3F64A00AAAF06 /* ANHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANHSettingViewController.h; path = Views/ANHSettingViewController.h; sourceTree = "<group>"; };
 		BDA41CA316F3F64A00AAAF06 /* ANHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANHSettingViewController.m; path = Views/ANHSettingViewController.m; sourceTree = "<group>"; };
+		BDE854711710C35100DBFC50 /* wood_sound.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = wood_sound.aac; sourceTree = "<group>"; };
+		BDE854791710CA5100DBFC50 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BDF1F99316F056EB00AB14EE /* ANHBoardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoardDelegate.h; sourceTree = "<group>"; };
 		BDFD464B17014C9D00E9B0DA /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackPiece.png; sourceTree = "<group>"; };
 		BDFD464C17014C9D00E9B0DA /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitePiece.png; sourceTree = "<group>"; };
-		BDFD464D17014C9D00E9B0DA /* wood_sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wood_sound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,11 +117,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD8D3C4C1707F2B600071045 /* AVFoundation.framework in Frameworks */,
+				BDE8547A1710CA5100DBFC50 /* AVFoundation.framework in Frameworks */,
 				BD922B8516E5B3AE00261599 /* UIKit.framework in Frameworks */,
 				BD922B8716E5B3AE00261599 /* Foundation.framework in Frameworks */,
 				BD922B8916E5B3AE00261599 /* CoreGraphics.framework in Frameworks */,
-				BD8D3C4E1707F2D200071045 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +140,6 @@
 		BD922B7816E5B3AD00261599 = {
 			isa = PBXGroup;
 			children = (
-				BD8D3C4B1707F2B600071045 /* AVFoundation.framework */,
 				BD922BD216E700AF00261599 /* Views */,
 				BD922BD116E7009300261599 /* Models */,
 				BD922B8A16E5B3AE00261599 /* Reversi */,
@@ -165,7 +161,7 @@
 		BD922B8316E5B3AE00261599 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BD8D3C4D1707F2D200071045 /* AVFoundation.framework */,
+				BDE854791710CA5100DBFC50 /* AVFoundation.framework */,
 				BD922B8416E5B3AE00261599 /* UIKit.framework */,
 				BD922B8616E5B3AE00261599 /* Foundation.framework */,
 				BD922B8816E5B3AE00261599 /* CoreGraphics.framework */,
@@ -195,7 +191,7 @@
 			children = (
 				BDFD464B17014C9D00E9B0DA /* blackPiece.png */,
 				BDFD464C17014C9D00E9B0DA /* whitePiece.png */,
-				BDFD464D17014C9D00E9B0DA /* wood_sound.wav */,
+				BDE854711710C35100DBFC50 /* wood_sound.aac */,
 				BD361A8E16FEA99000B88F41 /* gameBoard.png */,
 				BD361A8F16FEA99000B88F41 /* menuButton.png */,
 				BD361A9016FEA99000B88F41 /* restartButton.png */,
@@ -357,7 +353,7 @@
 				BD361A9716FEA99000B88F41 /* undoButton.png in Resources */,
 				BDFD464E17014C9D00E9B0DA /* blackPiece.png in Resources */,
 				BDFD464F17014C9D00E9B0DA /* whitePiece.png in Resources */,
-				BDFD465017014C9D00E9B0DA /* wood_sound.wav in Resources */,
+				BDE854721710C35100DBFC50 /* wood_sound.aac in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 #import "ANHCell.h"
 
 @implementation ANHViewController
+@synthesize woodSound;
 
 - (id) init{
     self = [super init];
@@ -47,6 +48,12 @@
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
     _whoseTurnLabel.textColor = [UIColor blackColor];
+    
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"wood_sound" ofType:@"aac"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    woodSound = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+    [woodSound prepareToPlay];
+    woodSound.volume = 1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -143,9 +150,7 @@
 }
 
 - (void) playWoodSound{
-    NSURL *woodSound = [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"wood_sound" ofType:@"wav"]];
-    AVAudioPlayer *sound = [[AVAudioPlayer alloc]initWithContentsOfURL:woodSound error:nil];
-    [sound play];                    
+    [woodSound play];
 }
 
 /*
