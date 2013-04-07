@@ -7,10 +7,7 @@
 //
 
 #import "ANHViewController.h"
-#import "ANHGameBoardView.h"
-#import "ANHGameCellView.h"
 #import "ANHBoard.h"
-#import "ANHCell.h"
 
 @implementation ANHViewController
 @synthesize woodSound;
@@ -44,7 +41,7 @@
     _boardStack = [[NSMutableArray alloc] init];
     _startBoard = [_gameBoard copyWithZone:nil];
     [_boardStack addObject:_startBoard];
-    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"verticalBackground.png"]];
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
     _whoseTurnLabel.textColor = [UIColor blackColor];

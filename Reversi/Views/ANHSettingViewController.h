@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ANHViewController.h"
+
+
 
 @interface ANHSettingViewController : UIViewController
+
+@property (nonatomic) BOOL soundEffect;
+@property (nonatomic) BOOL blackGoFirst;
+@property (nonatomic) AIDifficulty AILevel;
 
 @end

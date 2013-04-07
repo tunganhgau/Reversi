@@ -10,6 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "ANHGameBoardView.h"
 #import "ANHBoardDelegate.h"
+#import "ANHGameCellView.h"
+#import "ANHCell.h"
 
 @interface ANHViewController : UIViewController<BoardDelegate,AVAudioPlayerDelegate>
 
