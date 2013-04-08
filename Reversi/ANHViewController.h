@@ -12,6 +12,7 @@
 #import "ANHBoardDelegate.h"
 #import "ANHGameCellView.h"
 #import "ANHCell.h"
+#import "ANHSettingViewController.h"
 
 @interface ANHViewController : UIViewController<BoardDelegate,AVAudioPlayerDelegate>
 
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
 @property (strong, nonatomic) AVAudioPlayer *woodSound;
 @property (nonatomic) PlayMode playMode;
+@property (nonatomic) BOOL soundOn;
 - (IBAction)undoMove:(UIButton *)sender;
 - (IBAction)resetGame:(UIButton *)sender;
 - (void) boardChanged;

@@ -13,6 +13,8 @@
 @synthesize whoseTurn;
 @synthesize AILevel;
 @synthesize computerTurn;
+@synthesize blackGoFirst;
+@synthesize playerIsBlack;
 
 @synthesize cells;
 - (id) init{
@@ -34,6 +36,8 @@
         _blackScore = 0;
         _whiteScore = 0;
         AILevel = Hard;
+        blackGoFirst = YES;
+        playerIsBlack = YES;
     }
     
     return self;

@@ -38,6 +38,8 @@ typedef NS_ENUM(int, AIDifficulty){
 @property (nonatomic) Player winner;
 @property (nonatomic) PlayMode playMode;
 @property (nonatomic) BOOL computerTurn;
+@property (nonatomic) BOOL blackGoFirst;
+@property (nonatomic) BOOL playerIsBlack;
 @property (nonatomic) AIDifficulty AILevel;
 @property (nonatomic) int blackScore;
 @property (nonatomic) int whiteScore;

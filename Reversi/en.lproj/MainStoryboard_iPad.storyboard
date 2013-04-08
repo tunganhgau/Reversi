@@ -145,7 +145,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="MVL-XR-HnM" kind="popover" popoverAnchorView="gOi-y4-c7O" id="Gfe-vb-Xhc">
+                                    <segue destination="MVL-XR-HnM" kind="popover" identifier="settingView" popoverAnchorView="gOi-y4-c7O" id="Gfe-vb-Xhc">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" left="YES"/>
                                     </segue>
                                 </connections>
@@ -241,6 +241,9 @@
                                     <segment title="Black"/>
                                     <segment title="White"/>
                                 </segments>
+                                <connections>
+                                    <action selector="firstMoveSegmentChanged:" destination="MVL-XR-HnM" eventType="valueChanged" id="Uwi-QY-Wl5"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1cQ-55-Qkf">
                                 <segments>
@@ -248,6 +251,9 @@
                                     <segment title="Medium"/>
                                     <segment title="Hard"/>
                                 </segments>
+                                <connections>
+                                    <action selector="difficultySegmentChanged:" destination="MVL-XR-HnM" eventType="valueChanged" id="Tfi-2j-euT"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Difficulty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTv-9U-djn">
                                 <constraints>
@@ -272,6 +278,9 @@
                                     <segment title="Black"/>
                                     <segment title="White"/>
                                 </segments>
+                                <connections>
+                                    <action selector="colorSegmentChanged:" destination="MVL-XR-HnM" eventType="valueChanged" id="R4S-QP-EeX"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sound Effects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dt8-l8-Ndc">
                                 <constraints>
@@ -282,7 +291,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Pc-qv-Xlp"/>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Pc-qv-Xlp">
+                                <connections>
+                                    <action selector="soundSwitchChanged:" destination="MVL-XR-HnM" eventType="valueChanged" id="L8b-vF-zaM"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -304,6 +317,12 @@
                             <constraint firstAttribute="bottom" secondItem="ZTv-9U-djn" secondAttribute="bottom" constant="86" id="zhR-W8-d2v"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="colorSegment" destination="dcr-gH-HuU" id="ZgW-9X-raG"/>
+                        <outlet property="difficultySegment" destination="1cQ-55-Qkf" id="abX-Bv-NBy"/>
+                        <outlet property="firstMoveSegment" destination="7BH-Zw-OjA" id="U81-UI-QAn"/>
+                        <outlet property="soundSwitch" destination="3Pc-qv-Xlp" id="bvA-jx-R2Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3u-fE-pT0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -319,34 +338,6 @@
         <image name="undoButton.png" width="348" height="122"/>
         <image name="whitePiece.png" width="80" height="80"/>
     </resources>
-    <classes>
-        <class className="ANHMenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHMenuViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="playWithComputerButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="playWithPlayerButtonPressed:" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ANHSettingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHSettingViewController.h"/>
-        </class>
-        <class className="ANHViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ANHViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resetGame:" candidateClass="UIButton"/>
-                <relationship kind="action" name="undoMove:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="blackScoreTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="resetButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="whiteScoreTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="whoseTurnImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="whoseTurnLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="whoseTurnTextView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

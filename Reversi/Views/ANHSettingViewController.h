@@ -13,8 +13,18 @@
 
 @interface ANHSettingViewController : UIViewController
 
-@property (nonatomic) BOOL soundEffect;
+@property (nonatomic, weak) UIViewController *sourceView;
+@property (nonatomic) BOOL soundOn;
 @property (nonatomic) BOOL blackGoFirst;
+@property (nonatomic) BOOL playerIsBlack;
 @property (nonatomic) AIDifficulty AILevel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *firstMoveSegment;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *colorSegment;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *difficultySegment;
+@property (weak, nonatomic) IBOutlet UISwitch *soundSwitch;
+- (IBAction)firstMoveSegmentChanged:(UISegmentedControl *)sender;
+- (IBAction)colorSegmentChanged:(UISegmentedControl *)sender;
+- (IBAction)difficultySegmentChanged:(UISegmentedControl *)sender;
+- (IBAction)soundSwitchChanged:(UISwitch *)sender;
 
 @end

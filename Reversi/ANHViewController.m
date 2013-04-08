@@ -11,6 +11,7 @@
 
 @implementation ANHViewController
 @synthesize woodSound;
+@synthesize soundOn;
 
 - (id) init{
     self = [super init];
@@ -46,6 +47,7 @@
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
     _whoseTurnLabel.textColor = [UIColor blackColor];
     
+    soundOn = YES;
     NSString *path = [[NSBundle mainBundle]pathForResource:@"wood_sound" ofType:@"aac"];
     NSURL *url = [NSURL fileURLWithPath:path];
     woodSound = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
@@ -149,6 +151,18 @@
 - (void) playWoodSound{
     [woodSound play];
 }
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    ANHSettingViewController *settingPopover = (ANHSettingViewController *)segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"settingView"]) {
+        settingPopover.sourceView = self;
+        settingPopover.blackGoFirst = self.gameBoard.blackGoFirst;
+        settingPopover.playerIsBlack = self.gameBoard.playerIsBlack;
+        settingPopover.AILevel = self.gameBoard.AILevel;
+        settingPopover.soundOn = self.soundOn;
+    }
+}
+
 
 /*
  Things to do:
