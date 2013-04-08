@@ -13,6 +13,7 @@
 @synthesize woodSound;
 @synthesize soundOn;
 
+
 - (id) init{
     self = [super init];
     if (self) {
@@ -163,6 +164,14 @@
     }
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        
+    }
+    else {
+        [self.gameBoard resetBoard];
+    }
+}
 
 /*
  Things to do:

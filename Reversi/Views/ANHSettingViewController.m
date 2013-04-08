@@ -74,18 +74,17 @@
         gameView.gameBoard.AILevel = self.AILevel;
         gameView.soundOn = self.soundOn;
     }
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
     ANHViewController *gameView = (ANHViewController *)self.sourceView;
     if (gameView.gameBoard.blackGoFirst != self.blackGoFirst || gameView.gameBoard.playerIsBlack != self.playerIsBlack || gameView.gameBoard.AILevel != self.AILevel || gameView.soundOn != self.soundOn) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setting Changed" message:@"Do you want to start a new game with this setting?" delegate:nil cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setting Changed" message:@"The game will restart with the new setting" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
         [alert show];
-        gameView.gameBoard.blackGoFirst = self.blackGoFirst;
-        gameView.gameBoard.playerIsBlack = self.playerIsBlack;
-        gameView.gameBoard.AILevel = self.AILevel;
-        gameView.soundOn = self.soundOn;
+//        gameView.gameBoard.blackGoFirst = self.blackGoFirst;
+//        gameView.gameBoard.playerIsBlack = self.playerIsBlack;
+//        gameView.gameBoard.AILevel = self.AILevel;
+//        gameView.soundOn = self.soundOn;
     }
 }
 

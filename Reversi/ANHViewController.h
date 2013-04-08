@@ -14,7 +14,8 @@
 #import "ANHCell.h"
 #import "ANHSettingViewController.h"
 
-@interface ANHViewController : UIViewController<BoardDelegate,AVAudioPlayerDelegate>
+@interface ANHViewController : UIViewController<BoardDelegate,AVAudioPlayerDelegate,UIAlertViewDelegate>
+
 
 @property (strong, nonatomic) ANHGameBoardView *gameBoardView;
 @property (strong, nonatomic) ANHBoard *gameBoard;
