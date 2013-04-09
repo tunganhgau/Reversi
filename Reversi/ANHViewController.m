@@ -155,8 +155,10 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ANHSettingViewController *settingPopover = (ANHSettingViewController *)segue.destinationViewController;
+    self.settingController = settingPopover;
     if ([segue.identifier isEqualToString:@"settingView"]) {
         settingPopover.sourceView = self;
+        settingPopover.delegate = self;
         settingPopover.blackGoFirst = self.gameBoard.blackGoFirst;
         settingPopover.playerIsBlack = self.gameBoard.playerIsBlack;
         settingPopover.AILevel = self.gameBoard.AILevel;
@@ -165,14 +167,25 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 0) {
-        
-    }
-    else {
+    if (buttonIndex != 0) {
+        self.gameBoard.blackGoFirst = self.blackGoFirst;
+        self.gameBoard.playerIsBlack = self.playerIsBlack;
+        self.gameBoard.AILevel = self.AILevel;
         [self.gameBoard resetBoard];
     }
 }
 
+- (void)soundSwitchToggled{
+    soundOn = !soundOn;
+}
+
+- (void)settingChangedWith:(BOOL)blackGoFirst andPlayerColor:(BOOL)blackColor andAILevel:(int)level{
+    self.blackGoFirst = blackGoFirst;
+    self.playerIsBlack = blackColor;
+    self.AILevel = level;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setting Changed" message:@"The game will restart with the new setting" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [alert show];
+}
 /*
  Things to do:
  2 UIAlert appear when play with AI

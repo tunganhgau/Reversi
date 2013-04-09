@@ -13,10 +13,11 @@
 #import "ANHGameCellView.h"
 #import "ANHCell.h"
 #import "ANHSettingViewController.h"
+#import "ANHSettingDelegate.h"
 
-@interface ANHViewController : UIViewController<BoardDelegate,AVAudioPlayerDelegate,UIAlertViewDelegate>
+@interface ANHViewController : UIViewController<BoardDelegate,AVAudioPlayerDelegate,UIAlertViewDelegate,ANHSettingDelegate>
 
-
+@property (weak, nonatomic) UIViewController *settingController;
 @property (strong, nonatomic) ANHGameBoardView *gameBoardView;
 @property (strong, nonatomic) ANHBoard *gameBoard;
 @property (strong, nonatomic) ANHBoard *startBoard;
@@ -30,6 +31,9 @@
 @property (strong, nonatomic) AVAudioPlayer *woodSound;
 @property (nonatomic) PlayMode playMode;
 @property (nonatomic) BOOL soundOn;
+@property (nonatomic) BOOL blackGoFirst;
+@property (nonatomic) BOOL playerIsBlack;
+@property (nonatomic) AIDifficulty AILevel;
 - (IBAction)undoMove:(UIButton *)sender;
 - (IBAction)resetGame:(UIButton *)sender;
 - (void) boardChanged;

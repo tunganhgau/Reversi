@@ -109,6 +109,7 @@
 		BDE854711710C35100DBFC50 /* wood_sound.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = wood_sound.aac; sourceTree = "<group>"; };
 		BDE854791710CA5100DBFC50 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BDE8547B17113CD000DBFC50 /* verticalBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = verticalBackground.png; sourceTree = "<group>"; };
+		BDE8547D1713B76A00DBFC50 /* ANHSettingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHSettingDelegate.h; sourceTree = "<group>"; };
 		BDF1F99316F056EB00AB14EE /* ANHBoardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoardDelegate.h; sourceTree = "<group>"; };
 		BDFD464B17014C9D00E9B0DA /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackPiece.png; sourceTree = "<group>"; };
 		BDFD464C17014C9D00E9B0DA /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitePiece.png; sourceTree = "<group>"; };
@@ -247,6 +248,7 @@
 				BD5D540F16E7CE55004FC868 /* ANHBoard.m */,
 				BDF1F99316F056EB00AB14EE /* ANHBoardDelegate.h */,
 				BD5D541416EC0FD8004FC868 /* ANHCellStateDelegate.h */,
+				BDE8547D1713B76A00DBFC50 /* ANHSettingDelegate.h */,
 			);
 			name = Models;
 			path = Reversi/Models;

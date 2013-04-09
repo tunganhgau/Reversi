@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ANHViewController.h"
-
+#import "ANHSettingDelegate.h"
 
 
 @interface ANHSettingViewController : UIViewController
 
 @property (nonatomic, weak) UIViewController *sourceView;
+@property (nonatomic, weak) id <ANHSettingDelegate> delegate;
 @property (nonatomic) BOOL soundOn;
 @property (nonatomic) BOOL blackGoFirst;
 @property (nonatomic) BOOL playerIsBlack;
