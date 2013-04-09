@@ -44,8 +44,8 @@
 		BDE854721710C35100DBFC50 /* wood_sound.aac in Resources */ = {isa = PBXBuildFile; fileRef = BDE854711710C35100DBFC50 /* wood_sound.aac */; };
 		BDE8547A1710CA5100DBFC50 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDE854791710CA5100DBFC50 /* AVFoundation.framework */; };
 		BDE8547C17113CD000DBFC50 /* verticalBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BDE8547B17113CD000DBFC50 /* verticalBackground.png */; };
-		BDFD464E17014C9D00E9B0DA /* blackPiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFD464B17014C9D00E9B0DA /* blackPiece.png */; };
-		BDFD464F17014C9D00E9B0DA /* whitePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFD464C17014C9D00E9B0DA /* whitePiece.png */; };
+		BDE854801713D09B00DBFC50 /* blackPiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BDE8547E1713D09B00DBFC50 /* blackPiece.png */; };
+		BDE854811713D09B00DBFC50 /* whitePiece.png in Resources */ = {isa = PBXBuildFile; fileRef = BDE8547F1713D09B00DBFC50 /* whitePiece.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,9 +110,9 @@
 		BDE854791710CA5100DBFC50 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BDE8547B17113CD000DBFC50 /* verticalBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = verticalBackground.png; sourceTree = "<group>"; };
 		BDE8547D1713B76A00DBFC50 /* ANHSettingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHSettingDelegate.h; sourceTree = "<group>"; };
+		BDE8547E1713D09B00DBFC50 /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackPiece.png; sourceTree = "<group>"; };
+		BDE8547F1713D09B00DBFC50 /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitePiece.png; sourceTree = "<group>"; };
 		BDF1F99316F056EB00AB14EE /* ANHBoardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHBoardDelegate.h; sourceTree = "<group>"; };
-		BDFD464B17014C9D00E9B0DA /* blackPiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackPiece.png; sourceTree = "<group>"; };
-		BDFD464C17014C9D00E9B0DA /* whitePiece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitePiece.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,9 +192,9 @@
 		BD922B8B16E5B3AE00261599 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BDE8547E1713D09B00DBFC50 /* blackPiece.png */,
+				BDE8547F1713D09B00DBFC50 /* whitePiece.png */,
 				BDE8547B17113CD000DBFC50 /* verticalBackground.png */,
-				BDFD464B17014C9D00E9B0DA /* blackPiece.png */,
-				BDFD464C17014C9D00E9B0DA /* whitePiece.png */,
 				BDE854711710C35100DBFC50 /* wood_sound.aac */,
 				BD361A8E16FEA99000B88F41 /* gameBoard.png */,
 				BD361A8F16FEA99000B88F41 /* menuButton.png */,
@@ -356,10 +356,10 @@
 				BD361A9516FEA99000B88F41 /* restartButton.png in Resources */,
 				BD361A9616FEA99000B88F41 /* settingButton.png in Resources */,
 				BD361A9716FEA99000B88F41 /* undoButton.png in Resources */,
-				BDFD464E17014C9D00E9B0DA /* blackPiece.png in Resources */,
-				BDFD464F17014C9D00E9B0DA /* whitePiece.png in Resources */,
 				BDE854721710C35100DBFC50 /* wood_sound.aac in Resources */,
 				BDE8547C17113CD000DBFC50 /* verticalBackground.png in Resources */,
+				BDE854801713D09B00DBFC50 /* blackPiece.png in Resources */,
+				BDE854811713D09B00DBFC50 /* whitePiece.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

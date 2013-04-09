@@ -35,11 +35,10 @@
         }
         _blackScore = 0;
         _whiteScore = 0;
-        AILevel = Hard;
+        AILevel = Medium;
         blackGoFirst = YES;
         playerIsBlack = YES;
     }
-    
     return self;
 }
 
@@ -86,6 +85,15 @@
     }
     else{
         self.whoseTurn = BlackPlayer;
+        // if the game is in computer mode, the AI will make move
+        if (self.playMode == ComputerMode) {
+            if (computerTurn == YES) {
+                if ([self nextPlayerCanMakeMove]) {
+                    [self AIMakeMove];
+                }
+                computerTurn = NO;
+            }
+        }
     }
 
 
@@ -111,7 +119,12 @@
     [self initCellState:BlackCell atRow:3 andColumn:4];
     [self initCellState:BlackCell atRow:4 andColumn:3];
     [self initCellState:WhiteCell atRow:4 andColumn:4];
-    self.whoseTurn = BlackPlayer;
+    if (blackGoFirst) {
+        self.whoseTurn = BlackPlayer;
+    }
+    else {
+        self.whoseTurn = WhitePlayer;
+    }
     [self updateBoard];
     
 }

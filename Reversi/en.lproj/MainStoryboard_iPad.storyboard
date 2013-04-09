@@ -110,13 +110,22 @@
                                     <constraint firstAttribute="height" constant="120" id="UDF-4a-wek"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackPiece.png" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-cY-C8f"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackPiece.png" translatesAutoresizingMaskIntoConstraints="NO" id="nfL-cY-C8f">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="0XT-E9-kp8"/>
+                                    <constraint firstAttribute="height" constant="80" id="9Cx-8t-CLa"/>
+                                </constraints>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="whitePiece.png" translatesAutoresizingMaskIntoConstraints="NO" id="jlf-DY-chr">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="NFq-g3-rsL"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackPiece.png" translatesAutoresizingMaskIntoConstraints="NO" id="q1O-0O-lCd"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blackPiece.png" translatesAutoresizingMaskIntoConstraints="NO" id="q1O-0O-lCd">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="ph0-TG-O9f"/>
+                                </constraints>
+                            </imageView>
                             <textView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="2" translatesAutoresizingMaskIntoConstraints="NO" id="6lX-Tj-e3G">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -181,11 +190,13 @@
                             <constraint firstItem="FjZ-3Z-vom" firstAttribute="leading" secondItem="564-SA-iNl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5Qf-L4-JdO"/>
                             <constraint firstItem="aqN-cr-6V7" firstAttribute="bottom" secondItem="HQb-FT-EQe" secondAttribute="bottom" type="default" id="5cE-JJ-P63"/>
                             <constraint firstItem="lmh-ED-n3g" firstAttribute="bottom" secondItem="6lX-Tj-e3G" secondAttribute="bottom" type="default" id="Aqp-Dt-Xv0"/>
+                            <constraint firstItem="q1O-0O-lCd" firstAttribute="bottom" secondItem="jlf-DY-chr" secondAttribute="bottom" type="default" id="CdF-Uc-Dll"/>
                             <constraint firstItem="gOi-y4-c7O" firstAttribute="trailing" secondItem="564-SA-iNl" secondAttribute="trailing" type="default" id="DSl-4N-pGB"/>
                             <constraint firstAttribute="trailing" secondItem="aqN-cr-6V7" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Dwq-TA-KeC"/>
                             <constraint firstItem="q1O-0O-lCd" firstAttribute="top" secondItem="nfL-cY-C8f" secondAttribute="top" type="default" id="E6L-tF-CNi"/>
                             <constraint firstItem="lmh-ED-n3g" firstAttribute="bottom" secondItem="sws-yB-LJY" secondAttribute="bottom" type="default" id="EUp-Ue-ff6"/>
                             <constraint firstAttribute="bottom" secondItem="6lX-Tj-e3G" secondAttribute="bottom" constant="109" id="EqF-pF-rre"/>
+                            <constraint firstItem="q1O-0O-lCd" firstAttribute="bottom" secondItem="nfL-cY-C8f" secondAttribute="bottom" type="default" id="IrK-g6-vjQ"/>
                             <constraint firstItem="aqN-cr-6V7" firstAttribute="top" secondItem="HQb-FT-EQe" secondAttribute="top" type="default" id="Jcs-6x-sar"/>
                             <constraint firstItem="jlf-DY-chr" firstAttribute="leading" secondItem="sws-yB-LJY" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Jks-1G-shP"/>
                             <constraint firstItem="q1O-0O-lCd" firstAttribute="leading" secondItem="564-SA-iNl" secondAttribute="leading" constant="298" id="Kv7-Kn-Nai"/>
@@ -330,13 +341,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="blackPiece.png" width="80" height="80"/>
+        <image name="blackPiece.png" width="73" height="73"/>
         <image name="menuButton.png" width="348" height="122"/>
         <image name="restartButton.png" width="348" height="122"/>
         <image name="reversi.png" width="867" height="247"/>
         <image name="settingButton.png" width="348" height="122"/>
         <image name="undoButton.png" width="348" height="122"/>
-        <image name="whitePiece.png" width="80" height="80"/>
+        <image name="whitePiece.png" width="77" height="75"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>

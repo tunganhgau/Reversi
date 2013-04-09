@@ -172,6 +172,13 @@
         self.gameBoard.playerIsBlack = self.playerIsBlack;
         self.gameBoard.AILevel = self.AILevel;
         [self.gameBoard resetBoard];
+        if (self.playMode == ComputerMode) {
+            if (!self.blackGoFirst) {
+                //self.gameBoard.whoseTurn = WhitePlayer;
+                self.gameBoard.computerTurn = YES;
+                [self.gameBoard switchTurn];
+            }
+        }
     }
 }
 

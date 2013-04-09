@@ -82,11 +82,6 @@
         if ([self.delegate respondsToSelector:@selector(settingChangedWith:andPlayerColor:andAILevel:)]) {
             [self.delegate settingChangedWith:self.blackGoFirst andPlayerColor:self.playerIsBlack andAILevel:self.AILevel];
         }
-        
-//        gameView.gameBoard.blackGoFirst = self.blackGoFirst;
-//        gameView.gameBoard.playerIsBlack = self.playerIsBlack;
-//        gameView.gameBoard.AILevel = self.AILevel;
-//        gameView.soundOn = self.soundOn;
     }
     if (gameView.soundOn != self.soundOn) {
         if ([self.delegate respondsToSelector:@selector(soundSwitchToggled)]) {
