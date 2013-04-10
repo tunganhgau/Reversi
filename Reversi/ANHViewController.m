@@ -173,12 +173,22 @@
         self.gameBoard.AILevel = self.AILevel;
         [self.gameBoard resetBoard];
         if (self.playMode == ComputerMode) {
+            // in computer mode, detect if the computer has to go first
             if (!self.blackGoFirst) {
-                //self.gameBoard.whoseTurn = WhitePlayer;
-                self.gameBoard.computerTurn = YES;
-                [self.gameBoard switchTurn];
+                if (self.playerIsBlack) {
+                    self.gameBoard.whoseTurn = BlackPlayer;
+                    [self.gameBoard switchTurn];
+                }
             }
+            else {
+                if (!self.playerIsBlack) {
+                    self.gameBoard.whoseTurn = WhitePlayer;
+                    [self.gameBoard switchTurn];
+                }
+            }
+            
         }
+        
     }
 }
 

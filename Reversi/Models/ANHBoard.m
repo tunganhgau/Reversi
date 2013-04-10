@@ -71,6 +71,9 @@
 
 // switch turn to the next user
 - (void)switchTurn{
+    if (self.playMode == ComputerMode) {
+        computerTurn = !computerTurn;
+    }
     if (whoseTurn == BlackPlayer) {
         self.whoseTurn = WhitePlayer;
         // if the game is in computer mode, the AI will make move
@@ -79,7 +82,7 @@
                 if ([self nextPlayerCanMakeMove]) {
                     [self AIMakeMove];
                 }
-                computerTurn = NO;
+                //computerTurn = NO;
             }
         }
     }
@@ -91,7 +94,7 @@
                 if ([self nextPlayerCanMakeMove]) {
                     [self AIMakeMove];
                 }
-                computerTurn = NO;
+                //computerTurn = NO;
             }
         }
     }

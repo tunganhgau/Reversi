@@ -54,7 +54,7 @@
     blackGoFirst = !firstMoveSegment.selectedSegmentIndex;
 }
 - (IBAction)colorSegmentChanged:(UISegmentedControl *)sender{
-    playerIsBlack = colorSegment.selectedSegmentIndex;
+    playerIsBlack = !colorSegment.selectedSegmentIndex;
 }
 - (IBAction)difficultySegmentChanged:(UISegmentedControl *)sender{
     AILevel = difficultySegment.selectedSegmentIndex;

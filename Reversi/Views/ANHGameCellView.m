@@ -56,7 +56,7 @@
 - (void) cellTapped:(UITapGestureRecognizer *) recognizer{
     if (self.cell.state == EmptyCell) {
         if ([self.board cellIsMoveable:self.cell]) {
-            self.board.computerTurn = YES;
+            //self.board.computerTurn = YES;
             [self.board makeMoveAtCell:self.cell];
         }
     }
