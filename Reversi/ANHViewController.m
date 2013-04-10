@@ -163,6 +163,7 @@
         settingPopover.playerIsBlack = self.gameBoard.playerIsBlack;
         settingPopover.AILevel = self.gameBoard.AILevel;
         settingPopover.soundOn = self.soundOn;
+        settingPopover.computerMode = self.playMode;
     }
 }
 

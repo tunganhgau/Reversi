@@ -358,8 +358,11 @@
     if ([self cellIsCorner:cell]) {
         score+=10;
     }
+    else if ([self cellISCornerNeighbor:cell]){
+        score-=6;
+    }
     else if ([self cellIsBorder:cell]){
-        score+=5;
+        score+=4;
     }
     else if ([self cellIsAtLevel1:cell]){
         score-=2;
@@ -384,6 +387,31 @@
         return YES;
     }
     return NO;
+}
+
+- (BOOL) cellISCornerNeighbor:(ANHCell *)cell{
+    if (cell.row == 0 || cell.row == 7) {
+        if (cell.column == 1 || cell.column == 6) {
+            return YES;
+        }
+    }
+    if (cell.column == 0 || cell.column ==7) {
+        if (cell.row == 1 || cell.row == 6) {
+            return  YES;
+        }
+    }
+    if (cell.row == 1) {
+        if (cell.column == 1 || cell.column == 6) {
+            return YES;
+        }
+    }
+    if (cell.row == 6) {
+        if (cell.column == 1 || cell.column == 6) {
+            return YES;
+        }
+    }
+    return NO;
+   
 }
 
 - (BOOL) cellIsBorder:(ANHCell *)cell{

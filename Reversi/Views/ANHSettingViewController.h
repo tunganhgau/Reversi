@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL blackGoFirst;
 @property (nonatomic) BOOL playerIsBlack;
 @property (nonatomic) AIDifficulty AILevel;
+@property (nonatomic) BOOL computerMode;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *firstMoveSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *colorSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *difficultySegment;

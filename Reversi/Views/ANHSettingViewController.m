@@ -26,6 +26,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        if (!self.computerMode) {
+            //self.view.frame.size.height = 300;
+        }
     }
     return self;
 }
