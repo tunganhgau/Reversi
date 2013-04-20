@@ -12,5 +12,6 @@
 
 -(void) soundSwitchToggled;
 -(void) settingChangedWith:(BOOL)blackGoFirst andPlayerColor:(BOOL)blackColor andAILevel:(int)level;
+-(void) cancelSetting;
 
 @end

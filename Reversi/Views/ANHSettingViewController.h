@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *colorSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *difficultySegment;
 @property (weak, nonatomic) IBOutlet UISwitch *soundSwitch;
+- (IBAction)cancelPressed:(UIButton *)sender;
+- (IBAction)savePressed:(UIButton *)sender;
 - (IBAction)firstMoveSegmentChanged:(UISegmentedControl *)sender;
 - (IBAction)colorSegmentChanged:(UISegmentedControl *)sender;
 - (IBAction)difficultySegmentChanged:(UISegmentedControl *)sender;

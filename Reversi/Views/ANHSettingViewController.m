@@ -53,6 +53,24 @@
     [soundSwitch setOn:soundOn];
 }
 
+- (IBAction)cancelPressed:(UIButton *)sender {
+    [self.delegate cancelSetting];
+}
+
+- (IBAction)savePressed:(UIButton *)sender {
+    ANHViewController *gameView = (ANHViewController *)self.sourceView;
+    if (gameView.gameBoard.blackGoFirst != self.blackGoFirst || gameView.gameBoard.playerIsBlack != self.playerIsBlack || gameView.gameBoard.AILevel != self.AILevel) {
+        if ([self.delegate respondsToSelector:@selector(settingChangedWith:andPlayerColor:andAILevel:)]) {
+            [self.delegate settingChangedWith:self.blackGoFirst andPlayerColor:self.playerIsBlack andAILevel:self.AILevel];
+        }
+    }
+    if (gameView.soundOn != self.soundOn) {
+        if ([self.delegate respondsToSelector:@selector(soundSwitchToggled)]) {
+            [self.delegate soundSwitchToggled];
+        }
+    }
+}
+
 - (IBAction)firstMoveSegmentChanged:(UISegmentedControl *)sender{
     blackGoFirst = !firstMoveSegment.selectedSegmentIndex;
 }
@@ -80,17 +98,6 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
-    ANHViewController *gameView = (ANHViewController *)self.sourceView;
-    if (gameView.gameBoard.blackGoFirst != self.blackGoFirst || gameView.gameBoard.playerIsBlack != self.playerIsBlack || gameView.gameBoard.AILevel != self.AILevel) {
-        if ([self.delegate respondsToSelector:@selector(settingChangedWith:andPlayerColor:andAILevel:)]) {
-            [self.delegate settingChangedWith:self.blackGoFirst andPlayerColor:self.playerIsBlack andAILevel:self.AILevel];
-        }
-    }
-    if (gameView.soundOn != self.soundOn) {
-        if ([self.delegate respondsToSelector:@selector(soundSwitchToggled)]) {
-            [self.delegate soundSwitchToggled];
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning

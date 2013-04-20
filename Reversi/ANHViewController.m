@@ -153,9 +153,8 @@
     [woodSound play];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{    
     ANHSettingViewController *settingPopover = (ANHSettingViewController *)segue.destinationViewController;
-    self.settingController = settingPopover;
     if ([segue.identifier isEqualToString:@"settingView"]) {
         settingPopover.sourceView = self;
         settingPopover.delegate = self;
@@ -164,7 +163,9 @@
         settingPopover.AILevel = self.gameBoard.AILevel;
         settingPopover.soundOn = self.soundOn;
         settingPopover.computerMode = self.playMode;
+        self.myPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
     }
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -189,7 +190,7 @@
             }
             
         }
-        
+        [self cancelSetting];
     }
 }
 
@@ -203,6 +204,11 @@
     self.AILevel = level;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setting Changed" message:@"The game will restart with the new setting" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alert show];
+}
+
+- (void) cancelSetting{
+    [self.myPopover dismissPopoverAnimated:YES];
+
 }
 /*
  Things to do:
