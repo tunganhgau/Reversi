@@ -17,7 +17,6 @@
 
 @interface ANHViewController : UIViewController<BoardDelegate,AVAudioPlayerDelegate,UIAlertViewDelegate,ANHSettingDelegate>
 
-@property (weak, nonatomic) UIViewController *settingController;
 @property (strong, nonatomic) UIPopoverController *myPopover;
 @property (strong, nonatomic) ANHGameBoardView *gameBoardView;
 @property (strong, nonatomic) ANHBoard *gameBoard;

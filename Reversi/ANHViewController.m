@@ -101,14 +101,32 @@
 // if the player is not able to make move, show an allert to let them know
 - (void) playerIsNotAbleToMakeMove:(Player)player{
     NSString *message;
-    if (player == BlackPlayer) {
-        message = [NSString stringWithFormat:@"It is White player's turn now"];
+    if (self.playMode == PlayerMode) {
+        if (player == BlackPlayer) {
+            message = [NSString stringWithFormat:@"It is White player's turn now"];
+        }
+        else if (player == WhitePlayer){
+            message = [NSString stringWithFormat:@"It is Black player's turn now"];
+        }
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"You have no way to move" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
     }
-    else if (player == WhitePlayer){
-        message = [NSString stringWithFormat:@"It is Black player's turn now"];
+    else {
+        if (player == BlackPlayer) {
+            if (self.playerIsBlack) {
+                message = [NSString stringWithFormat:@"You have to skip this turn"];
+            }
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Black player cannot move" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        else {
+            if (!self.playerIsBlack) {
+                message = [NSString stringWithFormat:@"You have to skip this turn"];
+            }
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"White player cannot move" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
     }
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"You have no way to move" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
 }
 
 - (IBAction)undoMove:(UIButton *)sender {
