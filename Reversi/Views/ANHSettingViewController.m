@@ -51,6 +51,7 @@
     }
     difficultySegment.selectedSegmentIndex = AILevel;
     [soundSwitch setOn:soundOn];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
 }
 
 - (IBAction)cancelPressed:(UIButton *)sender {

@@ -28,7 +28,13 @@
 	// Do any additional setup after loading the view, typically from a nib.
     float screenWidth = self.view.bounds.size.width;
     float screenHeight = self.view.bounds.size.height;
-    CGRect boardRect = CGRectMake(0.05*screenWidth, 0.12*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
+    CGRect boardRect;
+    if (self.interfaceOrientation == UIInterfaceOrientationMaskPortrait) {
+        boardRect = CGRectMake(0.05*screenWidth, 0.12*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
+    }
+    else {
+        boardRect =  CGRectMake((screenHeight - 0.9*screenHeight)*1.75, 0, 0.9*screenWidth, 0.9*screenWidth);
+    }
     _gameBoard = [[ANHBoard alloc]init];
     _gameBoard.delegate = self;
     if (self.playMode == PlayerMode) {
@@ -43,7 +49,7 @@
     _boardStack = [[NSMutableArray alloc] init];
     _startBoard = [_gameBoard copyWithZone:nil];
     [_boardStack addObject:_startBoard];
-    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"verticalBackground.png"]];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
     _whoseTurnLabel.textColor = [UIColor blackColor];
@@ -54,6 +60,31 @@
     woodSound = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
     [woodSound prepareToPlay];
     woodSound.volume = 1;
+}
+
+-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        [self updateLandscapeView];
+    }
+    else{
+        [self updatePortraitView];
+    }
+}
+
+
+- (void)updateLandscapeView{
+    float screenWidth = self.view.bounds.size.width;
+    float screenHeight = self.view.bounds.size.height;
+    CGRect boardRect =  CGRectMake((screenHeight - 0.9*screenHeight)*1.75, 0, 0.9*screenWidth, 0.9*screenWidth);
+    self.gameBoardView.frame = boardRect;
+}
+
+- (void)updatePortraitView{
+    float screenWidth = self.view.bounds.size.width;
+    float screenHeight = self.view.bounds.size.height;
+    CGRect boardRect = CGRectMake(0.04*screenWidth, 0.15*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
+    self.gameBoardView.frame = boardRect;
 }
 
 - (void)didReceiveMemoryWarning
@@ -168,7 +199,10 @@
 }
 
 - (void) playWoodSound{
-    [woodSound play];
+    if (soundOn) {
+        [woodSound play];
+    }
+
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{    

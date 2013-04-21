@@ -34,11 +34,13 @@
 		BD922BC316E5B41000261599 /* reversi.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BC216E5B41000261599 /* reversi.png */; };
 		BD922BD016E7006B00261599 /* ANHGameBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BCF16E7006B00261599 /* ANHGameBoardView.m */; };
 		BD922BD516E700DB00261599 /* ANHGameCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD922BD416E700DB00261599 /* ANHGameCellView.m */; };
-		BD922BDA16E851A800261599 /* grass_pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = BD922BD916E851A800261599 /* grass_pattern.png */; };
 		BD9385D616F19E35002CD99A /* 57.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385D516F19E35002CD99A /* 57.png */; };
 		BD9385D816F19E38002CD99A /* 114.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385D716F19E38002CD99A /* 114.png */; };
 		BD9385DA16F19E50002CD99A /* 144.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385D916F19E50002CD99A /* 144.png */; };
 		BD9385DC16F19E53002CD99A /* 72.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9385DB16F19E53002CD99A /* 72.png */; };
+		BD9388661723B8BB00B7C621 /* grass_pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9388651723B8BB00B7C621 /* grass_pattern.png */; };
+		BD9388691723C07200B7C621 /* pvc.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9388671723C07200B7C621 /* pvc.png */; };
+		BD93886A1723C07200B7C621 /* pvp.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9388681723C07200B7C621 /* pvp.png */; };
 		BDA41CA116F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA41C9F16F3E31D00AAAF06 /* MainStoryboard_iPad.storyboard */; };
 		BDA41CA416F3F64A00AAAF06 /* ANHSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA41CA316F3F64A00AAAF06 /* ANHSettingViewController.m */; };
 		BDE854721710C35100DBFC50 /* wood_sound.aac in Resources */ = {isa = PBXBuildFile; fileRef = BDE854711710C35100DBFC50 /* wood_sound.aac */; };
@@ -98,11 +100,13 @@
 		BD922BCF16E7006B00261599 /* ANHGameBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameBoardView.m; sourceTree = "<group>"; };
 		BD922BD316E700DB00261599 /* ANHGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANHGameCellView.h; sourceTree = "<group>"; };
 		BD922BD416E700DB00261599 /* ANHGameCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANHGameCellView.m; sourceTree = "<group>"; };
-		BD922BD916E851A800261599 /* grass_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass_pattern.png; path = SupportingFiles/grass_pattern.png; sourceTree = "<group>"; };
 		BD9385D516F19E35002CD99A /* 57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57.png; path = ../57.png; sourceTree = "<group>"; };
 		BD9385D716F19E38002CD99A /* 114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114.png; path = ../114.png; sourceTree = "<group>"; };
 		BD9385D916F19E50002CD99A /* 144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 144.png; path = ../144.png; sourceTree = "<group>"; };
 		BD9385DB16F19E53002CD99A /* 72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 72.png; path = ../72.png; sourceTree = "<group>"; };
+		BD9388651723B8BB00B7C621 /* grass_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass_pattern.png; sourceTree = "<group>"; };
+		BD9388671723C07200B7C621 /* pvc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pvc.png; sourceTree = "<group>"; };
+		BD9388681723C07200B7C621 /* pvp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pvp.png; sourceTree = "<group>"; };
 		BDA41CA016F3E31D00AAAF06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		BDA41CA216F3F64A00AAAF06 /* ANHSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ANHSettingViewController.h; path = Views/ANHSettingViewController.h; sourceTree = "<group>"; };
 		BDA41CA316F3F64A00AAAF06 /* ANHSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ANHSettingViewController.m; path = Views/ANHSettingViewController.m; sourceTree = "<group>"; };
@@ -192,6 +196,9 @@
 		BD922B8B16E5B3AE00261599 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BD9388671723C07200B7C621 /* pvc.png */,
+				BD9388681723C07200B7C621 /* pvp.png */,
+				BD9388651723B8BB00B7C621 /* grass_pattern.png */,
 				BDE8547E1713D09B00DBFC50 /* blackPiece.png */,
 				BDE8547F1713D09B00DBFC50 /* whitePiece.png */,
 				BDE8547B17113CD000DBFC50 /* verticalBackground.png */,
@@ -205,7 +212,6 @@
 				BD9385D916F19E50002CD99A /* 144.png */,
 				BD9385D716F19E38002CD99A /* 114.png */,
 				BD9385D516F19E35002CD99A /* 57.png */,
-				BD922BD916E851A800261599 /* grass_pattern.png */,
 				BD922B9316E5B3AE00261599 /* ANHAppDelegate.h */,
 				BD922B9416E5B3AE00261599 /* ANHAppDelegate.m */,
 				BD922BC216E5B41000261599 /* reversi.png */,
@@ -345,7 +351,6 @@
 				BD922B9B16E5B3AE00261599 /* Default-568h@2x.png in Resources */,
 				BD922B9E16E5B3AE00261599 /* MainStoryboard_iPhone.storyboard in Resources */,
 				BD922BC316E5B41000261599 /* reversi.png in Resources */,
-				BD922BDA16E851A800261599 /* grass_pattern.png in Resources */,
 				BD9385D616F19E35002CD99A /* 57.png in Resources */,
 				BD9385D816F19E38002CD99A /* 114.png in Resources */,
 				BD9385DA16F19E50002CD99A /* 144.png in Resources */,
@@ -360,6 +365,9 @@
 				BDE8547C17113CD000DBFC50 /* verticalBackground.png in Resources */,
 				BDE854801713D09B00DBFC50 /* blackPiece.png in Resources */,
 				BDE854811713D09B00DBFC50 /* whitePiece.png in Resources */,
+				BD9388661723B8BB00B7C621 /* grass_pattern.png in Resources */,
+				BD9388691723C07200B7C621 /* pvc.png in Resources */,
+				BD93886A1723C07200B7C621 /* pvp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
