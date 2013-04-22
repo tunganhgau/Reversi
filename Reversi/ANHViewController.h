@@ -29,10 +29,12 @@
 @property (strong, nonatomic) IBOutlet UITextView *whoseTurnTextView;
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
 @property (strong, nonatomic) AVAudioPlayer *woodSound;
+@property (strong, nonatomic) AVAudioPlayer *winSound;
+@property (strong, nonatomic) AVAudioPlayer *loseSound;
 @property (nonatomic) PlayMode playMode;
 @property (nonatomic) BOOL soundOn;
-@property (nonatomic) BOOL blackGoFirst;
-@property (nonatomic) BOOL playerIsBlack;
+//@property (nonatomic) BOOL blackGoFirst;
+//@property (nonatomic) BOOL playerIsBlack;
 @property (nonatomic) AIDifficulty AILevel;
 - (IBAction)undoMove:(UIButton *)sender;
 - (IBAction)resetGame:(UIButton *)sender;

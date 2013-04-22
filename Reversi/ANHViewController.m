@@ -12,7 +12,8 @@
 @implementation ANHViewController
 @synthesize woodSound;
 @synthesize soundOn;
-
+@synthesize winSound;
+@synthesize loseSound;
 
 - (id) init{
     self = [super init];
@@ -29,7 +30,7 @@
     float screenWidth = self.view.bounds.size.width;
     float screenHeight = self.view.bounds.size.height;
     CGRect boardRect;
-    if (self.interfaceOrientation == UIInterfaceOrientationMaskPortrait) {
+    if (self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
         boardRect = CGRectMake(0.05*screenWidth, 0.12*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
     }
     else {
@@ -55,37 +56,36 @@
     _whoseTurnLabel.textColor = [UIColor blackColor];
     
     soundOn = YES;
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"wood_sound" ofType:@"aac"];
-    NSURL *url = [NSURL fileURLWithPath:path];
-    woodSound = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
-    [woodSound prepareToPlay];
-    woodSound.volume = 1;
+    [self initSoundEffects];
+    //[self playWinSound];
 }
 
--(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
-    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        [self updateLandscapeView];
-    }
-    else{
-        [self updatePortraitView];
-    }
-}
-
-
-- (void)updateLandscapeView{
-    float screenWidth = self.view.bounds.size.width;
-    float screenHeight = self.view.bounds.size.height;
-    CGRect boardRect =  CGRectMake((screenHeight - 0.9*screenHeight)*1.75, 0, 0.9*screenWidth, 0.9*screenWidth);
-    self.gameBoardView.frame = boardRect;
-}
-
-- (void)updatePortraitView{
-    float screenWidth = self.view.bounds.size.width;
-    float screenHeight = self.view.bounds.size.height;
-    CGRect boardRect = CGRectMake(0.04*screenWidth, 0.15*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
-    self.gameBoardView.frame = boardRect;
-}
+//-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+//    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+//        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+//        [self updateLandscapeView];
+//    }
+//    else{
+//        [self updatePortraitView];
+//    }
+//}
+//
+//
+//- (void)updateLandscapeView{
+//    float screenWidth = self.view.bounds.size.width;
+//    float screenHeight = self.view.bounds.size.height;
+//    CGRect boardRect =  CGRectMake((screenHeight - 0.9*screenWidth)/1.9, 0, 0.9*screenWidth, 0.9*screenWidth);
+//    self.gameBoardView.frame = boardRect;
+//    CGRect whoseTurnFrame = CGRectMake(0, 0, 80, 80);
+//    self.whoseTurnImage.frame = whoseTurnFrame;
+//}
+//
+//- (void)updatePortraitView{
+//    float screenWidth = self.view.bounds.size.width;
+//    float screenHeight = self.view.bounds.size.height;
+//    CGRect boardRect = CGRectMake(0.04*screenWidth, 0.15*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
+//    self.gameBoardView.frame = boardRect;
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -115,18 +115,33 @@
 }
 
 - (void) gameEndedWithWinner:(Player)winner{
-    NSString *message;
-    if (winner == BlackPlayer) {
-        message = [NSString stringWithFormat:@"Black player won"];
-    }
-    else if (winner == WhitePlayer){
-        message = [NSString stringWithFormat:@"White player won"];
+    if (self.playMode == ComputerMode) {
+        if ((self.gameBoard.playerIsBlack == YES && winner == WhitePlayer) || (self.gameBoard.playerIsBlack == NO && winner == BlackPlayer)) {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Nice try, that was a nice game" message:@"The computer win" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [self playLoseSound];
+        }
+        else {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Congratulation" message:@"You win" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            [self playWinSound];
+        }
     }
     else {
-        message = [NSString stringWithFormat:@"Draw. That was a nice game"];
+        NSString *message;
+        if (winner == BlackPlayer) {
+            message = [NSString stringWithFormat:@"Black player won"];
+        }
+        else if (winner == WhitePlayer){
+            message = [NSString stringWithFormat:@"White player won"];
+        }
+        else {
+            message = [NSString stringWithFormat:@"Draw. That was a nice game"];
+        }
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Congratulation" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [self playWinSound];
     }
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Congratulation" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
 }
 
 // if the player is not able to make move, show an allert to let them know
@@ -144,14 +159,14 @@
     }
     else {
         if (player == BlackPlayer) {
-            if (self.playerIsBlack) {
+            if (self.gameBoard.playerIsBlack) {
                 message = [NSString stringWithFormat:@"You have to skip this turn"];
             }
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Black player cannot move" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
         }
         else {
-            if (!self.playerIsBlack) {
+            if (!self.gameBoard.playerIsBlack) {
                 message = [NSString stringWithFormat:@"You have to skip this turn"];
             }
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"White player cannot move" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -202,10 +217,30 @@
     if (soundOn) {
         [woodSound play];
     }
-
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{    
+- (void) playWinSound{
+    if (soundOn) {
+        [winSound play];
+    }
+}
+
+- (void)playLoseSound{
+    if (soundOn) {
+        [loseSound play];
+    }
+}
+
+- (void) initSoundEffects{
+    NSString *winSoundPath = [[NSBundle mainBundle]pathForResource:@"win_sound" ofType:@"mp3"];
+    winSound = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:winSoundPath] error:nil];
+    NSString *woodSoundPath = [[NSBundle mainBundle]pathForResource:@"wood_sound" ofType:@"aac"];
+    woodSound = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:woodSoundPath] error:nil];
+    NSString *loseSoundPath = [[NSBundle mainBundle]pathForResource:@"lose_sound" ofType:@"mp3"];
+    loseSound = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:loseSoundPath] error:nil];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ANHSettingViewController *settingPopover = (ANHSettingViewController *)segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"settingView"]) {
         settingPopover.sourceView = self;
@@ -222,20 +257,20 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex != 0) {
-        self.gameBoard.blackGoFirst = self.blackGoFirst;
-        self.gameBoard.playerIsBlack = self.playerIsBlack;
+        //self.gameBoard.blackGoFirst = self.blackGoFirst;
+        //self.gameBoard.playerIsBlack = self.playerIsBlack;
         self.gameBoard.AILevel = self.AILevel;
         [self.gameBoard resetBoard];
         if (self.playMode == ComputerMode) {
             // in computer mode, detect if the computer has to go first
-            if (!self.blackGoFirst) {
-                if (self.playerIsBlack) {
+            if (!self.gameBoard.blackGoFirst) {
+                if (self.gameBoard.playerIsBlack) {
                     self.gameBoard.whoseTurn = BlackPlayer;
                     [self.gameBoard switchTurn];
                 }
             }
             else {
-                if (!self.playerIsBlack) {
+                if (!self.gameBoard.playerIsBlack) {
                     self.gameBoard.whoseTurn = WhitePlayer;
                     [self.gameBoard switchTurn];
                 }
@@ -251,8 +286,8 @@
 }
 
 - (void)settingChangedWith:(BOOL)blackGoFirst andPlayerColor:(BOOL)blackColor andAILevel:(int)level{
-    self.blackGoFirst = blackGoFirst;
-    self.playerIsBlack = blackColor;
+    self.gameBoard.blackGoFirst = blackGoFirst;
+    self.gameBoard.playerIsBlack = blackColor;
     self.AILevel = level;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setting Changed" message:@"The game will restart with the new setting" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alert show];

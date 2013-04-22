@@ -186,6 +186,9 @@
             else if (self.blackScore < self.whiteScore){
                 self.winner = WhitePlayer;
             }
+            else{
+                self.winner = -1;
+            }
             [self.delegate gameEndedWithWinner:(Player) self.winner];
         }
     }
