@@ -95,6 +95,8 @@
 
 - (IBAction)resetGame:(UIButton *)sender {
     [self.gameBoard resetBoard];
+    self.boardStack = [[NSMutableArray alloc] init];
+    [self.boardStack addObject:self.gameBoard];
 }
 
 - (void) boardChanged{
@@ -192,7 +194,7 @@
         }
     }
     else{
-        self.gameBoard = [self.startBoard copyWithZone:nil];
+        //self.gameBoard = [self.startBoard copyWithZone:nil];
     }
     self.gameBoardView.gameBoard = self.gameBoard;
     //self.gameBoard.delegate = self;
@@ -251,32 +253,20 @@
         settingPopover.soundOn = self.soundOn;
         settingPopover.computerMode = self.playMode;
         self.myPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
+        //self.settingController
     }
     
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // if the user chooses OK, save the setting, and reset the game with the new setting
     if (buttonIndex != 0) {
-        //self.gameBoard.blackGoFirst = self.blackGoFirst;
-        //self.gameBoard.playerIsBlack = self.playerIsBlack;
         self.gameBoard.AILevel = self.AILevel;
+        self.gameBoard.blackGoFirst = self.blackGoFirst;
+        self.gameBoard.playerIsBlack = self.playerIsBlack;
         [self.gameBoard resetBoard];
-        if (self.playMode == ComputerMode) {
-            // in computer mode, detect if the computer has to go first
-            if (!self.gameBoard.blackGoFirst) {
-                if (self.gameBoard.playerIsBlack) {
-                    self.gameBoard.whoseTurn = BlackPlayer;
-                    [self.gameBoard switchTurn];
-                }
-            }
-            else {
-                if (!self.gameBoard.playerIsBlack) {
-                    self.gameBoard.whoseTurn = WhitePlayer;
-                    [self.gameBoard switchTurn];
-                }
-            }
-            
-        }
+        self.boardStack = [[NSMutableArray alloc] init];
+        //[self.boardStack addObject:self.gameBoard];
         [self cancelSetting];
     }
 }
@@ -286,8 +276,9 @@
 }
 
 - (void)settingChangedWith:(BOOL)blackGoFirst andPlayerColor:(BOOL)blackColor andAILevel:(int)level{
-    self.gameBoard.blackGoFirst = blackGoFirst;
-    self.gameBoard.playerIsBlack = blackColor;
+    // these are temporary saved, until the user taps on OK on the next step
+    self.blackGoFirst = blackGoFirst;
+    self.playerIsBlack = blackColor;
     self.AILevel = level;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setting Changed" message:@"The game will restart with the new setting" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alert show];
@@ -295,7 +286,6 @@
 
 - (void) cancelSetting{
     [self.myPopover dismissPopoverAnimated:YES];
-
 }
 /*
  Things to do:

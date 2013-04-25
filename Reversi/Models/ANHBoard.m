@@ -51,6 +51,8 @@
         }
     }
     another.whoseTurn = self.whoseTurn;
+    another.computerTurn = self.computerTurn;
+    another.blackGoFirst = self.blackGoFirst;
     another.winner = self.winner;
     another.playMode = self.playMode;
     another.blackScore = self.blackScore;
@@ -147,6 +149,22 @@
         }
     }
     [self initBoardState];
+    if (self.playMode == ComputerMode) {
+        // in computer mode, detect if the computer has to go first
+        if (!self.blackGoFirst) {
+            if (self.playerIsBlack) {
+                self.whoseTurn = BlackPlayer;
+                [self switchTurn];
+            }
+        }
+        else {
+            if (!self.playerIsBlack) {
+                self.whoseTurn = WhitePlayer;
+                [self switchTurn];
+            }
+        }
+        
+    }
 }
 
 // update the scores and inform the View Controller
