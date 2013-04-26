@@ -89,12 +89,18 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ANHViewController *gameView = (ANHViewController *)segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"cancel"]){
-        gameView.currentBoard = [self.currentBoard copyWithZone:nil];
+        gameView.currentBoard = self.currentBoard;
     }
     else{
-        if (gameView.currentBoard.blackGoFirst != self.blackGoFirst || gameView.currentBoard.playerIsBlack != self.playerIsBlack || gameView.currentBoard.AILevel != self.AILevel) {
+        if (self.currentBoard.blackGoFirst != self.blackGoFirst || self.currentBoard.playerIsBlack != self.playerIsBlack || self.currentBoard.AILevel != self.AILevel) {
             if ([self.delegate respondsToSelector:@selector(settingChangedWith:andPlayerColor:andAILevel:)]) {
-                [self.delegate settingChangedWith:self.blackGoFirst andPlayerColor:self.playerIsBlack andAILevel:self.AILevel];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setting Changed" message:@"The game will restart with the new setting" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                [self.currentBoard resetBoard];
+                self.currentBoard.AILevel = self.AILevel;
+                self.currentBoard.blackGoFirst = self.blackGoFirst;
+                self.currentBoard.playerIsBlack = self.playerIsBlack;
+                gameView.currentBoard = self.currentBoard;
             }
         }
         if (gameView.soundOn != self.soundOn) {
@@ -102,8 +108,24 @@
                 [self.delegate soundSwitchToggled];
             }
         }
+        
+        
     }
+    
     gameView.playMode = self.playMode;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // if the user chooses OK, save the setting, and reset the game with the new setting
+    if (buttonIndex != 0) {
+        self.currentBoard.AILevel = self.AILevel;
+        self.currentBoard.blackGoFirst = self.blackGoFirst;
+        self.currentBoard.playerIsBlack = self.playerIsBlack;
+        //[self.gameBoard resetBoard];
+        //self.boardStack = [[NSMutableArray alloc] init];
+        //[self.boardStack addObject:self.gameBoard];
+        [self.delegate cancelSetting];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

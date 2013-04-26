@@ -13,7 +13,7 @@
 #import "ANHSettingDelegate.h"
 #import "ANHBoard.h"
 
-@interface ANHSettingViewController : UIViewController
+@interface ANHSettingViewController : UIViewController<UIAlertViewDelegate>
 
 @property (nonatomic, weak) UIViewController *sourceView;
 @property (nonatomic, weak) id <ANHSettingDelegate> delegate;
