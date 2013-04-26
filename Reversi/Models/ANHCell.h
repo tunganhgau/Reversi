@@ -2,6 +2,8 @@
 //  ANHCell.h
 //  Reversi
 //
+//  Represent each single cell data of the game
+//
 //  Created by Anh Nguyen on 3/6/13.
 //  Copyright (c) 2013 Anh Nguyen. All rights reserved.
 //

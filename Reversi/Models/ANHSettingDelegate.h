@@ -2,6 +2,8 @@
 //  ANHSettingDelegate.h
 //  Reversi
 //
+//  Setting delegate will notify the game if the setting is changed
+//
 //  Created by Anh Nguyen on 4/8/13.
 //  Copyright (c) 2013 Anh Nguyen. All rights reserved.
 //

@@ -2,6 +2,9 @@
 //  ANHBoard.h
 //  Reversi
 //
+//  Represent the data of the game board, a board will contain it owns
+//  data as well as 64 cells in a 2D array
+//
 //  Created by Anh Nguyen on 3/6/13.
 //  Copyright (c) 2013 Anh Nguyen. All rights reserved.
 //

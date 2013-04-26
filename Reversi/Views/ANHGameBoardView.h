@@ -20,5 +20,5 @@
 @property (copy, nonatomic) NSMutableArray *cellViews;
 
 - (id)initWithFrame:(CGRect)frame andBoard:(ANHBoard *)board;
-
+- (void) updateBoardView;
 @end

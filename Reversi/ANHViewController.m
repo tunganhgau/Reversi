@@ -36,8 +36,12 @@
     else {
         boardRect =  CGRectMake((screenHeight - 0.9*screenHeight)*1.75, 0, 0.9*screenWidth, 0.9*screenWidth);
     }
+
     _gameBoard = [[ANHBoard alloc]init];
     _gameBoard.delegate = self;
+    if (self.currentBoard) {
+        _gameBoard = self.currentBoard;
+    }
     if (self.playMode == PlayerMode) {
         _gameBoard.playMode = PlayerMode;
     }
@@ -46,10 +50,17 @@
     }
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
-    [_gameBoard initBoardState];
+    if (!self.currentBoard) {
+        [_gameBoard initBoardState];
+    }
+    else {
+        _gameBoard.delegate = self;
+        [self.gameBoardView updateBoardView];
+        [self updateGame];
+    }
+
+    // boardStack is used to save all the boards in the past to support undo a move
     _boardStack = [[NSMutableArray alloc] init];
-    _startBoard = [_gameBoard copyWithZone:nil];
-    [_boardStack addObject:_startBoard];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
@@ -57,7 +68,6 @@
     
     soundOn = YES;
     [self initSoundEffects];
-    //[self playWinSound];
 }
 
 //-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
@@ -116,6 +126,7 @@
     }
 }
 
+// method to be called when the game ended, it will show an alert with sound depend on the situation of the game
 - (void) gameEndedWithWinner:(Player)winner{
     if (self.playMode == ComputerMode) {
         if ((self.gameBoard.playerIsBlack == YES && winner == WhitePlayer) || (self.gameBoard.playerIsBlack == NO && winner == BlackPlayer)) {
@@ -196,20 +207,13 @@
     else{
         //self.gameBoard = [self.startBoard copyWithZone:nil];
     }
+    // set the game with the new board, and update the view
     self.gameBoardView.gameBoard = self.gameBoard;
-    //self.gameBoard.delegate = self;
-    for (int row = 0; row < 8; row++) {
-        for (int col = 0; col < 8; col++) {
-            ANHGameCellView *temp = [[self.gameBoardView.cellViews objectAtIndex:row] objectAtIndex:col];
-            temp.board = self.gameBoard;
-            temp.cell = [[self.gameBoard.cells objectAtIndex:row] objectAtIndex:col];
-            [temp updateCellView];
-        }
-    }
+
+    [self.gameBoardView updateBoardView];
     [self updateGame];
 }
 
-// save the current board for undo feature
 - (void) newPiecePlayed{
     [self.boardStack addObject:[self.gameBoard copyWithZone:nil]];
     [self playWoodSound];
@@ -252,8 +256,17 @@
         settingPopover.AILevel = self.gameBoard.AILevel;
         settingPopover.soundOn = self.soundOn;
         settingPopover.computerMode = self.playMode;
-        self.myPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
-        //self.settingController
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            self.myPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
+        }
+        else
+        {
+            //self.currentBoard = [self.gameBoard copyWithZone:nil];
+            settingPopover.currentBoard = [self.gameBoard copyWithZone:nil];
+            settingPopover.playMode = self.playMode;
+        }
     }
     
 }

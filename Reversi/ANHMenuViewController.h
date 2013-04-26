@@ -2,6 +2,9 @@
 //  ANHMenuViewController.h
 //  Reversi
 //
+//  The first view of the game, which let the user choose to play vs
+// a player or vs computer
+//
 //  Created by Anh Nguyen on 3/6/13.
 //  Copyright (c) 2013 Anh Nguyen. All rights reserved.
 //

@@ -235,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="321" y="31"/>
+            <point key="canvasLocation" x="533" y="-270"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="ZUo-eu-yMY">
@@ -363,7 +363,7 @@
                                 </state>
                                 <connections>
                                     <action selector="cancelPressed:" destination="y2A-jI-zj3" eventType="touchUpInside" id="hKG-bK-rER"/>
-                                    <segue destination="2" kind="modal" id="Wgk-up-ypS"/>
+                                    <segue destination="2" kind="modal" identifier="cancel" id="nfP-iL-SIO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvm-TW-zby">
@@ -379,7 +379,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="savePressed:" destination="y2A-jI-zj3" eventType="touchUpInside" id="e8M-fe-aCX"/>
+                                    <segue destination="2" kind="modal" identifier="save" id="MdP-GP-hy9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -422,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZf-tV-C9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="762" y="31"/>
+            <point key="canvasLocation" x="550" y="451"/>
         </scene>
     </scenes>
     <resources>
@@ -442,6 +442,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Wgk-up-ypS"/>
+        <segue reference="MdP-GP-hy9"/>
     </inferredMetricsTieBreakers>
 </document>

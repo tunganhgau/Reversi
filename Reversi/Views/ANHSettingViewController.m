@@ -88,14 +88,22 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ANHViewController *gameView = (ANHViewController *)segue.destinationViewController;
-    if (gameView.gameBoard.blackGoFirst != self.blackGoFirst || gameView.gameBoard.playerIsBlack != self.playerIsBlack || gameView.gameBoard.AILevel != self.AILevel || gameView.soundOn != self.soundOn) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setting Changed" message:@"Do you want to start a new game with this setting?" delegate:nil cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-        [alert show];
-        gameView.gameBoard.blackGoFirst = self.blackGoFirst;
-        gameView.gameBoard.playerIsBlack = self.playerIsBlack;
-        gameView.gameBoard.AILevel = self.AILevel;
-        gameView.soundOn = self.soundOn;
+    if ([segue.identifier isEqualToString:@"cancel"]){
+        gameView.currentBoard = [self.currentBoard copyWithZone:nil];
     }
+    else{
+        if (gameView.currentBoard.blackGoFirst != self.blackGoFirst || gameView.currentBoard.playerIsBlack != self.playerIsBlack || gameView.currentBoard.AILevel != self.AILevel) {
+            if ([self.delegate respondsToSelector:@selector(settingChangedWith:andPlayerColor:andAILevel:)]) {
+                [self.delegate settingChangedWith:self.blackGoFirst andPlayerColor:self.playerIsBlack andAILevel:self.AILevel];
+            }
+        }
+        if (gameView.soundOn != self.soundOn) {
+            if ([self.delegate respondsToSelector:@selector(soundSwitchToggled)]) {
+                [self.delegate soundSwitchToggled];
+            }
+        }
+    }
+    gameView.playMode = self.playMode;
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

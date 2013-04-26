@@ -49,14 +49,21 @@
         [self addSubview:bgView];
         [self sendSubviewToBack:bgView];
         
-        [self updateBoard];
+        //[self updateBoard];
         
     }
     return self;
 }
 
-- (void) updateBoard{
-    
+- (void) updateBoardView{
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            ANHGameCellView *temp = [[self.cellViews objectAtIndex:row] objectAtIndex:col];
+            temp.board = self.gameBoard;
+            temp.cell = [[self.gameBoard.cells objectAtIndex:row] objectAtIndex:col];
+            [temp updateCellView];
+        }
+    }
 }
 
 /*

@@ -53,6 +53,7 @@
     another.whoseTurn = self.whoseTurn;
     another.computerTurn = self.computerTurn;
     another.blackGoFirst = self.blackGoFirst;
+    another.playerIsBlack = self.playerIsBlack;
     another.winner = self.winner;
     another.playMode = self.playMode;
     another.blackScore = self.blackScore;

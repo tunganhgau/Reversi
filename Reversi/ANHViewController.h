@@ -2,6 +2,8 @@
 //  ANHViewController.h
 //  Reversi
 //
+//  The main view controller, which is the actual game
+//
 //  Created by Anh Nguyen on 3/5/13.
 //  Copyright (c) 2013 Anh Nguyen. All rights reserved.
 //
@@ -20,7 +22,7 @@
 @property (strong, nonatomic) UIPopoverController *myPopover;
 @property (strong, nonatomic) ANHGameBoardView *gameBoardView;
 @property (strong, nonatomic) ANHBoard *gameBoard;
-@property (strong, nonatomic) ANHBoard *startBoard;
+@property (strong, nonatomic) ANHBoard *currentBoard;
 @property (strong, nonatomic) NSMutableArray *boardStack;
 @property (strong, nonatomic) IBOutlet UIImageView *whoseTurnImage;
 @property (strong, nonatomic) IBOutlet UITextView *blackScoreTextView;
