@@ -21,4 +21,5 @@
 
 - (id)initWithFrame:(CGRect)frame andBoard:(ANHBoard *)board;
 - (void) updateBoardView;
+- (void) setGameBoard:(ANHBoard *)board;
 @end

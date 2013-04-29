@@ -89,8 +89,11 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ANHViewController *gameView = (ANHViewController *)segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"cancel"]){
-        gameView.currentBoard = self.currentBoard;
-        gameView.boardStack = self.savedBoards;
+        gameView.currentBoard = [self.currentBoard copyWithZone:nil];
+        gameView.boardStack = [[NSMutableArray alloc] init];
+        for (id eachBoard in self.savedBoards) {
+            [gameView.boardStack addObject:(ANHBoard *)eachBoard];
+        }
     }
     else{
         if (self.currentBoard.blackGoFirst != self.blackGoFirst || self.currentBoard.playerIsBlack != self.playerIsBlack || self.currentBoard.AILevel != self.AILevel) {

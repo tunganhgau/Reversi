@@ -48,11 +48,19 @@
         bgView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:bgView];
         [self sendSubviewToBack:bgView];
-        
-        //[self updateBoard];
-        
     }
     return self;
+}
+
+- (void) setGameBoard:(ANHBoard *)board{
+    gameBoard = board;
+    for (int row = 0 ; row < 8; row++) {
+        for (int column = 0; column < 8; column++) {
+            ANHCell *cell = [[gameBoard.cells objectAtIndex:row]objectAtIndex:column];
+            ANHGameCellView *cellView = [[cellViews objectAtIndex:row] objectAtIndex:column];
+            cellView.cell = cell;
+        }
+    }
 }
 
 - (void) updateBoardView{
