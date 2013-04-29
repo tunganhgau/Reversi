@@ -60,7 +60,10 @@
     }
 
     // boardStack is used to save all the boards in the past to support undo a move
-    _boardStack = [[NSMutableArray alloc] init];
+    if (!self.boardStack) {
+        _boardStack = [[NSMutableArray alloc] init];
+    }
+    
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
@@ -264,7 +267,10 @@
         }
         else
         {
-            //self.currentBoard = [self.gameBoard copyWithZone:nil];
+            settingPopover.savedBoards = [[NSMutableArray alloc] init];
+            for (id eachBoard in self.boardStack) {
+                [settingPopover.savedBoards addObject:[(ANHBoard *)  eachBoard copyWithZone:nil]];
+            }
             settingPopover.currentBoard = [self.gameBoard copyWithZone:nil];
             settingPopover.playMode = self.playMode;
         }

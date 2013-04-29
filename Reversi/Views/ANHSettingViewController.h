@@ -23,6 +23,7 @@
 @property (nonatomic) AIDifficulty AILevel;
 @property (nonatomic) BOOL computerMode;
 @property (nonatomic) PlayMode playMode;
+@property (strong, nonatomic) NSMutableArray *savedBoards;
 @property (strong, nonatomic) ANHBoard *currentBoard;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *firstMoveSegment;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *colorSegment;
