@@ -56,7 +56,7 @@
     else {
         _gameBoard.delegate = self;
         [self.gameBoardView updateBoardView];
-        [self updateGame];
+        //[self updateGame];
     }
 
     // boardStack is used to save all the boards in the past to support undo a move
@@ -68,6 +68,7 @@
     
     soundOn = YES;
     [self initSoundEffects];
+    [self updateGame];
 }
 
 //-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
