@@ -55,13 +55,14 @@
     }
     else {
         _gameBoard.delegate = self;
-        [self.gameBoardView updateBoardView];
-        //[self updateGame];
+        //[self.gameBoardView updateBoardView];
+        [self updateGame];
     }
 
     // boardStack is used to save all the boards in the past to support undo a move
     if (!self.boardStack) {
         _boardStack = [[NSMutableArray alloc] init];
+        [_boardStack addObject:self.gameBoard];
     }
     
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
@@ -111,6 +112,7 @@
     [self.gameBoard resetBoard];
     self.boardStack = [[NSMutableArray alloc] init];
     [self.boardStack addObject:self.gameBoard];
+    
 }
 
 - (void) boardChanged{
@@ -128,6 +130,7 @@
         self.whoseTurnImage.image = [UIImage imageNamed:@"whitePiece.png"];
         self.whoseTurnTextView.textColor = [UIColor whiteColor];
     }
+    [self.gameBoardView updateBoardView];
 }
 
 // method to be called when the game ended, it will show an alert with sound depend on the situation of the game
@@ -213,14 +216,14 @@
     }
     // set the game with the new board, and update the view
     self.gameBoardView.gameBoard = self.gameBoard;
-
-    [self.gameBoardView updateBoardView];
     [self updateGame];
+    NSLog(@"%d", self.boardStack.count);
 }
 
 - (void) newPiecePlayed{
     [self.boardStack addObject:[self.gameBoard copyWithZone:nil]];
     [self playWoodSound];
+    NSLog(@"%d",self.boardStack.count);
 }
 
 - (void) playWoodSound{
