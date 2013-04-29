@@ -90,6 +90,7 @@
     ANHViewController *gameView = (ANHViewController *)segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"cancel"]){
         gameView.currentBoard = self.currentBoard;
+        gameView.boardStack = self.savedBoards;
     }
     else{
         if (self.currentBoard.blackGoFirst != self.blackGoFirst || self.currentBoard.playerIsBlack != self.playerIsBlack || self.currentBoard.AILevel != self.AILevel) {
