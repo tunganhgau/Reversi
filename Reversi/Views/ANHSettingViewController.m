@@ -65,7 +65,7 @@
             [self.delegate settingChangedWith:self.blackGoFirst andPlayerColor:self.playerIsBlack andAILevel:self.AILevel];
         }
     }
-    if (gameView.soundOn != self.soundOn) {
+    if (self.soundOn != soundSwitch.isOn) {
         if ([self.delegate respondsToSelector:@selector(soundSwitchToggled)]) {
             [self.delegate soundSwitchToggled];
         }
@@ -81,9 +81,6 @@
 - (IBAction)difficultySegmentChanged:(UISegmentedControl *)sender{
     AILevel = difficultySegment.selectedSegmentIndex;
 }
-- (IBAction)soundSwitchChanged:(UISwitch *)sender{
-    soundOn = soundSwitch.isOn;
-}
 
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -92,7 +89,7 @@
         gameView.currentBoard = [self.currentBoard copyWithZone:nil];
         gameView.boardStack = [[NSMutableArray alloc] init];
         for (id eachBoard in self.savedBoards) {
-            [gameView.boardStack addObject:(ANHBoard *)eachBoard];
+            [gameView.boardStack addObject:[(ANHBoard *)eachBoard copyWithZone:nil]];
         }
     }
     else{
@@ -104,15 +101,18 @@
                 self.currentBoard.AILevel = self.AILevel;
                 self.currentBoard.blackGoFirst = self.blackGoFirst;
                 self.currentBoard.playerIsBlack = self.playerIsBlack;
-                gameView.currentBoard = self.currentBoard;
+                
             }
         }
-        if (gameView.soundOn != self.soundOn) {
+        if (self.soundOn != soundSwitch.isOn) {
             if ([self.delegate respondsToSelector:@selector(soundSwitchToggled)]) {
                 [self.delegate soundSwitchToggled];
             }
         }
-        
+        gameView.currentBoard = [self.currentBoard copyWithZone:nil];
+        if (!soundSwitch.isOn) {
+            gameView.muteSound = YES;
+        }
         
     }
     

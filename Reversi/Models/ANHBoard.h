@@ -60,4 +60,5 @@ typedef NS_ENUM(int, AIDifficulty){
 - (void) updateBoard;
 - (BOOL) gameEnd;
 - (void) playerCannotMove;
+- (void) makeAIFirstMove;
 @end

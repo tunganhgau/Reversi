@@ -355,11 +355,7 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Pc-qv-Xlp">
-                                <connections>
-                                    <action selector="soundSwitchChanged:" destination="MVL-XR-HnM" eventType="valueChanged" id="L8b-vF-zaM"/>
-                                </connections>
-                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Pc-qv-Xlp"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2o-vp-Mpp">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="4fa-kY-LRK"/>

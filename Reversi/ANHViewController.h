@@ -18,7 +18,9 @@
 #import "ANHSettingDelegate.h"
 
 @interface ANHViewController : UIViewController<BoardDelegate,AVAudioPlayerDelegate,UIAlertViewDelegate,ANHSettingDelegate>
-
+struct data{
+    
+};
 @property (strong, nonatomic) UIPopoverController *myPopover;
 @property (strong, nonatomic) ANHGameBoardView *gameBoardView;
 @property (strong, nonatomic) ANHBoard *gameBoard;
@@ -34,6 +36,7 @@
 @property (strong, nonatomic) AVAudioPlayer *winSound;
 @property (strong, nonatomic) AVAudioPlayer *loseSound;
 @property (nonatomic) PlayMode playMode;
+@property (nonatomic) BOOL muteSound;
 @property (nonatomic) BOOL soundOn;
 @property (nonatomic) BOOL blackGoFirst;
 @property (nonatomic) BOOL playerIsBlack;
