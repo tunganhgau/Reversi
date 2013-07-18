@@ -34,6 +34,5 @@
 - (IBAction)firstMoveSegmentChanged:(UISegmentedControl *)sender;
 - (IBAction)colorSegmentChanged:(UISegmentedControl *)sender;
 - (IBAction)difficultySegmentChanged:(UISegmentedControl *)sender;
-- (IBAction)soundSwitchChanged:(UISwitch *)sender;
 
 @end

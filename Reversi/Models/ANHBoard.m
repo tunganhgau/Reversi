@@ -59,6 +59,7 @@
     another.blackScore = self.blackScore;
     another.whiteScore = self.whiteScore;
     another.delegate = self.delegate;
+    another.AILevel = self.AILevel;
     return another;
 }
 
@@ -150,6 +151,10 @@
         }
     }
     [self initBoardState];
+    [self makeAIFirstMove];
+}
+
+- (void)makeAIFirstMove{
     if (self.playMode == ComputerMode) {
         // in computer mode, detect if the computer has to go first
         if (!self.blackGoFirst) {

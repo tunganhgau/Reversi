@@ -55,8 +55,13 @@
     }
     else {
         _gameBoard.delegate = self;
+<<<<<<< HEAD
         //[self.gameBoardView updateBoardView];
         [self updateGame];
+=======
+        [_gameBoard makeAIFirstMove];
+        //[self updateGame];
+>>>>>>> iPhone-Setting
     }
 
     // boardStack is used to save all the boards in the past to support undo a move
@@ -69,8 +74,8 @@
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
     _whoseTurnLabel.textColor = [UIColor blackColor];
-    
     soundOn = YES;
+    [self checkPreSet];	
     [self initSoundEffects];
     [self updateGame];
 }
@@ -217,7 +222,11 @@
     // set the game with the new board, and update the view
     self.gameBoardView.gameBoard = self.gameBoard;
     [self updateGame];
+<<<<<<< HEAD
     NSLog(@"%d", self.boardStack.count);
+=======
+    //NSLog(@"%d", self.boardStack.count);
+>>>>>>> iPhone-Setting
 }
 
 - (void) newPiecePlayed{
@@ -253,6 +262,7 @@
     loseSound = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:loseSoundPath] error:nil];
 }
 
+// prepare the data to the next view
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ANHSettingViewController *settingPopover = (ANHSettingViewController *)segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"settingView"]) {
@@ -278,7 +288,7 @@
             settingPopover.playMode = self.playMode;
         }
     }
-    
+    NSLog(self.soundOn ? @"Yes" : @"No");
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -294,8 +304,8 @@
     }
 }
 
-- (void)soundSwitchToggled{
-    soundOn = !soundOn;
+- (void) soundSwitchToggled;{
+    self.soundOn  = !self.soundOn;
 }
 
 - (void)settingChangedWith:(BOOL)blackGoFirst andPlayerColor:(BOOL)blackColor andAILevel:(int)level{
@@ -309,6 +319,12 @@
 
 - (void) cancelSetting{
     [self.myPopover dismissPopoverAnimated:YES];
+}
+
+- (void) checkPreSet{
+    if (self.muteSound) {
+        self.soundOn = NO;
+    }
 }
 /*
  Things to do:
