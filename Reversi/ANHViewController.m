@@ -55,13 +55,11 @@
     }
     else {
         _gameBoard.delegate = self;
-<<<<<<< HEAD
         //[self.gameBoardView updateBoardView];
         [self updateGame];
-=======
+
         [_gameBoard makeAIFirstMove];
         //[self updateGame];
->>>>>>> iPhone-Setting
     }
 
     // boardStack is used to save all the boards in the past to support undo a move
@@ -222,11 +220,7 @@
     // set the game with the new board, and update the view
     self.gameBoardView.gameBoard = self.gameBoard;
     [self updateGame];
-<<<<<<< HEAD
-    NSLog(@"%d", self.boardStack.count);
-=======
     //NSLog(@"%d", self.boardStack.count);
->>>>>>> iPhone-Setting
 }
 
 - (void) newPiecePlayed{

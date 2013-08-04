@@ -89,11 +89,8 @@
         gameView.currentBoard = [self.currentBoard copyWithZone:nil];
         gameView.boardStack = [[NSMutableArray alloc] init];
         for (id eachBoard in self.savedBoards) {
-<<<<<<< HEAD
             [gameView.boardStack addObject:(ANHBoard *)eachBoard];
-=======
             [gameView.boardStack addObject:[(ANHBoard *)eachBoard copyWithZone:nil]];
->>>>>>> iPhone-Setting
         }
     }
     else{
