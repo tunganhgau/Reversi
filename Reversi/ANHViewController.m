@@ -55,11 +55,8 @@
     }
     else {
         _gameBoard.delegate = self;
-        //[self.gameBoardView updateBoardView];
         [self updateGame];
-
         [_gameBoard makeAIFirstMove];
-        //[self updateGame];
     }
 
     // boardStack is used to save all the boards in the past to support undo a move
@@ -76,34 +73,20 @@
     [self checkPreSet];	
     [self initSoundEffects];
     [self updateGame];
+    
+    NSString *filePath = [self dataFilePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
+        NSLog(@"%d", (int)[dict objectForKey:@"PlayMode"]);
+    }
+    UIApplication *app = [UIApplication sharedApplication];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(applicationWillResignActive:)
+     name:UIApplicationWillResignActiveNotification
+     object:app];
 }
 
-//-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
-//    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-//        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-//        [self updateLandscapeView];
-//    }
-//    else{
-//        [self updatePortraitView];
-//    }
-//}
-//
-//
-//- (void)updateLandscapeView{
-//    float screenWidth = self.view.bounds.size.width;
-//    float screenHeight = self.view.bounds.size.height;
-//    CGRect boardRect =  CGRectMake((screenHeight - 0.9*screenWidth)/1.9, 0, 0.9*screenWidth, 0.9*screenWidth);
-//    self.gameBoardView.frame = boardRect;
-//    CGRect whoseTurnFrame = CGRectMake(0, 0, 80, 80);
-//    self.whoseTurnImage.frame = whoseTurnFrame;
-//}
-//
-//- (void)updatePortraitView{
-//    float screenWidth = self.view.bounds.size.width;
-//    float screenHeight = self.view.bounds.size.height;
-//    CGRect boardRect = CGRectMake(0.04*screenWidth, 0.15*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
-//    self.gameBoardView.frame = boardRect;
-//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -220,13 +203,12 @@
     // set the game with the new board, and update the view
     self.gameBoardView.gameBoard = self.gameBoard;
     [self updateGame];
-    //NSLog(@"%d", self.boardStack.count);
 }
 
 - (void) newPiecePlayed{
     [self.boardStack addObject:[self.gameBoard copyWithZone:nil]];
     [self playWoodSound];
-    NSLog(@"%d",self.boardStack.count);
+    //NSLog(@"%d",self.boardStack.count);
 }
 
 - (void) playWoodSound{
@@ -320,6 +302,24 @@
         self.soundOn = NO;
     }
 }
+
+- (NSString *)dataFilePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
+}
+
+- (void)applicationWillResignActive:(NSNotification *)notification
+{
+    NSString *filePath = [self dataFilePath];
+    NSDictionary *data = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:self.playMode] forKey:@"PlayMode"];
+    //NSMutableDictionary *data = [[NSMutableDictionary init] alloc];
+    //[data setObject:[NSNumber numberWithInt:self.playMode] forKey:@"PlayMode"];
+    [data writeToFile:filePath atomically:YES];
+    NSLog(@"%d", (int)[data objectForKey:@"PlayMode"]);
+}
+
 /*
  Things to do:
  2 UIAlert appear when play with AI
