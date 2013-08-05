@@ -77,7 +77,7 @@
     NSString *filePath = [self dataFilePath];
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
-        NSLog(@"%d", (int)[dict objectForKey:@"PlayMode"]);
+        NSLog(@"%d", [[dict objectForKey:@"PlayMode"] intValue]);
     }
     UIApplication *app = [UIApplication sharedApplication];
     [[NSNotificationCenter defaultCenter]
@@ -313,11 +313,18 @@
 - (void)applicationWillResignActive:(NSNotification *)notification
 {
     NSString *filePath = [self dataFilePath];
-    NSDictionary *data = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:self.playMode] forKey:@"PlayMode"];
+    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [NSNumber numberWithInt:self.playMode],@"PlayMode",
+                          [NSNumber numberWithBool:self.muteSound],@"MuteSound",
+                          [NSNumber numberWithBool:self.soundOn],@"SoundOn",
+                          [NSNumber numberWithBool:self.blackGoFirst],@"BlackGoFirst",
+                          [NSNumber numberWithBool:self.playerIsBlack],@"PlayerIsBlack",
+                          [NSNumber numberWithInt:self.AILevel],@"AILevel",nil];
     //NSMutableDictionary *data = [[NSMutableDictionary init] alloc];
     //[data setObject:[NSNumber numberWithInt:self.playMode] forKey:@"PlayMode"];
     [data writeToFile:filePath atomically:YES];
     NSLog(@"%d", (int)[data objectForKey:@"PlayMode"]);
+    //BOOL b = [boolNumber boolValue];
 }
 
 /*
