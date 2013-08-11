@@ -17,6 +17,19 @@
 @synthesize playerIsBlack;
 
 @synthesize cells;
+
+- (void) encodeWithCoder:(NSCoder*)encoder{
+    [encoder encodeBool:self.computerTurn forKey:@"computerTurn"];
+    [encoder encodeInt:self.blackScore forKey:@"blackScore"];
+}
+
+- (id) initWithCoder:(NSCoder*)coder{
+    self = [super init];
+    self.computerTurn = [coder decodeBoolForKey:@"computerTurn"];
+    self.blackScore = [coder decodeIntForKey:@"blackScore"];
+    return self;
+}
+
 - (id) init{
     self = [super init];
     if (self) {
