@@ -36,9 +36,11 @@
     else {
         boardRect =  CGRectMake((screenHeight - 0.9*screenHeight)*1.75, 0, 0.9*screenWidth, 0.9*screenWidth);
     }
-
+    
+    // initialize gameBoard
     _gameBoard = [[ANHBoard alloc]init];
     _gameBoard.delegate = self;
+    // this step is to check if there is already a gameBoard exist(only for iPhone when switching view) 
     if (self.currentBoard) {
         _gameBoard = self.currentBoard;
     }
@@ -48,6 +50,7 @@
     else {
         _gameBoard.playMode = ComputerMode;
     }
+    // init a game board view with the given board
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
     if (!self.currentBoard) {
@@ -55,11 +58,8 @@
     }
     else {
         _gameBoard.delegate = self;
-        //[self.gameBoardView updateBoardView];
         [self updateGame];
-
         [_gameBoard makeAIFirstMove];
-        //[self updateGame];
     }
 
     // boardStack is used to save all the boards in the past to support undo a move
@@ -68,6 +68,7 @@
         [_boardStack addObject:self.gameBoard];
     }
     
+    // init other needed elements
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
@@ -76,34 +77,27 @@
     [self checkPreSet];	
     [self initSoundEffects];
     [self updateGame];
+    
+    
+    // data persistent
+    NSString *filePath = [self dataFilePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
+        NSData *testData = [dict objectForKey:@"GameBoard"];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
+                                         initForReadingWithData:testData];
+        ANHBoard *testBoard = [unarchiver decodeObjectForKey:@"GameBoard"];
+        NSLog(@"blackscore %d", testBoard.blackScore);
+        NSLog(@"%d", [[dict objectForKey:@"PlayMode"] intValue]);
+    }
+    UIApplication *app = [UIApplication sharedApplication];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(applicationWillResignActive:)
+     name:UIApplicationWillResignActiveNotification
+     object:app];
 }
 
-//-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
-//    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
-//        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-//        [self updateLandscapeView];
-//    }
-//    else{
-//        [self updatePortraitView];
-//    }
-//}
-//
-//
-//- (void)updateLandscapeView{
-//    float screenWidth = self.view.bounds.size.width;
-//    float screenHeight = self.view.bounds.size.height;
-//    CGRect boardRect =  CGRectMake((screenHeight - 0.9*screenWidth)/1.9, 0, 0.9*screenWidth, 0.9*screenWidth);
-//    self.gameBoardView.frame = boardRect;
-//    CGRect whoseTurnFrame = CGRectMake(0, 0, 80, 80);
-//    self.whoseTurnImage.frame = whoseTurnFrame;
-//}
-//
-//- (void)updatePortraitView{
-//    float screenWidth = self.view.bounds.size.width;
-//    float screenHeight = self.view.bounds.size.height;
-//    CGRect boardRect = CGRectMake(0.04*screenWidth, 0.15*screenHeight, 0.9*screenWidth, 0.9*screenWidth);
-//    self.gameBoardView.frame = boardRect;
-//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -111,6 +105,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+// resetGame get called when user hits the reset button
 - (IBAction)resetGame:(UIButton *)sender {
     [self.gameBoard resetBoard];
     self.boardStack = [[NSMutableArray alloc] init];
@@ -220,13 +215,12 @@
     // set the game with the new board, and update the view
     self.gameBoardView.gameBoard = self.gameBoard;
     [self updateGame];
-    //NSLog(@"%d", self.boardStack.count);
 }
 
 - (void) newPiecePlayed{
     [self.boardStack addObject:[self.gameBoard copyWithZone:nil]];
     [self playWoodSound];
-    NSLog(@"%d",self.boardStack.count);
+    //NSLog(@"%d",self.boardStack.count);
 }
 
 - (void) playWoodSound{
@@ -282,7 +276,7 @@
             settingPopover.playMode = self.playMode;
         }
     }
-    NSLog(self.soundOn ? @"Yes" : @"No");
+    //NSLog(self.soundOn ? @"Yes" : @"No");
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -320,6 +314,37 @@
         self.soundOn = NO;
     }
 }
+
+- (NSString *)dataFilePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
+}
+
+- (void)applicationWillResignActive:(NSNotification *)notification
+{
+    NSString *filePath = [self dataFilePath];
+    NSMutableData *dataObj = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:dataObj];
+    
+    [archiver encodeObject:self.gameBoard forKey:@"GameBoard"];
+    
+    [archiver finishEncoding];
+    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [NSNumber numberWithInt:self.playMode],@"PlayMode",
+                          [NSNumber numberWithBool:self.muteSound],@"MuteSound",
+                          [NSNumber numberWithBool:self.soundOn],@"SoundOn",
+                          [NSNumber numberWithBool:self.blackGoFirst],@"BlackGoFirst",
+                          [NSNumber numberWithBool:self.playerIsBlack],@"PlayerIsBlack",
+                          [NSNumber numberWithInt:self.AILevel],@"AILevel",
+                          dataObj, @"GameBoard",nil];
+    
+    [data writeToFile:filePath atomically:YES];
+    NSLog(@"%d", [[data objectForKey:@"PlayMode"] intValue]);
+    //BOOL b = [boolNumber boolValue];
+}
+
 /*
  Things to do:
  2 UIAlert appear when play with AI
