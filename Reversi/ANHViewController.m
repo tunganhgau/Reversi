@@ -36,9 +36,11 @@
     else {
         boardRect =  CGRectMake((screenHeight - 0.9*screenHeight)*1.75, 0, 0.9*screenWidth, 0.9*screenWidth);
     }
-
+    
+    // initialize gameBoard
     _gameBoard = [[ANHBoard alloc]init];
     _gameBoard.delegate = self;
+    // this step is to check if there is already a gameBoard exist(only for iPhone when switching view) 
     if (self.currentBoard) {
         _gameBoard = self.currentBoard;
     }
@@ -48,6 +50,7 @@
     else {
         _gameBoard.playMode = ComputerMode;
     }
+    // init a game board view with the given board
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
     if (!self.currentBoard) {
@@ -65,6 +68,7 @@
         [_boardStack addObject:self.gameBoard];
     }
     
+    // init other needed elements
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"grass_pattern.png"]];
     [self.view addSubview:self.gameBoardView];
     _whoseTurnImage.image = [UIImage imageNamed:@"blackPiece.png"];
@@ -74,9 +78,16 @@
     [self initSoundEffects];
     [self updateGame];
     
+    
+    // data persistent
     NSString *filePath = [self dataFilePath];
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
+        NSData *testData = [dict objectForKey:@"GameBoard"];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
+                                         initForReadingWithData:testData];
+        ANHBoard *testBoard = [unarchiver decodeObjectForKey:@"GameBoard"];
+        NSLog(@"blackscore %d", testBoard.blackScore);
         NSLog(@"%d", [[dict objectForKey:@"PlayMode"] intValue]);
     }
     UIApplication *app = [UIApplication sharedApplication];
@@ -94,6 +105,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+// resetGame get called when user hits the reset button
 - (IBAction)resetGame:(UIButton *)sender {
     [self.gameBoard resetBoard];
     self.boardStack = [[NSMutableArray alloc] init];
@@ -264,7 +276,7 @@
             settingPopover.playMode = self.playMode;
         }
     }
-    NSLog(self.soundOn ? @"Yes" : @"No");
+    //NSLog(self.soundOn ? @"Yes" : @"No");
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -313,17 +325,23 @@
 - (void)applicationWillResignActive:(NSNotification *)notification
 {
     NSString *filePath = [self dataFilePath];
+    NSMutableData *dataObj = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:dataObj];
+    
+    [archiver encodeObject:self.gameBoard forKey:@"GameBoard"];
+    
+    [archiver finishEncoding];
     NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
                           [NSNumber numberWithInt:self.playMode],@"PlayMode",
                           [NSNumber numberWithBool:self.muteSound],@"MuteSound",
                           [NSNumber numberWithBool:self.soundOn],@"SoundOn",
                           [NSNumber numberWithBool:self.blackGoFirst],@"BlackGoFirst",
                           [NSNumber numberWithBool:self.playerIsBlack],@"PlayerIsBlack",
-                          [NSNumber numberWithInt:self.AILevel],@"AILevel",nil];
-    //NSMutableDictionary *data = [[NSMutableDictionary init] alloc];
-    //[data setObject:[NSNumber numberWithInt:self.playMode] forKey:@"PlayMode"];
+                          [NSNumber numberWithInt:self.AILevel],@"AILevel",
+                          dataObj, @"GameBoard",nil];
+    
     [data writeToFile:filePath atomically:YES];
-    NSLog(@"%d", (int)[data objectForKey:@"PlayMode"]);
+    NSLog(@"%d", [[data objectForKey:@"PlayMode"] intValue]);
     //BOOL b = [boolNumber boolValue];
 }
 
