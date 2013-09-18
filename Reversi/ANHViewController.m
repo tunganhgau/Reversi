@@ -37,12 +37,14 @@
         boardRect =  CGRectMake((screenHeight - 0.9*screenHeight)*1.75, 0, 0.9*screenWidth, 0.9*screenWidth);
     }
     
-    // initialize gameBoard
-    _gameBoard = [[ANHBoard alloc]init];
-    _gameBoard.delegate = self;
+    
     // this step is to check if there is already a gameBoard exist(only for iPhone when switching view) 
     if (self.currentBoard) {
         _gameBoard = self.currentBoard;
+    }
+    else{
+        // initialize gameBoard
+        _gameBoard = [[ANHBoard alloc]init];
     }
     if (self.playMode == PlayerMode) {
         _gameBoard.playMode = PlayerMode;
@@ -52,14 +54,18 @@
     }
     // init a game board view with the given board
     _gameBoardView = [[ANHGameBoardView alloc] initWithFrame:boardRect andBoard:_gameBoard];
+    _gameBoard.delegate = self;
     // set the gameBoard to its initial state after initialize the board View, otherwise, the gameboard need to know its cells first
     if (!self.currentBoard) {
         [_gameBoard initBoardState];
     }
     else {
-        _gameBoard.delegate = self;
         [self updateGame];
-        [_gameBoard makeAIFirstMove];
+        // this means the game is at the initial state, and check if AI should go first
+        if (_gameBoard.blackScore == 2 && _gameBoard.whiteScore == 2) {
+            [_gameBoard makeAIFirstMove];
+        }
+    
     }
 
     // boardStack is used to save all the boards in the past to support undo a move

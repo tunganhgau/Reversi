@@ -85,6 +85,7 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ANHViewController *gameView = (ANHViewController *)segue.destinationViewController;
+    // if the cancel button is pressed, load the old setting and give it back to the GameViewController
     if ([segue.identifier isEqualToString:@"cancel"]){
         gameView.currentBoard = [self.currentBoard copyWithZone:nil];
         gameView.boardStack = [[NSMutableArray alloc] init];
@@ -94,6 +95,7 @@
         }
     }
     else{
+        // if the save button is pressed and there are some changes, then save those changes
         if (self.currentBoard.blackGoFirst != self.blackGoFirst || self.currentBoard.playerIsBlack != self.playerIsBlack || self.currentBoard.AILevel != self.AILevel) {
             if ([self.delegate respondsToSelector:@selector(settingChangedWith:andPlayerColor:andAILevel:)]) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setting Changed" message:@"The game will restart with the new setting" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
@@ -110,6 +112,7 @@
                 [self.delegate soundSwitchToggled];
             }
         }
+        // set the game board to be the new setting
         gameView.currentBoard = [self.currentBoard copyWithZone:nil];
         if (!soundSwitch.isOn) {
             gameView.muteSound = YES;
@@ -120,18 +123,18 @@
     gameView.playMode = self.playMode;
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    // if the user chooses OK, save the setting, and reset the game with the new setting
-    if (buttonIndex != 0) {
-        self.currentBoard.AILevel = self.AILevel;
-        self.currentBoard.blackGoFirst = self.blackGoFirst;
-        self.currentBoard.playerIsBlack = self.playerIsBlack;
-        //[self.gameBoard resetBoard];
-        //self.boardStack = [[NSMutableArray alloc] init];
-        //[self.boardStack addObject:self.gameBoard];
-        [self.delegate cancelSetting];
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    // if the user chooses OK, save the setting, and reset the game with the new setting
+//    if (buttonIndex != 0) {
+//        self.currentBoard.AILevel = self.AILevel;
+//        self.currentBoard.blackGoFirst = self.blackGoFirst;
+//        self.currentBoard.playerIsBlack = self.playerIsBlack;
+//        //[self.gameBoard resetBoard];
+//        //self.boardStack = [[NSMutableArray alloc] init];
+//        //[self.boardStack addObject:self.gameBoard];
+//        [self.delegate cancelSetting];
+//    }
+//}
 
 - (void)viewDidDisappear:(BOOL)animated{
 }

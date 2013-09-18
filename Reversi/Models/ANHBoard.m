@@ -88,9 +88,7 @@
 
 // switch turn to the next user
 - (void)switchTurn{
-    if (self.playMode == ComputerMode) {
-        computerTurn = !computerTurn;
-    }
+    //computerTurn ? NSLog(@"YES") : NSLog(@"NO");
     if (whoseTurn == BlackPlayer) {
         self.whoseTurn = WhitePlayer;
         // if the game is in computer mode, the AI will make move
@@ -99,7 +97,6 @@
                 if ([self nextPlayerCanMakeMove]) {
                     [self AIMakeMove];
                 }
-                //computerTurn = NO;
             }
         }
     }
@@ -111,12 +108,9 @@
                 if ([self nextPlayerCanMakeMove]) {
                     [self AIMakeMove];
                 }
-                //computerTurn = NO;
             }
         }
     }
-
-
 }
 
 - (void) AIMakeMove{
@@ -131,6 +125,7 @@
         bestCell = [self highestScoreCell:Hard];
     }
     [self performSelector:@selector(makeMoveAtCell:) withObject:bestCell afterDelay:1];
+//     computerTurn = !computerTurn;
 }
 
 // initialize the game board with 2 white pieces and 2 black pieces crossed in the middle of the board
@@ -146,7 +141,7 @@
         self.whoseTurn = WhitePlayer;
     }
     [self updateBoard];
-    
+    [self makeAIFirstMove];
 }
 
 - (void) initCellState:(CellState)state atRow:(int)row andColumn:(int)column{
@@ -164,7 +159,7 @@
         }
     }
     [self initBoardState];
-    [self makeAIFirstMove];
+    
 }
 
 - (void)makeAIFirstMove{
@@ -173,12 +168,14 @@
         if (!self.blackGoFirst) {
             if (self.playerIsBlack) {
                 self.whoseTurn = BlackPlayer;
+                self.computerTurn = YES;
                 [self switchTurn];
             }
         }
         else {
             if (!self.playerIsBlack) {
                 self.whoseTurn = WhitePlayer;
+                self.computerTurn = YES;
                 [self switchTurn];
             }
         }
@@ -763,6 +760,7 @@
         }
     }
     // finished making move, switch turn to the other player and update board
+    computerTurn = !computerTurn;
     [self switchTurn];
     [self updateBoard];
     // check if the next player is able to make a move, if not, tell the view controller and switch the turn back
