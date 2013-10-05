@@ -775,7 +775,9 @@
 
 - (void) playerCannotMove{
     if (![self gameEnd]) {
+        // show an alert tell the user that the player cannot move
         [self.delegate playerIsNotAbleToMakeMove:self.whoseTurn];
+        // let the other player go
         computerTurn = !computerTurn;
         [self switchTurn];
         [self updateBoard];

@@ -140,15 +140,23 @@
 // method to be called when the game ended, it will show an alert with sound depend on the situation of the game
 - (void) gameEndedWithWinner:(Player)winner{
     if (self.playMode == ComputerMode) {
-        if ((self.gameBoard.playerIsBlack == YES && winner == WhitePlayer) || (self.gameBoard.playerIsBlack == NO && winner == BlackPlayer)) {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Nice try, that was a nice game" message:@"The computer win" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-            [self playLoseSound];
-        }
-        else {
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Congratulation" message:@"You win" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        // draw game, no winner
+        if (winner == -1) {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Draw" message:@"Nice game" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [alert show];
             [self playWinSound];
+        }
+        else{
+            if ((self.gameBoard.playerIsBlack == YES && winner == WhitePlayer) || (self.gameBoard.playerIsBlack == NO && winner == BlackPlayer)) {
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Nice try, that was a nice game" message:@"The computer win" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                [self playLoseSound];
+            }
+            else {
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Congratulation" message:@"You win" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+                [self playWinSound];
+            }
         }
     }
     else {
