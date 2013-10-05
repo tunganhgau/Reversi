@@ -776,6 +776,7 @@
 - (void) playerCannotMove{
     if (![self gameEnd]) {
         [self.delegate playerIsNotAbleToMakeMove:self.whoseTurn];
+        computerTurn = !computerTurn;
         [self switchTurn];
         [self updateBoard];
     }
